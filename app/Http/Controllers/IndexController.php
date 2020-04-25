@@ -56,7 +56,7 @@ class IndexController extends Controller
         ],$messages);
   
         if ($validator->fails()) {
-             return back()->withErrors($validator->errors());
+             return view('index',['data' => $request->all()])->withErrors($validator->errors());
         }else{
              $namapic = request()->foto->getClientOriginalName();
             request()->foto->move(public_path('images'),$namapic);
