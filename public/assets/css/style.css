@@ -7,50 +7,34 @@ html    {
     position: relative;
 }
 
-
-.persetujuan-kanan {
-    color: #154c9b;
-}
-
-.persetujuan-kanan h2 {
-    margin-top: 10%;
-}
-
 .persetujuan-kiri {
-    color: #154c9b;
+    color: #204f8f;
     position: relative;
 }
 
+.persetujuan-kiri h2 {
+    text-align: center;
+    transform: translateY(60px);
+}
+
+.persetujuan-kiri .periode {
+    margin-top: 20px;
+}
+
+.persetujuan-kiri .tanggal {
+    margin-bottom: 20px;
+}
+
 .persetujuan-kiri img {
-    transform: translate(30px,80px);
-    z-index: -1;
-}
-
-
-.ketentuan  {
-    width: 500px;
-    margin-top: 10px;
-    box-sizing: border-box;
-    border: 2px solid #154c9b;
-    border-radius: 15px;
-    padding : 20px;
-}
-
-.ketentuan h5 {
-    font-style: italic;
-}
-
-
-.form-check small {
-    font-style: italic;
-    font-weight: 500;
-
+    transform: translate(70px,60px);
+    
 }
 
 .hitungmundur {
     overflow: hidden;
     width: 600px;
-    margin-top: 50px;
+    margin-top: 20px;
+    margin-left: 100px;
     z-index: 2;
 
 }
@@ -63,13 +47,13 @@ html    {
     float: left;
     width: 80px;
     height: 70px;
-    border: 2px solid #154c9b;
+    border: 2px solid #204f8f;
 
 }
 
 .hitungmundur .box p {
     text-align: center;
-    color: #154c9b;
+    color: #204f8f;
     font-weight: 500;
 }
 
@@ -81,6 +65,35 @@ html    {
 
 .hitungmundur .box .satuan-teks {
     font-size: 16px;
+}
+
+.persetujuan-kanan {
+    color: #204f8f;
+}
+
+.persetujuan-kanan h4 {
+    margin-top: 15%;
+}
+
+.persetujuan-kanan a {
+    background-color: #204f8f;
+    border: 1px solid #204f8f;
+}
+
+
+.ketentuan  {
+    width: 500px;
+    margin-top: 10px;
+    box-sizing: border-box;
+    border: 2px solid #204f8f;
+    border-radius: 15px;
+    padding : 20px;
+}
+
+.form-check small {
+    font-style: italic;
+    font-weight: 500;
+
 }
 
 

@@ -8,26 +8,29 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{{url('assets/css/style.css')}}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <title>Sumbang Saran</title>
   </head>
   <body>
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-12 float-right">
+      <div class="row justify-content-between nav-persetujuan">
+        <div class="col-12 ">
           <ul class="nav float-right">
             <li class="nav-item">
-              <a href="{{url('/login')}}" class="btn btn-danger mt-2 font-weight-bold">Login sebagai Admin</a>
+              <a href="{{url('/login')}}" class="btn btn-danger mt-2 font-weight-bold"><i class="fas fa-unlock-alt"></i> Login</a> 
             </li>
           </ul>
         </div>
       </div>
+      </div>
         <div class="row justify-content-center no-gutters persetujuan">
             <div class="col-md-6 col-sm-12 persetujuan-kiri">
+              <h2 class="text-center">Sumbang Saran Karyawan</h2>
               <img src="{{url('assets/img/banner-persetujuan.png')}}" alt=" Responsive Image" class="img-fluid">
 
                 <div class="hitungmundur">
-                  <h5>Periode Sumbang Saran : 24 April 2020 - 1 Mei 2020</h5>
+                  <h5 class="periode">Periode Sumbang Saran : </h5>
+                  <h5 class="font-italic font-weight-bold tanggal">24 April 2020 - 1 Mei 2020</h5>
                   <p class="waktu-tersisa">Waktu tersisa :</p>
 
                   <div class="box">
@@ -50,8 +53,8 @@
 
             </div>
 
-            <div class="col-md-6 col-sm-12 text-center persetujuan-kanan float-right">
-              <h2 class="text-center">Syarat & Ketentuan</h2>
+            <div class="col-md-6 col-sm-12 text-center persetujuan-kanan">
+              <h4 class="text-center">Syarat & Ketentuan</h4>
               <div class="row justify-content-center">
               <div class="ketentuan text-left">
                       <li>Sebelum menggunakan fitur ini kita awali dengan basmallah</li>
@@ -66,7 +69,7 @@
                   <input type="checkbox" class="form-check-input mt-2" id="persetujuan">
                   <label for="persetujuan" class="form-check-label"> <small class="text-muted">Saya telah membaca dan memahami syarat & ketentuan diatas</small></label>
               </div>
-              <a href="{{url('/sumbang-saran')}}" class="btn btn-warning d-block mx-auto font-weight-bold setuju" style="width: 100px;">Setuju</a>
+              <a href="{{url('/input')}}" class="btn btn-primary d-block mx-auto font-weight-bold setuju" style="width: 100px;">Setuju</a>
           </div>
         </div>
     </div>

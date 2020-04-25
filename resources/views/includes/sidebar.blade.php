@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="admin.html" class="brand-link">
+    <a href="{{url('/')}}" class="brand-link">
       <i class="ml-3 fas fa-box-open"></i>
       <span class="brand-text font-weight-light">Sumbang Saran</span>
     </a>
