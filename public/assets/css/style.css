@@ -2,66 +2,77 @@ html    {
     position: relative;
 }
 
-<<<<<<< HEAD
-/* Index Page */
-.index-page {
-    color: #2e2e2e;
-}
-
-=======
 /* Persetujuan Page */
 .persetujuan {
     position: relative;
 }
 
+
 .persetujuan-kiri {
-    color: #204f8f;
-    position: relative;
+    color: #2e2e2e;
 }
 
 .persetujuan-kiri h2 {
-    text-align: center;
-    transform: translateY(60px);
+    margin-top: 10%;
 }
 
-.persetujuan-kiri .periode {
-    margin-top: 20px;
+.persetujuan-kanan {
+    color: #2e2e2e;
+
 }
 
-.persetujuan-kiri .tanggal {
-    margin-bottom: 20px;
+.persetujuan-kanan img {
+    position: absolute;
+    transform: translateY(80px);
+    z-index: -1;
 }
 
-.persetujuan-kiri img {
-    transform: translate(70px,60px);
-    
+
+.ketentuan  {
+    width: 500px;
+    margin-top: 10px;
+    box-sizing: border-box;
+    border: 2px solid #6c757d;
+    border-radius: 15px;
+    padding : 20px;
+}
+
+.ketentuan h5 {
+    font-style: italic;
+}
+
+
+.form-check small {
+    font-style: italic;
+    font-weight: 500;
+
+}
+
+.box-hitungmundur {
+    position: relative;
 }
 
 .hitungmundur {
     overflow: hidden;
     width: 600px;
-    margin-top: 20px;
-    margin-left: 100px;
+    transform: translateY(420px);
+    text-align: center;
     z-index: 2;
 
-}
-
-.hitungmundur h5, .hitungmundur p {
-    font-weight: 500;
 }
 
 .hitungmundur .box {
     float: left;
     width: 80px;
     height: 70px;
-    border: 2px solid #204f8f;
-
+    border: 2px solid #6c757d;
+    margin-left: 10px;
+    transform: translateX(110px);
 }
 
 .hitungmundur .box p {
     text-align: center;
-    color: #204f8f;
-    font-weight: 500;
+    color: #2e2e2e;
 }
 
 .hitungmundur .box .satuan-angka {
@@ -74,59 +85,10 @@ html    {
     font-size: 16px;
 }
 
-.persetujuan-kanan {
-    color: #204f8f;
-}
-
-.persetujuan-kanan h4 {
-    margin-top: 15%;
-}
-
-.persetujuan-kanan a {
-    background-color: #204f8f;
-    border: 1px solid #204f8f;
-}
-
-
->>>>>>> 341efe9dcd5d5760571e64e33b8b0ed3b2f532b2
-.ketentuan  {
-    width: 500px;
-    margin-top: 10px;
-    box-sizing: border-box;
-<<<<<<< HEAD
-    border: 2px solid #e3e3e3;
-=======
-    border: 2px solid #204f8f;
->>>>>>> 341efe9dcd5d5760571e64e33b8b0ed3b2f532b2
-    border-radius: 15px;
-    padding : 20px;
-}
-
-<<<<<<< HEAD
-.ketentuan h5 {
-    font-style: italic;
-}
-
-.form-check small {
-    font-style: italic;
-    font-weight: 500;
-}
 
 /* Sumbang Saran Page */
 .sumbangsaran-page {
     color: #2e2e2e;
-=======
-.form-check small {
-    font-style: italic;
-    font-weight: 500;
-
-}
-
-
-/* Sumbang Saran Page */
-.sumbangsaran-page {
-    color: #154c9b;
->>>>>>> 341efe9dcd5d5760571e64e33b8b0ed3b2f532b2
 }
 .sumbangsaran-page h1 {
     text-align: center;
@@ -147,7 +109,3 @@ html    {
     border-radius: 5px;
     padding: 20px;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 341efe9dcd5d5760571e64e33b8b0ed3b2f532b2

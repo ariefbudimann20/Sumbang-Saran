@@ -14,19 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', function () {
     return view('index');
-<<<<<<< HEAD
-});
-
-Route::resource('/input', 'IndexController');
-
-=======
 }); 
 
 Route::resource('/input', 'IndexController');
-// Route::get('/', function () {
-//     return view('index');
-// });
->>>>>>> 341efe9dcd5d5760571e64e33b8b0ed3b2f532b2
 
 Auth::routes();
 
