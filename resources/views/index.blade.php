@@ -17,33 +17,13 @@
         <div class="col-12 float-right">
           <ul class="nav float-right">
             <li class="nav-item">
-              <a href="{{url('/login')}}" class="btn btn-warning mt-2 font-weight-bold">Login sebagai Admin</a>
+              <a href="{{url('/login')}}" class="btn btn-danger mt-2 font-weight-bold">Login sebagai Admin</a>
             </li>
           </ul>
         </div>
       </div>
         <div class="row justify-content-center no-gutters persetujuan">
-            <div class="col-md-6 col-sm-12 text-center persetujuan-kiri">
-                <h2 class="text-center">Syarat & Ketentuan</h2>
-                <div class="row justify-content-center">
-                <div class="ketentuan text-left">
-                        <li>Sebelum menggunakan fitur ini kita awali dengan basmallah</li>
-                        <li>Peserta yang mengisi Fitur ini harus mengikuti aturan yang berlaku</li>
-                        <li>Peserta harus menggunakan bahasa yang baik dan benar</li>
-                        <li>Peserta yang menggunakan Fitur ini harus menggunakan data yang valid dan tidak mengada-ada</li>
-                        <li>Pasal 27 ayat 3 UU ITE : Melarang setiap orang dengan sengaja dan tanpa hak mendistribusikan dan/atau mentransmisikan dan/atau membuat dapat di aksesnya informasi Elektronik dan/atau Dokumen Elektronik yang memiliki muatan penghinaan dan/atau pencemaran nama baik</li>
-                </div>
-              </div>
-
-                <div class="form-check my-2">
-                    <input type="checkbox" class="form-check-input mt-2" id="persetujuan">
-                    <label for="persetujuan" class="form-check-label"> <small class="text-muted">Saya telah membaca dan memahami syarat & ketentuan diatas</small></label>
-                </div>
-                <a href="{{url('/sumbang-saran')}}" class="btn btn-warning d-block mx-auto font-weight-bold setuju" style="width: 100px;">Setuju</a>
-            </div>
-
-            <div class="col-md-6 col-sm-12 persetujuan-kanan">
-
+            <div class="col-md-6 col-sm-12 persetujuan-kiri">
               <img src="{{url('assets/img/banner-persetujuan.png')}}" alt=" Responsive Image" class="img-fluid">
 
                 <div class="hitungmundur">
@@ -66,10 +46,28 @@
                     <p id="detik" class="satuan-angka"></p>
                     <p class="satuan-teks">Detik</p>
                   </div>
-
                 </div>
 
             </div>
+
+            <div class="col-md-6 col-sm-12 text-center persetujuan-kanan float-right">
+              <h2 class="text-center">Syarat & Ketentuan</h2>
+              <div class="row justify-content-center">
+              <div class="ketentuan text-left">
+                      <li>Sebelum menggunakan fitur ini kita awali dengan basmallah</li>
+                      <li>Peserta yang mengisi Fitur ini harus mengikuti aturan yang berlaku</li>
+                      <li>Peserta harus menggunakan bahasa yang baik dan benar</li>
+                      <li>Peserta yang menggunakan Fitur ini harus menggunakan data yang valid dan tidak mengada-ada</li>
+                      <li>Pasal 27 ayat 3 UU ITE : Melarang setiap orang dengan sengaja dan tanpa hak mendistribusikan dan/atau mentransmisikan dan/atau membuat dapat di aksesnya informasi Elektronik dan/atau Dokumen Elektronik yang memiliki muatan penghinaan dan/atau pencemaran nama baik</li>
+              </div>
+            </div>
+
+              <div class="form-check my-2">
+                  <input type="checkbox" class="form-check-input mt-2" id="persetujuan">
+                  <label for="persetujuan" class="form-check-label"> <small class="text-muted">Saya telah membaca dan memahami syarat & ketentuan diatas</small></label>
+              </div>
+              <a href="{{url('/sumbang-saran')}}" class="btn btn-warning d-block mx-auto font-weight-bold setuju" style="width: 100px;">Setuju</a>
+          </div>
         </div>
     </div>
 

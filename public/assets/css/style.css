@@ -8,22 +8,21 @@ html    {
 }
 
 
-.persetujuan-kiri {
-    color: #2e2e2e;
+.persetujuan-kanan {
+    color: #154c9b;
 }
 
-.persetujuan-kiri h2 {
+.persetujuan-kanan h2 {
     margin-top: 10%;
 }
 
-.persetujuan-kanan {
-    color: #2e2e2e;
-
+.persetujuan-kiri {
+    color: #154c9b;
+    position: relative;
 }
 
-.persetujuan-kanan img {
-    position: absolute;
-    transform: translateY(80px);
+.persetujuan-kiri img {
+    transform: translate(30px,80px);
     z-index: -1;
 }
 
@@ -32,7 +31,7 @@ html    {
     width: 500px;
     margin-top: 10px;
     box-sizing: border-box;
-    border: 2px solid #6c757d;
+    border: 2px solid #154c9b;
     border-radius: 15px;
     padding : 20px;
 }
@@ -48,31 +47,30 @@ html    {
 
 }
 
-.box-hitungmundur {
-    position: relative;
-}
-
 .hitungmundur {
     overflow: hidden;
     width: 600px;
-    transform: translateY(420px);
-    text-align: center;
+    margin-top: 50px;
     z-index: 2;
 
+}
+
+.hitungmundur h5, .hitungmundur p {
+    font-weight: 500;
 }
 
 .hitungmundur .box {
     float: left;
     width: 80px;
     height: 70px;
-    border: 2px solid #6c757d;
-    margin-left: 10px;
-    transform: translateX(110px);
+    border: 2px solid #154c9b;
+
 }
 
 .hitungmundur .box p {
     text-align: center;
-    color: #2e2e2e;
+    color: #154c9b;
+    font-weight: 500;
 }
 
 .hitungmundur .box .satuan-angka {
@@ -88,7 +86,7 @@ html    {
 
 /* Sumbang Saran Page */
 .sumbangsaran-page {
-    color: #2e2e2e;
+    color: #154c9b;
 }
 .sumbangsaran-page h1 {
     text-align: center;
