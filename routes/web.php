@@ -12,12 +12,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('index');
-});
+Route::resource('/', 'IndexController');
+// Route::get('/', function () {
+//     return view('index');
+// });
 
 Auth::routes();
 
 Route::get('/dashboard', 'HomeController@index')->name('home');
+
 Route::resource('sumbang-saran', 'SumbangSaranController');

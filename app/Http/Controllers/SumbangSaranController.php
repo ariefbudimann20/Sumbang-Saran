@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator;
+use App\SumbangSaran;
+use App\Karyawan;
 
 class SumbangSaranController extends Controller
 {
@@ -13,7 +16,8 @@ class SumbangSaranController extends Controller
      */
     public function index()
     {
-        return view('pages.sumbang-saran.index');
+        $sumbangsaran = SumbangSaran::orderBY('id','DESC')->get();
+        return view('pages.sumbang-saran.index',compact('sumbangsaran'));
     }
 
     /**
@@ -34,7 +38,7 @@ class SumbangSaranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      
     }
 
     /**
@@ -79,6 +83,9 @@ class SumbangSaranController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ss = SumbangSaran::findOrFail($id);
+        $ss->delete();
+
+        return back()->with('success','Sumbang Saran Berhasil Di Hapus');
     }
 }

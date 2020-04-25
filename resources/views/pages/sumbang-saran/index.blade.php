@@ -28,6 +28,7 @@
                         <table id="sumbang-saran" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
+                                    <th>NO</th>
                                     <th>NIK</th>
                                     <th>NAMA</th>
                                     <th>JUDUL</th>
@@ -36,20 +37,27 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($sumbangsaran as $ss)
                                 <tr>
-                                    <td>09099090</td>
-                                    <td>ABDUL</td>
-                                    <td>KAIZEN LINGKUNGAN</td>
-                                    <td>MAINTENANCE</td>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$ss->nik}}</td>
+                                    <td>{{$ss->nama}}</td>
+                                    <td>{{$ss->judul}}</td>
+                                    <td>{{$ss->bagian}}</td>
                                     <td>
                                         <a href="" class="btn btn-info" role="button">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        <a href="" class="btn btn-danger" role="button">
-                                            <i class="fas fa-trash"></i>
-                                        </a>
+                                        <form action="{{url('sumbang-saran',$ss->id)}}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('delete')
+                                            <button href="" class="btn btn-danger" type="submit">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

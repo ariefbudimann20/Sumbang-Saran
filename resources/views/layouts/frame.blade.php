@@ -45,6 +45,8 @@
 </div>
 <!-- ./wrapper -->
 
+@include('sweetalert::alert')
+ 
 @stack('before-script')
 @include('includes.script')
 @stack('after-script')
