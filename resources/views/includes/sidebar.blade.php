@@ -7,7 +7,16 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-
+      <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <img src="{{url('assets/img/user/',Auth::user()->foto)}}" style="width:40px; height:40px;" class="img-circle elevation-2" alt="User Image">
+          </div>
+          <div class="info">
+            <span class="d-block text-white mt-1">{{Auth::user()->name}}</span>
+          </div>
+        </div>
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -19,7 +28,7 @@
               <p>Dashboard</p>
             </a>
           </li>
-          
+          @if(Auth::user()->role == 0)
           <li class="nav-header">JOB ADMIN</li>
           <li class="nav-item">
             <a href="{{url('sumbang-saran')}}" class="nav-link">
@@ -33,7 +42,7 @@
               <p>Data Karyawan</p>
             </a>
           </li>
-
+          @else
           <li class="nav-header">JOB TIM PENILAI</li>
           <li class="nav-item">
             <a href="{{url('penilaian')}}" class="nav-link">
@@ -47,7 +56,7 @@
               <p>Peserta Terbaik</p>
             </a>
           </li>
-
+          @endif
           <li class="nav-header">AKUN</li>
           <li class="nav-item">
               <a  class="nav-link" href="{{ route('logout') }}"
