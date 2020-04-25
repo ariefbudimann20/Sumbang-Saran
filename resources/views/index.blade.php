@@ -1,122 +1,110 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!--  meta tags -->
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    {{-- <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="css/fontawesome-free-5.13.0-web/css/all.css"> --}}
+    <link rel="stylesheet" href="{{url('assets/css/style.css')}}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Sumbang Saran</title>
   </head>
   <body>
     <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-10 sumbangsaran-page">
-                <img src="{{url('assets/img/banner-sumbangsaran.png')}}" alt="Responsive Image" class="img-fluid mx-auto d-block">
+      <div class="row">
+        <div class="col-12 float-right">
+          <ul class="nav float-right">
+            <li class="nav-item">
+              <a href="{{url('/login')}}" class="btn btn-warning mt-2 font-weight-bold">Login sebagai Admin</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+        <div class="row justify-content-center no-gutters persetujuan">
+            <div class="col-md-6 col-sm-12 text-center persetujuan-kiri">
+                <h2 class="text-center">Syarat & Ketentuan</h2>
+                <div class="row justify-content-center">
+                <div class="ketentuan text-left">
+                        <li>Sebelum menggunakan fitur ini kita awali dengan basmallah</li>
+                        <li>Peserta yang mengisi Fitur ini harus mengikuti aturan yang berlaku</li>
+                        <li>Peserta harus menggunakan bahasa yang baik dan benar</li>
+                        <li>Peserta yang menggunakan Fitur ini harus menggunakan data yang valid dan tidak mengada-ada</li>
+                        <li>Pasal 27 ayat 3 UU ITE : Melarang setiap orang dengan sengaja dan tanpa hak mendistribusikan dan/atau mentransmisikan dan/atau membuat dapat di aksesnya informasi Elektronik dan/atau Dokumen Elektronik yang memiliki muatan penghinaan dan/atau pencemaran nama baik</li>
+                </div>
+              </div>
 
-                <div class="alert alert-primary text-center mt-4" role="alert">
-                    Sampaikan Informasi, Saran, Keluhan anda demi kemajuan perusahaan. Kami menjamin <b>kerahasiaan</b> data Anda
+                <div class="form-check my-2">
+                    <input type="checkbox" class="form-check-input mt-2" id="persetujuan">
+                    <label for="persetujuan" class="form-check-label"> <small class="text-muted">Saya telah membaca dan memahami syarat & ketentuan diatas</small></label>
+                </div>
+                <a href="{{url('/sumbang-saran')}}" class="btn btn-warning d-block mx-auto font-weight-bold setuju" style="width: 100px;">Setuju</a>
+            </div>
+
+            <div class="col-md-6 col-sm-12 persetujuan-kanan">
+
+              <img src="{{url('assets/img/banner-persetujuan.png')}}" alt=" Responsive Image" class="img-fluid">
+
+                <div class="hitungmundur">
+                  <h5>Periode Sumbang Saran : 24 April 2020 - 1 Mei 2020</h5>
+                  <p class="waktu-tersisa">Waktu tersisa :</p>
+
+                  <div class="box">
+                    <p id="hari" class="satuan-angka"></p>
+                    <p class="satuan-teks">Hari</p>
+                  </div>
+                  <div class="box">
+                    <p id="jam" class="satuan-angka"></p>
+                    <p class="satuan-teks">Jam</p>
+                  </div>
+                  <div class="box">
+                    <p id="menit" class="satuan-angka"></p>
+                    <p class="satuan-teks">Menit</p>
+                  </div>
+                  <div class="box">
+                    <p id="detik" class="satuan-angka"></p>
+                    <p class="satuan-teks">Detik</p>
+                  </div>
+
                 </div>
 
-                <form action="{{route('store')}}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Nomor Induk Karyawan : </label>
-                                <input type="number" name="nik" class="form-control @error('nik') is-invalid @enderror"  value="{{old('nik')}}" >
-                                @error('nik') <span class="error invalid-feedback">{{$message}}</span> @enderror 
-                            </div>
-                            <div class="form-group">
-                                <label for="nama">Nama Lengkap :</label>
-                                <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror" value="{{old('nama')}}" >
-                                @error('nama') <span class="error invalid-feedback">{{$message}}</span> @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="bagian">Bagian :</label>
-                                <select name="bagian" class="form-control @error('bagian') is-invalid @enderror" >
-                                    <option value="">- Pilih -</option>
-                                    <option value="HRD">HRD</option>
-                                    <option value="Produksi">Produksi</option>
-                                    <option value="Peyimpanan">Penyimpanan</option>
-                                    <option value="QA">QA</option>
-                                    <option value="QC">QC</option>
-                                </select>
-                                @error('bagian') <span class="error invalid-feedback">{{$message}}</span> @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="ext">Ext :</label>
-                                <input name="ext" type="number" class="form-control @error('ext') is-invalid @enderror" value="{{old('ext')}}" >
-                                @error('ext') <span class="error invalid-feedback">{{$message}}</span> @enderror
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="judul">Judul Sumbang Saran :</label>
-                        <input name="judul" type="text" id="judul" class="form-control @error('judul') is-invalid @enderror" value="{{old('judul')}}" >
-                        @error('judul') <span class="error invalid-feedback">{{$message}}</span> @enderror
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 col-sm-12">
-                            <div class="form-group">
-                                <label for="kondisi-awal">Gambarkan Kondisi Awal :</label>
-                                <textarea name="kondisi_awal" class="form-control @error('kondisi_awal') is-invalid @enderror" rows="5" >{{old('kondisi_awal')}}</textarea>
-                                @error('kondisi_awal') <span class="error invalid-feedback">{{$message}}</span> @enderror
-                            </div>        
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <div class="form-group">
-                                <label for="foto">Foto : (Boleh dikosongkan)</label><br>
-                                <img id="blah" style="height:100px; margin-bottom:10px;" src="{{url('assets/img/dummy.jpg')}}" alt="your image" />
-                                <input id="imgInp" accept="images/*" name="foto" type="file" id="foto" class="form-control-file @error('foto') is-invalid @enderror" >
-                                @error('foto') <span class="error invalid-feedback">{{$message}}</span> @enderror
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="kondisi-akhir">Gambarkan Kondisi Yang Diinginkan :</label>
-                        <textarea name="kondisi_akhir" class="form-control @error('kondisi_akhir') is-invalid @enderror" rows="5" >{{old('kondisi_akhir')}}</textarea>
-                        @error('kondisi_akhir') <span class="error invalid-feedback">{{$message}}</span> @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="manfaat">Manfaat Bagi Perusahaan :</label>
-                        <textarea name="manfaat" class="form-control @error('manfaat') is-invalid @enderror" rows="3" >{{old('manfaat')}}</textarea>
-                        @error('manfaat') <span class="error invalid-feedback">{{$message}}</span> @enderror
-                    </div>
-
-                    <button  type="submit" class="btn btn-success btn-lg float-right my-3"> Kirim</button>
-                </form>
             </div>
         </div>
     </div>
-    @include('sweetalert::alert')
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
- 
+  
+    {{-- Jam Digital --}}
     <script>
-        function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            
-            reader.onload = function(e) {
-            $('#blah').attr('src', e.target.result);
-            }
-            
-            reader.readAsDataURL(input.files[0]); // convert to base64 string
-        }
-        }
+      var CountDownDate = new Date("May 1, 2020 12:00:00").getTime();
 
-        $("#imgInp").change(function() {
-        readURL(this);
-        });
+      var x = setInterval(function() {
+
+        var now = new Date().getTime();
+
+        var distance = CountDownDate - now;
+
+        var days = Math.floor(distance / (1000*60*60*24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (100 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000 );
+
+        document.getElementById("hari").innerHTML = days;
+        document.getElementById("jam").innerHTML = hours;
+        document.getElementById("menit").innerHTML = minutes;
+        document.getElementById("detik").innerHTML = seconds;
+
+        if (distance < 0 ) {
+          clearInterval(x);
+          document.getElementById("hitungmundur").innerHTML="EXPIRED";
+        }
+      }, 1000 );
     </script>
-</body>
+  
+  </body>
 </html>

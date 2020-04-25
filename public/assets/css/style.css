@@ -1,0 +1,112 @@
+html    {
+    position: relative;
+}
+
+/* Persetujuan Page */
+.persetujuan {
+    position: relative;
+}
+
+
+.persetujuan-kiri {
+    color: #2e2e2e;
+}
+
+.persetujuan-kiri h2 {
+    margin-top: 10%;
+}
+
+.persetujuan-kanan {
+    color: #2e2e2e;
+
+}
+
+.persetujuan-kanan img {
+    position: absolute;
+    transform: translateY(80px);
+    z-index: -1;
+}
+
+
+.ketentuan  {
+    width: 500px;
+    margin-top: 10px;
+    box-sizing: border-box;
+    border: 2px solid #6c757d;
+    border-radius: 15px;
+    padding : 20px;
+}
+
+.ketentuan h5 {
+    font-style: italic;
+}
+
+
+.form-check small {
+    font-style: italic;
+    font-weight: 500;
+
+}
+
+.box-hitungmundur {
+    position: relative;
+}
+
+.hitungmundur {
+    overflow: hidden;
+    width: 600px;
+    transform: translateY(420px);
+    text-align: center;
+    z-index: 2;
+
+}
+
+.hitungmundur .box {
+    float: left;
+    width: 80px;
+    height: 70px;
+    border: 2px solid #6c757d;
+    margin-left: 10px;
+    transform: translateX(110px);
+}
+
+.hitungmundur .box p {
+    text-align: center;
+    color: #2e2e2e;
+}
+
+.hitungmundur .box .satuan-angka {
+    font-size: 30px;
+    margin-top: -2px;
+    margin-bottom: -10px;
+}
+
+.hitungmundur .box .satuan-teks {
+    font-size: 16px;
+}
+
+
+/* Sumbang Saran Page */
+.sumbangsaran-page {
+    color: #2e2e2e;
+}
+.sumbangsaran-page h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.sumbangsaran-page .alert {
+    background-color: #4a7aff;
+    color: white;
+}
+
+.sumbangsaran-page .alert span {
+    font-weight: 600;
+}
+
+.sumbangsaran-page form {
+    border: 1px solid #eaeaea;
+    border-radius: 5px;
+    padding: 20px;
+}
+
