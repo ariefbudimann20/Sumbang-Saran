@@ -17,7 +17,7 @@
           </div><!-- /.row -->
           <div class="row topbar-ss">
             <div class="col-12">
-                <button class="btn btn-warning float-left ubah-periode" data-toggle="modal" data-target="#modal-ubahperiode"><i class="fas fa-clock"></i> Ubah Periode</button>    
+                <button class="btn btn-warning float-left ubah-periode" data-toggle="modal" data-target="#modal-ubahperiode"><i class="fas fa-clock"></i> Buat Periode</button>    
             </div>        
         </div>
         </div><!-- /.container-fluid -->
@@ -28,7 +28,7 @@
       <div class="modal fade modal-ubah-periode" id="modal-ubahperiode" tabindex="-1" role="dialog" aria-labelledby="modal-ubahperiodeTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-warning">
               <h5 class="modal-title" id="modal-ubahperiodeTitle">Periode Sumbang Saran</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -36,19 +36,19 @@
             </div>
             <div class="modal-body">
               <form action="">
-                  <div class="form-group">
+                  <div class="form-group mt-3">
                       <label for="mulai">Tanggal Mulai &nbsp;&nbsp;:</label>
-                      <input type="text" id="mulai" class="date-picker">
+                      <input type="text" id="mulai" class="date-picker text-center">
                   </div>
                   <div class="form-group">
                       <label for="selesai">Tanggal Selesai :</label>
-                      <input type="text" id="selesai" class="date-picker">
+                      <input type="text" id="selesai" class="date-picker text-center">
                   </div>
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+              <button type="button" class="btn btn-success">Simpan</button>
             </div>
           </div>
         </div>
@@ -61,7 +61,7 @@
                 <!-- Content Card -->
                 <div class="card">
                     <div class="card-body">
-                        <div class="table-responsive-sm">
+                        <div class="table-responsive-sm table-sumbangsaran">
                             <table id="sumbang-saran" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
@@ -102,7 +102,7 @@
                         <div class="modal fade" id="detailss-modal" tabindex="-1" role="dialog" aria-labelledby="detailss-modalTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
                                 <div class="modal-content">
-                                    <div class="modal-header">
+                                    <div class="modal-header bg-info">
                                         <h5 class="modal-title" id="detailss-modalTitle">Detail Sumbang Saran</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
@@ -181,7 +181,9 @@
 
     <script>
         $(document).ready(function(){
-            $('.date-picker').datepicker();
+            $('.date-picker').datepicker({
+                dateFormat:"dd MM yy",
+            });
         });
     </script>
 
