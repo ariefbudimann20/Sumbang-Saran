@@ -7,61 +7,22 @@ html    {
     position: relative;
 }
 
-
 .persetujuan-kiri {
     color: #204f8f;
     position: relative;
     opacity: 0;
     transform: translateX(300px);
     transition: 2s;
-    color: #2e2e2e;
 }
 
 .persetujuan-kiri h2 {
-    margin-top: 10%;
-}
-
-.persetujuan-kanan {
-    color: #2e2e2e;
-
-}
-
-.persetujuan-kanan img {
-    position: absolute;
-    transform: translateY(80px);
-    z-index: -1;
-}
-
-
-.ketentuan  {
-    width: 500px;
-    margin-top: 10px;
-    box-sizing: border-box;
-    border: 2px solid #6c757d;
-    border-radius: 15px;
-    padding : 20px;
-}
-
-.ketentuan h5 {
-    font-style: italic;
-}
-
-
-.form-check small {
-    font-style: italic;
-    font-weight: 500;
-
-}
-
-.persetujuan-kiri img {
-    transform: translateY(60px);
-    
+    margin-top: 13%;
 }
 
 .hitungmundur {
     overflow: hidden;
     width: 600px;
-    transform: translate(20px,20px);
+    transform: translate(10px,20px);
     z-index: 2;
 
 }
@@ -70,14 +31,12 @@ html    {
     float: left;
     width: 80px;
     height: 70px;
-    border: 2px solid #6c757d;
-    margin-left: 10px;
-    transform: translateX(110px);
+    border: 2px solid #204f8f;
 }
 
 .hitungmundur .box p {
     text-align: center;
-    color: #2e2e2e;
+    color: #204f8f;
 }
 
 .hitungmundur .box .satuan-angka {
@@ -104,6 +63,27 @@ html    {
 .persetujuan-kanan a {
     background-color: #204f8f;
     border: 1px solid #204f8f;
+}
+
+
+.ketentuan  {
+    width: 500px;
+    margin-top: 10px;
+    box-sizing: border-box;
+    border: 2px solid #6c757d;
+    border-radius: 15px;
+    padding : 20px;
+}
+
+.ketentuan h5 {
+    font-style: italic;
+}
+
+
+.form-check small {
+    font-style: italic;
+    font-weight: 500;
+
 }
 
 
@@ -150,6 +130,7 @@ html    {
 
 
 /* ADMIN PAGE */
+    /* DASHBOARD */
     /* Content */
     .content .col-6 {
         opacity: 0;
@@ -159,4 +140,14 @@ html    {
     .content .col-6.show-content {
         opacity: 1;
     }
+    /* Content */
+    /* DASHBOARD */
+
+    /* KELOLA SUMBANG SARAN */
+    /* Top bar */
+    .topbar-ss .ubah-periode {
+        font-weight: 600;
+        margin-top: 30px;
+    }
+    /* Top bar */
     
