@@ -9,6 +9,11 @@ html    {
 
 
 .persetujuan-kiri {
+    color: #204f8f;
+    position: relative;
+    opacity: 0;
+    transform: translateX(300px);
+    transition: 2s;
     color: #2e2e2e;
 }
 
@@ -48,15 +53,15 @@ html    {
 
 }
 
-.box-hitungmundur {
-    position: relative;
+.persetujuan-kiri img {
+    transform: translateY(60px);
+    
 }
 
 .hitungmundur {
     overflow: hidden;
     width: 600px;
-    transform: translateY(420px);
-    text-align: center;
+    transform: translate(20px,20px);
     z-index: 2;
 
 }
@@ -85,27 +90,73 @@ html    {
     font-size: 16px;
 }
 
+.persetujuan-kanan {
+    color: #204f8f;
+    opacity: 0;
+    transform: translateX(-300px);
+    transition: 2s;
+}
+
+.persetujuan-kanan h4 {
+    margin-top: 15%;
+}
+
+.persetujuan-kanan a {
+    background-color: #204f8f;
+    border: 1px solid #204f8f;
+}
+
+
+.ketentuan  {
+    width: 500px;
+    margin-top: 10px;
+    box-sizing: border-box;
+    border: 2px solid #204f8f;
+    border-radius: 15px;
+    padding : 20px;
+}
+
+.form-check small {
+    font-style: italic;
+    font-weight: 500;
+
+}
+
+/* Parallax Persetujuan Page */
+.persetujuan-kiri.showpersetujuan , .persetujuan-kanan.showpersetujuan {
+    opacity: 1;
+    transform: translate(0,0);
+}
+
 
 /* Sumbang Saran Page */
-.sumbangsaran-page {
-    color: #2e2e2e;
-}
-.sumbangsaran-page h1 {
-    text-align: center;
-    margin-top: 20px;
+.form-page {
+    opacity: 0;
+    transform: translateY(-500px);
+    transition: 1.5s;
 }
 
-.sumbangsaran-page .alert {
-    background-color: #4a7aff;
-    color: white;
+.form-page form label {
+    font-weight: 500;
 }
 
-.sumbangsaran-page .alert span {
-    font-weight: 600;
+.form-page input, .form-page select, .form-page textarea {
+    border: 1px solid #b5b5b5;
+}
+.form-page.show-form {
+    opacity: 1;
+    transform: translate(0,0);
 }
 
-.sumbangsaran-page form {
-    border: 1px solid #eaeaea;
-    border-radius: 5px;
-    padding: 20px;
-}
+
+/* ADMIN PAGE */
+    /* Content */
+    .content .col-6 {
+        opacity: 0;
+        transition: 1.5s;
+    }
+
+    .content .col-6.show-content {
+        opacity: 1;
+    }
+    

@@ -94,3 +94,15 @@
     </section>
     <!-- /.content -->
 @endsection
+
+
+<script src="{{url('assets/plugins/jquery/jquery.min.js')}}"></script>
+<script>
+  $(window).on('load', function(){
+    $('.content .col-6').each(function(i) {
+      setTimeout(function() {
+        $('.content .col-6').eq(i).addClass('show-content');
+      }, 200 * i)
+    })
+  })
+;</script>

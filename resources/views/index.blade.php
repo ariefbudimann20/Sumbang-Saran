@@ -25,52 +25,53 @@
           </div>
         </div>
         <div class="row justify-content-center no-gutters persetujuan">
-          <div class="col-md-6 col-sm-12 text-center persetujuan-kiri">
-            <h4 class="text-center">Syarat & Ketentuan</h4>
-            <div class="row justify-content-center">
-              <div class="ketentuan text-left">
-                      <li>Sebelum menggunakan fitur ini kita awali dengan basmallah</li>
-                      <li>Peserta yang mengisi Fitur ini harus mengikuti aturan yang berlaku</li>
-                      <li>Peserta harus menggunakan bahasa yang baik dan benar</li>
-                      <li>Peserta yang menggunakan Fitur ini harus menggunakan data yang valid dan tidak mengada-ada</li>
-                      <li>Pasal 27 ayat 3 UU ITE : Melarang setiap orang dengan sengaja dan tanpa hak mendistribusikan dan/atau mentransmisikan dan/atau membuat dapat di aksesnya informasi Elektronik dan/atau Dokumen Elektronik yang memiliki muatan penghinaan dan/atau pencemaran nama baik</li>
-              </div>
+            <div class="col-md-4 offset-md-1 col-sm-12 persetujuan-kiri">
+              <h2 class="text-center">Sumbang Saran Karyawan</h2>
+              <img src="{{url('assets/img/banner-persetujuan.png')}}" alt=" Responsive Image" class="img-fluid mx-auto d-block">
+
+                <div class="hitungmundur mx-auto d-block">
+                  <h5 class="periode">Periode Sumbang Saran : </h5>
+                  <h5 class="font-italic font-weight-bold tanggal">24 April 2020 - 1 Mei 2020</h5>
+                  <p class="waktu-tersisa">Waktu tersisa :</p>
+
+                  <div class="box">
+                    <p id="hari" class="satuan-angka"></p>
+                    <p class="satuan-teks">Hari</p>
+                  </div>
+                  <div class="box">
+                    <p id="jam" class="satuan-angka"></p>
+                    <p class="satuan-teks">Jam</p>
+                  </div>
+                  <div class="box">
+                    <p id="menit" class="satuan-angka"></p>
+                    <p class="satuan-teks">Menit</p>
+                  </div>
+                  <div class="box">
+                    <p id="detik" class="satuan-angka"></p>
+                    <p class="satuan-teks">Detik</p>
+                  </div>
+                </div>
+
             </div>
 
-              <div class="form-check my-2">
-                {{-- <input type="checkbox" class='modal-check' name='modal-check' id="yourBox" /> --}}
-                  <input type="checkbox" class="form-check-input mt-2" id="yourBox">
-                  <label for="persetujuan" class="form-check-label"> <small class="text-muted">Saya telah membaca dan memahami syarat & ketentuan diatas</small></label>
-              </div>
-              <button onclick="window.location.href='/input'" id="yourbutton" disabled class="btn btn-primary d-block mx-auto font-weight-bold setuju" style="width: 100px;">Setuju</button>
-          </div>
-          <div class="col-md-6 col-sm-12 persetujuan-kanan">
-              <h2 class="text-center">Sumbang Saran Karyawan</h2>
-              <img src="{{url('assets/img/banner-persetujuan.png')}}" alt=" Responsive Image" class="img-fluid">
-
-              <div class="hitungmundur">
-                    <h5 class="periode">Periode Sumbang Saran : </h5>
-                    <h5 class="font-italic font-weight-bold tanggal">24 April 2020 - 1 Mei 2020</h5>
-                    <p class="waktu-tersisa">Waktu tersisa :</p>
-
-                    <div class="box">
-                      <p id="hari" class="satuan-angka"></p>
-                      <p class="satuan-teks">Hari</p>
-                    </div>
-                    <div class="box">
-                      <p id="jam" class="satuan-angka"></p>
-                      <p class="satuan-teks">Jam</p>
-                    </div>
-                    <div class="box">
-                      <p id="menit" class="satuan-angka"></p>
-                      <p class="satuan-teks">Menit</p>
-                    </div>
-                    <div class="box">
-                      <p id="detik" class="satuan-angka"></p>
-                      <p class="satuan-teks">Detik</p>
-                    </div>
-              </div>
-          </div>
+              <div class="col-md-6 col-sm-12 text-center persetujuan-kanan">
+                <h4 class="text-center">Syarat & Ketentuan</h4>
+                <div class="row justify-content-center">
+                  <div class="ketentuan text-left">
+                          <li>Sebelum menggunakan fitur ini kita awali dengan basmallah</li>
+                          <li>Peserta yang mengisi Fitur ini harus mengikuti aturan yang berlaku</li>
+                          <li>Peserta harus menggunakan bahasa yang baik dan benar</li>
+                          <li>Peserta yang menggunakan Fitur ini harus menggunakan data yang valid dan tidak mengada-ada</li>
+                          <li>Pasal 27 ayat 3 UU ITE : Melarang setiap orang dengan sengaja dan tanpa hak mendistribusikan dan/atau mentransmisikan dan/atau membuat dapat di aksesnya informasi Elektronik dan/atau Dokumen Elektronik yang memiliki muatan penghinaan dan/atau pencemaran nama baik</li>
+                  </div>
+                </div>
+  
+                <div class="form-check my-2">
+                    <input type="checkbox" class="form-check-input mt-2" id="yourBox">
+                    <label class="form-check-label"> <small class="text-muted">Saya telah membaca dan memahami syarat & ketentuan diatas</small></label>
+                </div>
+                <button onclick="window.location.href='/input'" id="yourbutton" disabled class="btn btn-primary d-block mx-auto font-weight-bold setuju" style="width: 100px;">Setuju</button>
+            </div>
         </div>
     </div>
 
@@ -112,5 +113,14 @@
         }
       }, 1000 );
     </script>
+
+    {{-- Parallax effect --}}
+    <script>  
+      $(window).on('load', function() {
+          $('.persetujuan-kiri').addClass('showpersetujuan');
+          $('.persetujuan-kanan').addClass('showpersetujuan');
+      })
+    </script>
+  
   </body>
 </html>
