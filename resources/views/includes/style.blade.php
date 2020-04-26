@@ -23,3 +23,5 @@
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
   <!-- Lightbox -->
   <link rel="stylesheet" href="{{url('assets/lightbox/css/lightbox.css')}}/" />
+  <!-- Style -->
+  <link rel="stylesheet" href="{{url('assets/css/style.css')}}">

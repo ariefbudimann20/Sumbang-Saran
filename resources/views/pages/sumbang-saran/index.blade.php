@@ -46,13 +46,13 @@
                                         <td>{{$ss->judul}}</td>
                                         <td>{{$ss->bagian}}</td>
                                         <td>
-                                            <a href="" class="btn btn-info" role="button">
+                                            <a href="" class="btn btn-info" role="button" data-toggle="tooltip" data-placement="top" title="Detail">
                                                 <i class="fas fa-eye"></i>
                                             </a>
                                             <form action="{{url('sumbang-saran',$ss->id)}}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('delete')
-                                                <button href="" class="btn btn-danger" type="submit">
+                                                <button href="" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus" type="submit">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>

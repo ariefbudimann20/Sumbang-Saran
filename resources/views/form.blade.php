@@ -7,15 +7,15 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    {{-- <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="css/fontawesome-free-5.13.0-web/css/all.css"> --}}
+    <link rel="stylesheet" href="{{url('assets/css/style.css')}}">
+    <link rel="stylesheet" href="css/fontawesome-free-5.13.0-web/css/all.css">
     <title>Sumbang Saran</title>
   </head>
   <body>
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-10 sumbangsaran-page">
-                <img src="{{url('assets/img/banner-sumbangsaran.png')}}" alt="Responsive Image" class="img-fluid mx-auto d-block">
+            <div class="col-10 form-page">
+                <img src="{{url('assets/img/banner-sumbangsaran.png')}}" alt="Responsive Image" class="img-fluid mx-auto d-block mt-3">
 
                 <div class="alert alert-primary text-center mt-4" role="alert">
                     Sampaikan Informasi, Saran, Keluhan anda demi kemajuan perusahaan. Kami menjamin <b>kerahasiaan</b> data Anda
@@ -116,6 +116,13 @@
 
         $("#imgInp").change(function() {
         readURL(this);
+        });
+    </script>
+
+    {{-- Parallax effect --}}
+    <script>
+        $(window).on('load', function() {
+            $('.form-page').addClass('show-form');
         });
     </script>
 </body>
