@@ -61,6 +61,22 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">{{ __('Bagian') }}</label>
+                            <div class="col-md-6">
+                                <select name="role" class="form-control @error('bagian') is-invalid @enderror" >
+                                    <option value="">- Pilih -</option>
+                                    <option value="0">Admin</option>
+                                    <option value="1">Penilai</option>
+                                </select>
+                            </div>
+                            @error('role')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <input type="hidden" value="default.jpg" name="foto">
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

@@ -17,9 +17,6 @@ Route::get('/', function () {
 }); 
 
 Route::resource('/input', 'IndexController');
-// Route::get('/', function () {
-//     return view('index');
-// });
 
 Auth::routes();
 

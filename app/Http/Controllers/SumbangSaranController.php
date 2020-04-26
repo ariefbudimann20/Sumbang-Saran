@@ -16,7 +16,7 @@ class SumbangSaranController extends Controller
      */
     public function index()
     {
-        $sumbangsaran = SumbangSaran::orderBY('id','DESC')->get();
+        $sumbangsaran = SumbangSaran::orderBY('created_at','DESC')->get();
         return view('pages.sumbang-saran.index',compact('sumbangsaran'));
     }
 

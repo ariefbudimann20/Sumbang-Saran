@@ -56,19 +56,30 @@ class IndexController extends Controller
         ],$messages);
   
         if ($validator->fails()) {
-             return back()->withErrors($validator->errors());
+            // dd($request->all());
+             return back()->withInput($request->input())->withErrors($validator->errors());
         }else{
              $namapic = request()->foto->getClientOriginalName();
             request()->foto->move(public_path('images'),$namapic);
 
-            SumbangSaran::create($request->all());
+            SumbangSaran::create([
+                'nik'           => $request->nik,
+                'nama'          => $request->nama,
+                'bagian'        => $request->bagian,
+                'ext'           => $request->ext,
+                'judul'         => $request->judul,
+                'foto'          => $namapic,
+                'kondisi_awal'  => $request->kondisi_awal,
+                'kondisi_akhir' => $request->kondisi_akhir,
+                'manfaat'       => $request->manfaat
+            ]);
            
-            // Karyawan::create([
-            //     'nik'       => $request->nik,
-            //     'nama'      => $request->nama,
-            //     'bagian'    => $request->bagian,
-            //     'ext'       => $request->ext,
-            // ]);
+            Karyawan::create([
+                'nik'       => $request->nik,
+                'nama'      => $request->nama,
+                'bagian'    => $request->bagian,
+                'ext'       => $request->ext,
+            ]);
             return back()->with('success', 'Terima Kasih Sudah Berpartipasi Untuk Sumbang Saran');
         }
     }

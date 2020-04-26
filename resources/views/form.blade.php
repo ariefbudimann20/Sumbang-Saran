@@ -20,14 +20,13 @@
                 <div class="alert alert-primary text-center mt-4" role="alert">
                     Sampaikan Informasi, Saran, Keluhan anda demi kemajuan perusahaan. Kami menjamin <b>kerahasiaan</b> data Anda
                 </div>
-
-                <form action="{{url('/input')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{url('input')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Nomor Induk Karyawan : </label>
-                                <input type="number" name="nik" class="form-control @error('nik') is-invalid @enderror"  value="{{old('nik')}}" >
+                                <input type="number" name="nik" class="form-control @error('nik') is-invalid @enderror" value="{{ old('nik') }}" >
                                 @error('nik') <span class="error invalid-feedback">{{$message}}</span> @enderror 
                             </div>
                             <div class="form-group">
