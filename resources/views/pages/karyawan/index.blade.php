@@ -33,7 +33,7 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                    <button class="btn btn-primary mb-3" data-toggle="collapse" data-target="#collapseTambahextension" aria-expanded="false" aria-controls="collapseTambahbagian"><i class="fas fa-plus"></i> Tambah Bagian</button>
+                    <button class="btn btn-primary mb-3" data-toggle="collapse" data-target="#collapseTambahbagian" aria-expanded="false" aria-controls="collapseTambahbagian"><i class="fas fa-plus"></i> Tambah Bagian</button>
                         <!-- Collapse Tambah Bagian -->
                         <div class="collapse" id="collapseTambahbagian">
                             <div class="card card-body">
