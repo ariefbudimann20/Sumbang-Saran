@@ -15,11 +15,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 }); 
-
-Route::resource('/input', 'IndexController');
+Route::resource('/input', 'InputController');
 
 Auth::routes();
 
-Route::get('/dashboard', 'HomeController@index')->name('home');
-
-Route::resource('sumbang-saran', 'SumbangSaranController');
+Route::get('/dashboard', 'HomeController@index')->middleware('auth');
+Route::resource('sumbang-saran', 'SumbangSaranController')->middleware('auth');
+Route::resource('karyawan','KaryawanController')->middleware('auth');

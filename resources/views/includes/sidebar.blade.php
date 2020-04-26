@@ -22,8 +22,8 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
-            <a href="{{url('dashboard')}}" class="nav-link active">
+          <li class="nav-item">
+            <a href="{{url('dashboard')}}" class="nav-link {{Request::is('dashboard') ? 'active' : ''}}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>Dashboard</p>
             </a>
@@ -31,13 +31,13 @@
           @if(Auth::user()->role == 0)
           <li class="nav-header">JOB ADMIN</li>
           <li class="nav-item">
-            <a href="{{url('sumbang-saran')}}" class="nav-link">
+            <a href="{{url('sumbang-saran')}}" class="nav-link {{Request::is('sumbang-saran') ? 'active' : ''}}">
               <i class="nav-icon fab fa-audible"></i>
               <p>Kelola Sumbang Saran</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{url('karyawan')}}" class="nav-link">
+            <a href="{{url('karyawan')}}" class="nav-link {{Request::is('karyawan') ? 'active' : ''}}">
               <i class="nav-icon fas fa-database"></i>
               <p>Data Karyawan</p>
             </a>
@@ -45,13 +45,13 @@
           @else
           <li class="nav-header">JOB TIM PENILAI</li>
           <li class="nav-item">
-            <a href="{{url('penilaian')}}" class="nav-link">
+            <a href="{{url('penilaian')}}" class="nav-link {{Request::is('penilaian') ? 'active' : ''}}">
               <i class="nav-icon fas fa-star-half-alt"></i>
               <p>Penilaian</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{url('peserta-terbaik')}}" class="nav-link">
+            <a href="{{url('peserta-terbaik')}}" class="nav-link {{Request::is('peserta-terbaik') ? 'active' : ''}}">
               <i class="nav-icon fas fa-medal"></i>
               <p>Peserta Terbaik</p>
             </a>

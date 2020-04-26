@@ -3,16 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Validator;
-use App\SumbangSaran;
 use App\Karyawan;
 
-class SumbangSaranController extends Controller
+class KaryawanController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -20,8 +14,9 @@ class SumbangSaranController extends Controller
      */
     public function index()
     {
-        $sumbangsaran = SumbangSaran::orderBY('created_at','DESC')->get();
-        return view('pages.sumbang-saran.index',compact('sumbangsaran'));
+        $karyawan = Karyawan::orderBY('created_at','DESC')->get();
+
+        return view('pages.karyawan.index',compact('karyawan'));
     }
 
     /**
@@ -42,7 +37,7 @@ class SumbangSaranController extends Controller
      */
     public function store(Request $request)
     {
-      
+        //
     }
 
     /**
@@ -87,9 +82,9 @@ class SumbangSaranController extends Controller
      */
     public function destroy($id)
     {
-        $ss = SumbangSaran::findOrFail($id);
-        $ss->delete();
+        $karyawan = Karyawan::findorFail($id);
+        $karyawan->delete();
 
-        return back()->with('success','Data Sumbang Saran Berhasil Di Hapus');
+        return back()->with('success','Data Karyawan Berhasil Di Hapus');
     }
 }
