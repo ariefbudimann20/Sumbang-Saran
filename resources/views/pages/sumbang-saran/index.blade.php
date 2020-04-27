@@ -82,13 +82,9 @@
                                         <td>{{$ss->judul}}</td>
                                         <td>{{$ss->bagian}}</td>
                                         <td>
-<<<<<<< HEAD
                                             <a href="#mymodal" data-remote="{{route('sumbang-saran.show', $ss->id)}}" data-toggle="modal" data-target="#mymodal" data-title="Detail Sumbang Saran: {{$ss->judul}}"  class="btn btn-info btn-sm">
                                                 <i class="fa fa-eye"></i>
-=======
-                                            <a href="" class="btn btn-info" role="button" data-toggle="modal" data-target="#detailss-modal">
-                                                <i class="fas fa-eye"></i>
->>>>>>> d18ac96fc73fa01049d7c61659c1adf9cec8e843
+
                                             </a>
                                             <form action="{{url('sumbang-saran',$ss->id)}}" method="POST" class="d-inline">
                                                 @csrf
@@ -177,7 +173,6 @@
             $('#sumbang-saran').DataTable();
         } );
     </script>
-<<<<<<< HEAD
 
     <!-- Modal -->
     <script>
@@ -187,24 +182,10 @@
                 var modal = $(this);
                 modal.find('.modal-body').load(button.data('remote'));
                 modal.find('.modal-title').html(button.data('title'));
-=======
-@endpush
-
-{{-- Date Picker --}}
-    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="{{url('assets/plugins/jquery-ui/jquery-ui.css')}}">
-
-    <script>
-        $(document).ready(function(){
-            $('.date-picker').datepicker({
-                dateFormat:"dd MM yy",
->>>>>>> d18ac96fc73fa01049d7c61659c1adf9cec8e843
             });
         });
     </script>
 
-<<<<<<< HEAD
     <div class="modal fade bd-example-modal-lg" id="mymodal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -220,6 +201,17 @@
         </div>
         </div>
     </div>
+
+    {{-- Date Picker --}}
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="{{url('assets/plugins/jquery-ui/jquery-ui.css')}}">
+
+    <script>
+        $(document).ready(function(){
+            $('.date-picker').datepicker({
+                dateFormat:"dd MM yy",
+            });
+        });
+    </script>
 @endpush
-=======
->>>>>>> d18ac96fc73fa01049d7c61659c1adf9cec8e843
