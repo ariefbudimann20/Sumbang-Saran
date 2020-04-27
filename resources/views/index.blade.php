@@ -16,10 +16,10 @@
   <body>
     <div class="container-fluid">
         <div class="row">
-          <div class="col-12 float-right">
+          <div class="col-12 float-right"> 
             <ul class="nav float-right">
               <li class="nav-item">
-                <a href="{{url('/login')}}" class="btn btn-warning mt-2 font-weight-bold">Login sebagai Admin</a>
+                <a href="{{url('/login')}}" class="btn btn-danger mt-2 font-weight-bold"><i class="fas fa-unlock-alt"></i> Login</a>
               </li>
             </ul>
           </div>

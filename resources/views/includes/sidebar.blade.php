@@ -62,7 +62,7 @@
               <a  class="nav-link" href="{{ route('logout') }}"
                   onclick="event.preventDefault();
                   document.getElementById('logout-form').submit();">
-                  <i class="fas fa-sign-out-alt"></i>
+                  <i class="nav-icon fas fa-sign-out-alt"></i>
                   {{ __('Keluar') }}
               </a>
 
