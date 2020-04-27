@@ -183,4 +183,28 @@ html    {
     /* Konten */
 
     /* DATA KARYAWAN */
-    
+/* ADMIN PAGE */
+
+/* TIM PENILAI PAGE */
+    /* Penilaian */
+    .table-penilaian thead tr th, .table-penilaian tbody tr td {
+        text-align: center;
+    }
+    .bg-penilaian {
+        border-radius: 10px;
+    }
+
+    .bg-penilaian pre {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #212529;
+    }
+
+    .bg-penilaian .quality, .bg-penilaian .total {
+        margin-bottom: -50px;
+    }
+
+    .bg-penilaian .form-group label {
+        font-size: 18px;
+    }
+    /* Penilaian */
+/* TIM PENILAI PAGE */

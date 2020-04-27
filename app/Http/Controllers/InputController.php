@@ -44,7 +44,7 @@ class InputController extends Controller
             'mimes' => ':attribute Foto Harus JPG,JPEG,PNG'
         ];
         $validator = Validator::make($request->all(),[
-            'nik'           => 'required|min:10|max:12',
+            'nik'           => 'required|min:5|max:10',
             'nama'          => 'required',
             'bagian'        => 'required',
             'ext'           => 'required|max:5',

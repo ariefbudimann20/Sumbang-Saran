@@ -1,7 +1,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="form-group">
                 <label>Nomor Induk Karyawan : </label>
                 <p>{{$ss->nik}}</p>
@@ -23,7 +23,7 @@
                 <p>{{$ss->kondisi_akhir}}</p>
             </div>  
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="form-group">
                 <label>Bagian :</label>
                 <p>{{$ss->bagian}}</p>
@@ -43,37 +43,59 @@
                 <p>{{$ss->manfaat}}</p>
             </div>
         </div>
-        <div class="col-md-4">
-            <h5 class="mb-4">Kriteria Penilaian</h5>
-            <div class="form-group">
-                <label>Menggunaan Material</label>
-                <input type="text" id="nilai1" min="0" max="10" onkeyup="sum()" class="form-control col-md-4">
+    </div>
+    <div class="row border border-info bg-penilaian">
+        <div class="col-12 pt-4">
+            <h3 class="mb-4">FORM PENILAIAN</h3>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <pre>
+                <div class="form-group d-flex">
+                    <label>Menggunaan Material  : </label>
+                    <div class="d-flex">
+                    <input type="text" id="nilai1" min="0" max="100" onkeyup="sum()" class="form-control" placeholder="nilai 0 - 100">
+                </div>
             </div>
-            <div class="form-group">
-                <label>SS Digunakan</label>
-                <input type="text" id="nilai2" min="0" max="25" onkeyup="sum()" class="form-control col-md-4">
+            <div class="form-group d-flex">
+                <label>SS Digunakan                 : </label>
+                <div class="d-flex">
+                    <input type="text" id="nilai2" min="0" max="100" onkeyup="sum()" class="form-control" placeholder="nilai 0 - 100" >
+                </div>
             </div>
-            <div class="form-group">
-                <label>Quality</label>
-                <input type="text" id="nilai3" min="0" max="25" onkeyup="sum()" class="form-control col-md-4">
-            </div> 
-            <div class="form-group">
-                <label>Cost</label>
-                <input type="text" id="nilai4" min="0" max="20" onkeyup="sum()" class="form-control col-md-4">
-            </div>
-            <div class="form-group">
-                <label>Delivery</label>
-                <input type="text" id="nilai5" min="0" max="20" onkeyup="sum()" class="form-control col-md-4">
-            </div>
-            <div class="form-group">
-                <label>Total</label>
-                <input type="text" id="total" class="form-control col-md-4" disabled>
-            </div>     
+            <div class="form-group d-flex quality">
+                <label>Quality                            : </label>
+                <div class="d-flex">
+                    <input type="text" id="nilai3" min="0" max="100" onkeyup="sum()" class="form-control" placeholder="nilai 0 - 100">
+                </div>
+            </div>  
+            </pre>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <pre>
+                <div class="form-group d-flex">
+                    <label>Cost                                 : </label>
+                    <div class="d-flex">
+                        <input type="text" id="nilai4" min="0" max="100" onkeyup="sum()" class="form-control" placeholder="nilai 0 - 100">
+                    </div>
+                </div>
+                <div class="form-group d-flex">
+                    <label>Delivery                           : </label>
+                    <div class="d-flex">
+                        <input type="text" id="nilai5" min="0" max="100" onkeyup="sum()" class="form-control" placeholder="nilai 0 - 100">
+                    </div>
+                </div>
+                <div class="form-group d-flex total">
+                    <label>Total                                 : </label>
+                    <div class="d-flex">
+                        <input type="text" id="total" class="form-control" disabled>
+                    </div>
+                </div>    
+            </pre>
         </div>
     </div>
 </div>
-<hr></hr>
+<hr>
 <div class="d-flex justify-content-end">
-    <button type="button" class="btn btn-default waves-effect mr-2" data-dismiss="modal">Batal</button>
+    <button type="button" class="btn btn-secondary waves-effect mr-2" data-dismiss="modal">Batal</button>
     <button type="submit" class="btn btn-primary waves-effect waves-light ">Simpan</button>
 </div>

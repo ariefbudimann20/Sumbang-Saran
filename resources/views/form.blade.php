@@ -45,6 +45,7 @@
                                     <option value="Peyimpanan">Penyimpanan</option>
                                     <option value="QA">QA</option>
                                     <option value="QC">QC</option>
+                                    <option value="QC">IT</option>
                                 </select>
                                 @error('bagian') <span class="error invalid-feedback">{{$message}}</span> @enderror
                             </div>

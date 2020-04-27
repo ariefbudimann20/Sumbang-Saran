@@ -25,7 +25,7 @@
                 <!-- Content Card -->
                 <div class="card">
                     <div class="card-body">
-                        <div class="table-responsive-sm">
+                        <div class="table-responsive-sm table-penilaian">
                             <table id="sumbang-saran" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
@@ -101,9 +101,9 @@
     </script>
 
     <div class="modal fade" id="mymodal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-info">
             <h5 class="modal-title">Modal title</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
