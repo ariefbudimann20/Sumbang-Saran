@@ -49,7 +49,7 @@
                                             <form action="{{url('karyawan',$ky->id)}}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('delete')
-                                                <button href="" class="btn btn-danger" type="submit">
+                                                <button href="" class="btn btn-danger btn-sm" type="submit">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>

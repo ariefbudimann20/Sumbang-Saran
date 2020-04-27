@@ -24,18 +24,19 @@
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
+          @if(Auth::user()->role == 0)
           <div class="col-lg-6 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>100</h3>
+                <h3>{{$sumbangsaran->count()}}</h3>
 
                 <p>Saran yang telah disumbangkan</p>
               </div>
               <div class="icon">
                 <i class="fab fa-audible"></i>
               </div>
-              <a href="#" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{url('sumbang-saran')}}" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -43,29 +44,30 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>500</h3>
+                <h3>{{$karyawan->count()}}</h3>
 
                 <p>Data Karyawan</p>
               </div>
               <div class="icon">
                 <i class="fas fa-database"></i>
               </div>
-              <a href="#" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{url('karyawan')}}" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
+          @else
           <div class="col-lg-6 col-6">
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>76</h3>
+                <h3 class="text-white">76</h3>
 
-                <p>Saran yang telah dinilai oleh TIM PENILAI</p>
+                <p class="text-white">Saran yang telah dinilai oleh TIM PENILAI</p>
               </div>
               <div class="icon">
                 <i class="fas fa-star-half-alt"></i>
               </div>
-              <a href="#" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{url('penilaian')}}" class="small-box-footer"><p class=" text-white d-inline">Selengkapnya</p> <i class="fas fa-arrow-circle-right text-white"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -80,10 +82,11 @@
               <div class="icon">
                 <i class="nav-icon fas fa-medal"></i>
               </div>
-              <a href="#" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{url('peserta-terbaik')}}" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
+          @endif
         </div>
         <!-- /.row -->
         <!-- Main row -->

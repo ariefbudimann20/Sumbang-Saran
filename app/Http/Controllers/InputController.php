@@ -60,24 +60,35 @@ class InputController extends Controller
              return back()->withInput($request->input())->withErrors($validator->errors());
         }else{
             $namapic = request()->foto->getClientOriginalName();
-            request()->foto->move(public_path('images'),$namapic);
-
-            SumbangSaran::create([
-                'nik'           => $request->nik,
-                'nama'          => $request->nama,
-                'bagian'        => $request->bagian,
-                'ext'           => $request->ext,
-                'judul'         => $request->judul,
-                'foto'          => $namapic,
-                'kondisi_awal'  => $request->kondisi_awal,
-                'kondisi_akhir' => $request->kondisi_akhir,
-                'manfaat'       => $request->manfaat
-            ]);
+            request()->foto->move(public_path('assets/images'),$namapic);
             
             $karyawan = Karyawan::all();
             
-            foreach ($karyawan as $key) {
-                if ($key->nik != $request->nik) {
+                if ($karyawan->contains('nik', $request->nik) == $request->nik) {
+                    SumbangSaran::create([
+                        'nik'           => $request->nik,
+                        'nama'          => $request->nama,
+                        'bagian'        => $request->bagian,
+                        'ext'           => $request->ext,
+                        'judul'         => $request->judul,
+                        'foto'          => $namapic,
+                        'kondisi_awal'  => $request->kondisi_awal,
+                        'kondisi_akhir' => $request->kondisi_akhir,
+                        'manfaat'       => $request->manfaat
+                    ]);
+                }else{
+                    SumbangSaran::create([
+                        'nik'           => $request->nik,
+                        'nama'          => $request->nama,
+                        'bagian'        => $request->bagian,
+                        'ext'           => $request->ext,
+                        'judul'         => $request->judul,
+                        'foto'          => $namapic,
+                        'kondisi_awal'  => $request->kondisi_awal,
+                        'kondisi_akhir' => $request->kondisi_akhir,
+                        'manfaat'       => $request->manfaat
+                    ]);
+                    
                     Karyawan::create([
                         'nik'       => $request ->nik,
                         'nama'      => $request->nama,
@@ -85,20 +96,6 @@ class InputController extends Controller
                         'ext'       => $request->ext,
                     ]);
                 }
-            }
-            // foreach ($karyawan as $ky) {
-            //     dd($ky->nik == $request->nik);
-            //     if($ky->nik == $request->nik){
-                    
-            //     }else{
-            //         Karyawan::create([
-            //             'nik'       => $reques ->nik,
-            //             'nama'      => $request->nama,
-            //             'bagian'    => $request->bagian,
-            //             'ext'       => $request->ext,
-            //         ]);
-            //     }
-            // }
             
             return back()->with('success', 'Terima Kasih Sudah Berpartipasi Untuk Sumbang Saran');
         }

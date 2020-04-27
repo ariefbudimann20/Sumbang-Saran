@@ -53,7 +53,9 @@ class SumbangSaranController extends Controller
      */
     public function show($id)
     {
-        //
+        $ss = SumbangSaran::findorFail($id);
+
+        return view('pages.sumbang-saran.show',compact('ss'));
     }
 
     /**

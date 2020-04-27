@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Karyawan;
+use App\SumbangSaran;
 
-class KaryawanController extends Controller
+class PenilaianController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,9 +19,9 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        $karyawan = Karyawan::orderBY('created_at','DESC')->get();
+        $sumbangsaran = SumbangSaran::orderBY('created_at','DESC')->get();
 
-        return view('pages.karyawan.index',compact('karyawan'));
+        return view('pages.penilaian.index',compact('sumbangsaran'));
     }
 
     /**
@@ -52,7 +53,9 @@ class KaryawanController extends Controller
      */
     public function show($id)
     {
-        //
+        $ss = SumbangSaran::findorFail($id);
+
+        return view('pages.penilaian.show',compact('ss'));
     }
 
     /**
@@ -86,9 +89,6 @@ class KaryawanController extends Controller
      */
     public function destroy($id)
     {
-        $karyawan = Karyawan::findorFail($id);
-        $karyawan->delete();
-
-        return back()->with('success','Data Karyawan Berhasil Di Hapus');
+        //
     }
 }

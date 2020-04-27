@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\SumbangSaran;
+use App\Karyawan;
 
 class HomeController extends Controller
 {
@@ -22,7 +24,9 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        return view('pages.dashboard');
+    {   
+        $sumbangsaran = SumbangSaran::all();
+        $karyawan = Karyawan::all();
+        return view('pages.dashboard',compact('sumbangsaran','karyawan'));
     }
 }

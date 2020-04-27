@@ -22,3 +22,4 @@ Auth::routes();
 Route::get('/dashboard', 'HomeController@index')->middleware('auth');
 Route::resource('sumbang-saran', 'SumbangSaranController')->middleware('auth');
 Route::resource('karyawan','KaryawanController')->middleware('auth');
+Route::resource('penilaian','PenilaianController')->middleware('auth');
