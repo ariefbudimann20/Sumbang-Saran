@@ -909,7 +909,7 @@ body .ui-tooltip {
 }
 .ui-widget-header {
 	border: 1px solid #d49768;
-	background: #cb842e url("images/ui-bg_glass_25_cb842e_1x400.png") 50% 50% repeat-x;
+	background: #17a2b8 url("images/ui-bg_glass_25_cb842e_1x400.png") 50% 50% repeat-x;
 	color: #ffffff;
 	font-weight: bold;
 }
@@ -931,7 +931,7 @@ html .ui-button.ui-state-disabled:active {
 	border: 1px solid #cdc3b7;
 	background: #ede4d4 url("images/ui-bg_glass_70_ede4d4_1x400.png") 50% 50% repeat-x;
 	font-weight: normal;
-	color: #3f3731;
+	color: #17a2b8;
 }
 .ui-state-default a,
 .ui-state-default a:link,
@@ -940,7 +940,7 @@ a.ui-button,
 a:link.ui-button,
 a:visited.ui-button,
 .ui-button {
-	color: #3f3731;
+	color: #17a2b8;
 	text-decoration: none;
 }
 .ui-state-hover,
