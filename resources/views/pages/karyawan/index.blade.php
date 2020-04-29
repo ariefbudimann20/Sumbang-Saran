@@ -17,8 +17,8 @@
           </div><!-- /.row -->
           <div class="top-bardk">
               <div class="col-12">
-                <button class="btn btn-warning kelola-bagian" data-toggle="modal" data-target="#modal-bagian"><i class="fas fa-tasks"></i> Bagian</button>
-                <button class="btn btn-warning kelola-ext" data-toggle="modal" data-target="#modal-extension"><i class="fas fa-phone-alt"></i> Extension</button>
+                <button class="btn btn-info kelola-bagian" data-toggle="modal" data-target="#modal-bagian"><i class="fas fa-tasks"></i> Bagian</button>
+                <button class="btn btn-info kelola-ext" data-toggle="modal" data-target="#modal-extension"><i class="fas fa-phone-alt"></i> Extension</button>
               </div> 
           </div>
 
@@ -26,21 +26,21 @@
           <div class="modal fade" id="modal-bagian" tabindex="-1" role="dialog" aria-labelledby="modal-bagianTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable" role="document">
               <div class="modal-content">
-                <div class="modal-header bg-warning">
+                <div class="modal-header bg-info">
                   <h5 class="modal-title" id="modal-bagianTitle">Kelola Bagian</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
                 <div class="modal-body">
-                    <button class="btn btn-primary mb-3" data-toggle="collapse" data-target="#collapseTambahbagian" aria-expanded="false" aria-controls="collapseTambahbagian"><i class="fas fa-plus"></i> Tambah Bagian</button>
+                    <button class="btn btn-info mb-3" data-toggle="collapse" data-target="#collapseTambahbagian" aria-expanded="false" aria-controls="collapseTambahbagian"><i class="fas fa-plus"></i> Tambah Bagian</button>
                         <!-- Collapse Tambah Bagian -->
                         <div class="collapse" id="collapseTambahbagian">
                             <div class="card card-body">
                                 <div class="form-group mt-3">
                                     <label for="namabagian">Nama Bagian :</label>
                                     <input type="text" id="namabagian" class="d-inline">
-                                    <button class="btn btn-success">Tambah</button>
+                                    <button class="btn btn-info">Tambah</button>
                                 </div>
                             </div>
                         </div>
@@ -99,21 +99,21 @@
           <div class="modal fade" id="modal-extension" tabindex="-1" role="dialog" aria-labelledby="modal-extensionTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable" role="document">
               <div class="modal-content">
-                <div class="modal-header bg-warning">
+                <div class="modal-header bg-info">
                   <h5 class="modal-title" id="modal-extensionTitle">Kelola Extension</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
                 <div class="modal-body">
-                    <button class="btn btn-primary mb-3" data-toggle="collapse" data-target="#collapseTambahextension" aria-expanded="false" aria-controls="collapseTambahextension"><i class="fas fa-plus"></i> Tambah Extension</button>
+                    <button class="btn btn-info mb-3" data-toggle="collapse" data-target="#collapseTambahextension" aria-expanded="false" aria-controls="collapseTambahextension"><i class="fas fa-plus"></i> Tambah Extension</button>
                     <!-- Collapse Tambah Bagian -->
                     <div class="collapse" id="collapseTambahextension">
                         <div class="card card-body">
                             <div class="form-group mt-3">
                                 <label for="namaextension">Nama Extension :</label>
                                 <input type="text" id="namaextension" class="d-inline">
-                                <button class="btn btn-success">Tambah</button>
+                                <button class="btn btn-info">Tambah</button>
                             </div>
                         </div>
                     </div>
@@ -162,7 +162,6 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
               </div>
             </div>

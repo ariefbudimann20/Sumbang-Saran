@@ -17,7 +17,7 @@
           </div><!-- /.row -->
           <div class="row topbar-ss">
             <div class="col-12">
-                <button class="btn btn-warning float-left ubah-periode" data-toggle="modal" data-target="#modal-ubahperiode"><i class="fas fa-clock"></i> Buat Periode</button>    
+                <button class="btn btn-info float-left ubah-periode" data-toggle="modal" data-target="#modal-ubahperiode"><i class="fas fa-clock"></i> Buat Periode</button>    
             </div>        
         </div>
         </div><!-- /.container-fluid -->
@@ -28,7 +28,7 @@
       <div class="modal fade modal-ubah-periode" id="modal-ubahperiode" tabindex="-1" role="dialog" aria-labelledby="modal-ubahperiodeTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
-            <div class="modal-header bg-warning">
+            <div class="modal-header bg-info">
               <h5 class="modal-title" id="modal-ubahperiodeTitle">Periode Sumbang Saran</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -48,7 +48,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-              <button type="button" class="btn btn-success">Simpan</button>
+              <button type="button" class="btn btn-info">Simpan</button>
             </div>
           </div>
         </div>
@@ -211,6 +211,9 @@
         $(document).ready(function(){
             $('.date-picker').datepicker({
                 dateFormat:"dd MM yy",
+                showOtherMonths: true,
+                changeMonth: true,
+                changeYear:true,
             });
         });
     </script>
