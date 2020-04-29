@@ -2,21 +2,21 @@
     <div class="col-md-6">
         <div class="form-group">
             <label>Nomor Induk Karyawan : </label>
-            <p>{{$ss->nik}}</p>
+            <p>{{$ss->karyawan->nik}}</p>
         </div>
         <div class="form-group">
             <label for="nama">Nama Lengkap :</label>
-            <p>{{$ss->nama}}</p>
+            <p>{{$ss->karyawan->nama}}</p>
         </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">
             <label for="bagian">Bagian :</label>
-            <p>{{$ss->bagian}}</p>
+            <p>{{$ss->karyawan->bagian}}</p>
         </div>
         <div class="form-group">
             <label for="ext">Ext :</label>
-            <p>{{$ss->ext}}</p>
+            <p>{{$ss->karyawan->ext}}</p>
         </div>
     </div>
 </div>

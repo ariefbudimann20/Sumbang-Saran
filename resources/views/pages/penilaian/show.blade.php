@@ -1,14 +1,17 @@
-
+<form action="{{url('penilaian')}}" method="POST">
+@csrf
+<input type="hidden" name="sumbang_saran_id" value="{{$ss->id}}">
+<input type="hidden" name="karyawan_id" value="{{$ss->karyawan_id}}">
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
                 <label>Nomor Induk Karyawan : </label>
-                <p>{{$ss->nik}}</p>
+                <p>{{$ss->karyawan->nik}}</p>
             </div>
             <div class="form-group">
                 <label>Nama Lengkap :</label>
-                <p>{{$ss->nama}}</p>
+                <p>{{$ss->karyawan->nama}}</p>
             </div>
             <div class="form-group">
                 <label>Judul Sumbang Saran :</label>
@@ -26,11 +29,11 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label>Bagian :</label>
-                <p>{{$ss->bagian}}</p>
+                <p>{{$ss->karyawan->bagian}}</p>
             </div>
             <div class="form-group">
                 <label>Ext :</label>
-                <p>{{$ss->ext}}</p>
+                <p>{{$ss->karyawan->ext}}</p>
             </div>
             <div class="form-group">
                 <label for="foto">Foto :</label><br>
@@ -44,58 +47,84 @@
             </div>
         </div>
     </div>
-    <div class="row border border-info bg-penilaian">
-        <div class="col-12 pt-4">
-            <h3 class="mb-4">FORM PENILAIAN</h3>
-        </div>
-        <div class="col-md-6 col-sm-12">
-            <pre>
-                <div class="form-group d-flex">
-                    <label>Menggunaan Material  : </label>
-                    <div class="d-flex">
-                    <input type="text" id="nilai1" min="0" max="100" onkeyup="sum()" class="form-control" placeholder="nilai 0 - 100">
-                </div>
+    @if($ss->penilaian->count() > 0)
+        @else
+        <div class="row border border-info bg-penilaian">
+            <div class="col-12 pt-4">
+                <h3 class="mb-4">FORM PENILAIAN</h3>
             </div>
-            <div class="form-group d-flex">
-                <label>SS Digunakan                 : </label>
-                <div class="d-flex">
-                    <input type="text" id="nilai2" min="0" max="100" onkeyup="sum()" class="form-control" placeholder="nilai 0 - 100" >
+            <div class="col-md-6 col-sm-12">
+                <pre>
+                    <div class="form-group d-flex">
+                        <label>Menggunaan Material  : </label>
+                        <div class="d-flex">
+                        <input type="text" name="material" id="nilai1" min="0" max="100" value="0" onfocus="startHitung()" onblur="akhirHitung()"   class="form-control" placeholder="nilai 0 - 100">
+                    </div>
                 </div>
+                <div class="form-group d-flex">
+                    <label>SS Digunakan                 : </label>
+                    <div class="d-flex">
+                        <input type="text" name="ss" id="nilai2" min="0" max="100" value="0" onfocus="startHitung()" onblur="akhirHitung()" class="form-control" placeholder="nilai 0 - 100" >
+                    </div>
+                </div>
+                <div class="form-group d-flex quality">
+                    <label>Quality                            : </label>
+                    <div class="d-flex">
+                        <input type="text" name="quality" id="nilai3" min="0" max="100" value="0" onfocus="startHitung()" onblur="akhirHitung()" class="form-control" placeholder="nilai 0 - 100">
+                    </div>
+                </div>  
+                </pre>
             </div>
-            <div class="form-group d-flex quality">
-                <label>Quality                            : </label>
-                <div class="d-flex">
-                    <input type="text" id="nilai3" min="0" max="100" onkeyup="sum()" class="form-control" placeholder="nilai 0 - 100">
-                </div>
-            </div>  
-            </pre>
-        </div>
-        <div class="col-md-6 col-sm-12">
-            <pre>
-                <div class="form-group d-flex">
-                    <label>Cost                                 : </label>
-                    <div class="d-flex">
-                        <input type="text" id="nilai4" min="0" max="100" onkeyup="sum()" class="form-control" placeholder="nilai 0 - 100">
+            <div class="col-md-6 col-sm-12">
+                <pre>
+                    <div class="form-group d-flex">
+                        <label>Cost                                 : </label>
+                        <div class="d-flex">
+                            <input type="text" name="cost" id="nilai4" min="0" max="100" value="0" onfocus="startHitung()" onblur="akhirHitung()" class="form-control" placeholder="nilai 0 - 100">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group d-flex">
-                    <label>Delivery                           : </label>
-                    <div class="d-flex">
-                        <input type="text" id="nilai5" min="0" max="100" onkeyup="sum()" class="form-control" placeholder="nilai 0 - 100">
+                    <div class="form-group d-flex">
+                        <label>Delivery                           : </label>
+                        <div class="d-flex">
+                            <input type="text" name="delivery" id="nilai5" min="0" max="100" value="0" onfocus="startHitung()" onblur="akhirHitung()" class="form-control" placeholder="nilai 0 - 100">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group d-flex total">
-                    <label>Total                                 : </label>
-                    <div class="d-flex">
-                        <input type="text" id="total" class="form-control" disabled>
-                    </div>
-                </div>    
-            </pre>
-        </div>
-    </div>
+                    <div class="form-group d-flex total">
+                        <label>Total                                 : </label>
+                        <div class="d-flex">
+                            <input type="text"  id="total" value="0"  class="form-control" >
+                            <input type="hidden" name="nilai" id="nilai">
+                        </div>
+                    </div>    
+                </pre>
+            </div>
+        </div>         
+    @endif
+  
 </div>
 <hr>
 <div class="d-flex justify-content-end">
     <button type="button" class="btn btn-secondary waves-effect mr-2" data-dismiss="modal">Batal</button>
     <button type="submit" class="btn btn-primary waves-effect waves-light ">Simpan</button>
 </div>
+</form>
+
+<script>
+    function startHitung(){
+        interval  = setInterval("hitung()",1);
+    }
+
+    function hitung(){
+        var nilai1 = parseInt(document.getElementById('nilai1').value);
+        var nilai2 = parseInt(document.getElementById('nilai2').value);
+        var nilai3 = parseInt(document.getElementById('nilai3').value);
+        var nilai4 = parseInt(document.getElementById('nilai4').value);
+        var nilai5 = parseInt(document.getElementById('nilai5').value);
+        jumlah = nilai1 + nilai2+ nilai3 + nilai4 + nilai5
+        document.getElementById('total').value = jumlah;
+        document.getElementById('nilai').value = jumlah;
+    }
+    function akhirHitung(){
+        clearInterval(interval);
+    }
+</script>

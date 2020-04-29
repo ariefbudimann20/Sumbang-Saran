@@ -25,7 +25,7 @@
       <!-- /.content-header -->
 
       <!-- Modal Ubah Periode -->
-      <div class="modal fade modal-ubah-periode" id="modal-ubahperiode" tabindex="-1" role="dialog" aria-labelledby="modal-ubahperiodeTitle" aria-hidden="true">
+      {{-- <div class="modal fade modal-ubah-periode" id="modal-ubahperiode" tabindex="-1" role="dialog" aria-labelledby="modal-ubahperiodeTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header bg-warning">
@@ -52,7 +52,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> --}}
       <!-- Modal Ubah Periode -->
 
     <section class="content">
@@ -62,7 +62,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive-sm table-sumbangsaran">
-                            <table id="sumbang-saran" class="table table-striped table-bordered" style="width:100%">
+                            <table id="sumbangsaran" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>NO</th>
@@ -77,10 +77,10 @@
                                     @foreach ($sumbangsaran as $ss)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-                                        <td>{{$ss->nik}}</td>
-                                        <td>{{$ss->nama}}</td>
+                                        <td>{{$ss->karyawan->nik}}</td>
+                                        <td>{{$ss->karyawan->nama}}</td>
                                         <td>{{$ss->judul}}</td>
-                                        <td>{{$ss->bagian}}</td>
+                                        <td>{{$ss->karyawan->bagian}}</td>
                                         <td>
                                             <a href="#mymodal" data-remote="{{route('sumbang-saran.show', $ss->id)}}" data-toggle="modal" data-target="#mymodal" data-title="Detail Sumbang Saran: {{$ss->judul}}"  class="btn btn-info btn-sm">
                                                 <i class="fa fa-eye"></i>
@@ -99,64 +99,6 @@
                                 </tbody>
                             </table>
                         </div>
-
-                        <div class="modal fade" id="detailss-modal" tabindex="-1" role="dialog" aria-labelledby="detailss-modalTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header bg-info">
-                                        <h5 class="modal-title" id="detailss-modalTitle">Detail Sumbang Saran</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <table class="table table-bordered">
-                                            @foreach ($sumbangsaran as $ss)
-                                            <tr>
-                                                <th width="250px;">NIK</th>
-                                                <td>{{$ss->nik}}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Nama Lengkap</th>
-                                                <td>{{$ss->nama}}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Bagian</th>
-                                                <td>{{$ss->bagian}}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Ext</th>
-                                                <td>{{$ss->ext}}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Judul Sumbang Saran</th>
-                                                <td>{{$ss->judul}}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Foto</th>
-                                                <td>{{$ss->foto}}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Kondisi Awal</th>
-                                                <td>{{$ss->kondisi_awal}}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Kondisi Yang Diinginkan</th>
-                                                <td>{{$ss->kondisi_akhir}}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Manfaat Bagi Perusahaan</th>
-                                                <td>{{$ss->manfaat}}</td>
-                                            </tr>
-                                            @endforeach
-                                        </table>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                      </div>                                
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -165,15 +107,16 @@
 @endsection
 
 @push('after-script')
+
     <!-- Datatables -->
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#sumbang-saran').DataTable();
+            $('#sumbangsaran').DataTable();
         } );
     </script>
-
+    
     <!-- Modal -->
     <script>
         jQuery(document).ready(function($){
@@ -185,6 +128,7 @@
             });
         });
     </script>
+    <script></script>
 
     <div class="modal fade bd-example-modal-lg" id="mymodal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
@@ -203,7 +147,7 @@
     </div>
 
     {{-- Date Picker --}}
-    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="{{url('assets/plugins/jquery-ui/jquery-ui.css')}}">
 
@@ -213,5 +157,5 @@
                 dateFormat:"dd MM yy",
             });
         });
-    </script>
+    </script> --}}
 @endpush

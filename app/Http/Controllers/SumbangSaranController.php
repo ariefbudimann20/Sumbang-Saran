@@ -20,7 +20,8 @@ class SumbangSaranController extends Controller
      */
     public function index()
     {
-        $sumbangsaran = SumbangSaran::orderBY('created_at','DESC')->get();
+        $sumbangsaran = SumbangSaran::with('karyawan')->orderBY('created_at','DESC')->get();
+        //dd($sumbangsaran);
         return view('pages.sumbang-saran.index',compact('sumbangsaran'));
     }
 
@@ -53,7 +54,7 @@ class SumbangSaranController extends Controller
      */
     public function show($id)
     {
-        $ss = SumbangSaran::findorFail($id);
+        $ss = SumbangSaran::with('karyawan')->findorFail($id);
 
         return view('pages.sumbang-saran.show',compact('ss'));
     }

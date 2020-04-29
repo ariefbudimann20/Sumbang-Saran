@@ -15,10 +15,7 @@ class SumbangSaran extends Migration
     {
         Schema::create('sumbang_saran', function (Blueprint $table) {
             $table->id();
-            $table->string('nik');
-            $table->string('nama');
-            $table->string('bagian');
-            $table->string('ext');
+            $table->integer('karyawan_id');
             $table->string('judul');
             $table->string('foto');
             $table->longText('kondisi_awal');

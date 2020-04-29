@@ -15,10 +15,9 @@ class Penilaian extends Migration
     {
         Schema::create('penilaian', function (Blueprint $table) {
             $table->id();
-            $table->string('sumbang_saran_id');
-            $table->string('karayawan_id');
+            $table->integer('sumbang_saran_id');
+            $table->integer('karyawan_id');
             $table->string('nilai');
-            $table->string('alasan');
             $table->timestamps();
         }); 
     }

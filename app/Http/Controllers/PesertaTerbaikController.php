@@ -3,18 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\SumbangSaran;
-use App\Penilaian;
 use App\Karyawan;
-use Validator;
+use App\Penilaian;
 
-class PenilaianController extends Controller
+class PesertaTerbaikController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -22,9 +19,9 @@ class PenilaianController extends Controller
      */
     public function index()
     {
-        $sumbangsaran = SumbangSaran::with('penilaian','karyawan')->orderBY('created_at','DESC')->get();
-        //dd($sumbangsaran);
-        return view('pages.penilaian.index',compact('sumbangsaran'));
+        $karyawan = Penilaian::with('karyawan','sumbangsaran')->where('nilai','>',300)->get();
+        // dd($karyawan);
+        return view('pages.peserta-terbaik.index',compact('karyawan'));
     }
 
     /**
@@ -45,26 +42,7 @@ class PenilaianController extends Controller
      */
     public function store(Request $request)
     {
-        $messages = [
-            'required' => ':attribute Harus Di Isi',
-        ];
-        $validator = Validator::make($request->all(),[
-            'nilai'        => 'required',
-        ],$messages);
-  
-        if ($validator->fails()) {
-            // dd($request->all());
-             return back()->withInput($request->input())->withErrors($validator->errors());
-        }else{
-
-            Penilaian::create([
-                'sumbang_saran_id'     => $request->sumbang_saran_id,
-                'karyawan_id'          => $request->karyawan_id,
-                'nilai'                => $request->nilai, 
-            ]);
-                
-            return back()->with('success', 'Data Penilaian Berhasil Di Simpan');
-        }
+        //
     }
 
     /**
@@ -75,9 +53,7 @@ class PenilaianController extends Controller
      */
     public function show($id)
     {
-        $ss = SumbangSaran::with('karyawan')->findorFail($id);
-        // dd($ss);
-        return view('pages.penilaian.show',compact('ss'));
+        //
     }
 
     /**

@@ -65,7 +65,11 @@ class InputController extends Controller
             $karyawan = Karyawan::all();
             
                 if ($karyawan->contains('nik', $request->nik) == $request->nik) {
+                    $flight = Karyawan::firstOrCreate(
+                        ['nik' => $request->nik],
+                    );
                     SumbangSaran::create([
+                        'karyawan_id'   => $flight->id,
                         'nik'           => $request->nik,
                         'nama'          => $request->nama,
                         'bagian'        => $request->bagian,
@@ -76,12 +80,20 @@ class InputController extends Controller
                         'kondisi_akhir' => $request->kondisi_akhir,
                         'manfaat'       => $request->manfaat
                     ]);
+
+           
+
+      
                 }else{
+                    $flight = Karyawan::create([
+                        'nik'       => $request ->nik,
+                        'nama'      => $request->nama,
+                        'bagian'    => $request->bagian,
+                        'ext'       => $request->ext,
+                    ]);
+                    
                     SumbangSaran::create([
-                        'nik'           => $request->nik,
-                        'nama'          => $request->nama,
-                        'bagian'        => $request->bagian,
-                        'ext'           => $request->ext,
+                        'karyawan_id'   => $flight->id,
                         'judul'         => $request->judul,
                         'foto'          => $namapic,
                         'kondisi_awal'  => $request->kondisi_awal,
@@ -89,12 +101,7 @@ class InputController extends Controller
                         'manfaat'       => $request->manfaat
                     ]);
                     
-                    Karyawan::create([
-                        'nik'       => $request ->nik,
-                        'nama'      => $request->nama,
-                        'bagian'    => $request->bagian,
-                        'ext'       => $request->ext,
-                    ]);
+ 
                 }
             
             return back()->with('success', 'Terima Kasih Sudah Berpartipasi Untuk Sumbang Saran');

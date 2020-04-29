@@ -34,6 +34,7 @@
                                         <th>NAMA</th>
                                         <th>JUDUL</th>
                                         <th>BAGIAN</th>
+                                        <th>NILAI</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -41,10 +42,19 @@
                                     @foreach ($sumbangsaran as $ss)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-                                        <td>{{$ss->nik}}</td>
-                                        <td>{{$ss->nama}}</td>
+                                        <td>{{$ss->karyawan->nik}}</td>
+                                        <td>{{$ss->karyawan->nama}}</td>
                                         <td>{{$ss->judul}}</td>
-                                        <td>{{$ss->bagian}}</td>
+                                        <td>{{$ss->karyawan->bagian}}</td>
+                                        <td> @if($ss->penilaian->count() > 0)
+                                                @foreach($ss->penilaian as $area)
+                                                {{$area->nilai}}
+                                                @endforeach
+                                                @else
+                                                <span class="badge badge-danger p-2">Belum Di Nilai</span>
+                                            @endif
+                                        </td>
+                                       
                                         <td>
                                             <a href="#mymodal" data-remote="{{route('penilaian.show', $ss->id)}}" data-toggle="modal" data-target="#mymodal" data-title="Detail Sumbang Saran: {{$ss->judul}}"  class="btn btn-success btn-sm">
                                                 <i class="fa fa-edit"></i>
