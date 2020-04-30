@@ -22,11 +22,12 @@
     <section class="content">
         <div class="row">
             <div class="col-12">
+                <button class="btn btn-info mb-2 font-weight-bold disabled"><i class="fas fa-upload"></i> Publish Hasil</button>
                 <!-- Content Card -->
                 <div class="card">
                     <div class="card-body">
-                        <div class="table-responsive-sm table-penilaian">
-                            <table id="sumbang-saran" class="table table-striped table-bordered" style="width:100%">
+                        <div class="table-responsive table-penilaian">
+                            <table id="sumbang-saran" class="table table-striped table-sm" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>NO</th>

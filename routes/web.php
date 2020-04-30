@@ -24,3 +24,4 @@ Route::resource('sumbang-saran', 'SumbangSaranController')->middleware('auth');
 Route::resource('karyawan','KaryawanController')->middleware('auth');
 Route::resource('penilaian','PenilaianController')->middleware('auth');
 Route::resource('peserta-terbaik','PesertaTerbaikController')->middleware('auth');
+Route::resource('jadwal','JadwalController')->middleware('auth');

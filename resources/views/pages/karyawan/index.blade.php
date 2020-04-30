@@ -46,7 +46,7 @@
                         </div>
                         <!-- Collapse Tambah Bagian -->   
                     <div class="table-responsive table-modalbagian">
-                        <table class="table table-striped table-bordered">
+                        <table class="table table-sm table-bordered">
                           <thead>
                               <tr>
                                   <th>No</th>
@@ -118,7 +118,7 @@
                         </div>
                     </div>
                     <!-- Collapse Tambah Bagian -->   
-                <div class="table-responsive table-modalextension">
+                <div class="table-responsive table-sm table-modalextension">
                     <table class="table table-striped table-bordered">
                       <thead>
                           <tr>
@@ -179,7 +179,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive-sm table-datakaryawan">
-                            <table id="sumbang-saran" class="table table-striped table-bordered" style="width:100%">
+                            <table id="sumbang-saran" class="table table-striped table-sm table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>NO</th>

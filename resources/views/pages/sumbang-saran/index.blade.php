@@ -15,11 +15,6 @@
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
-          <div class="row topbar-ss">
-            <div class="col-12">
-                <button class="btn btn-info float-left ubah-periode" data-toggle="modal" data-target="#modal-ubahperiode"><i class="fas fa-clock"></i> Buat Periode</button>    
-            </div>        
-        </div>
         </div><!-- /.container-fluid -->
       </div>
       <!-- /.content-header -->
@@ -62,7 +57,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive-sm table-sumbangsaran">
-                            <table id="sumbangsaran" class="table table-striped table-bordered" style="width:100%">
+                            <table id="sumbangsaran" class="table table-striped table-sm table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>NO</th>

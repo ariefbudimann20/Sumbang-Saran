@@ -31,6 +31,12 @@
           @if(Auth::user()->role == 0)
           <li class="nav-header">JOB ADMIN</li>
           <li class="nav-item">
+            <a href="{{url('jadwal')}}" class="nav-link {{Request::is('jadwal') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-calendar-plus"></i>
+              <p>Jadwal Sumbang Saran</p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{url('sumbang-saran')}}" class="nav-link {{Request::is('sumbang-saran') ? 'active' : ''}}">
               <i class="nav-icon fab fa-audible"></i>
               <p>Kelola Sumbang Saran</p>

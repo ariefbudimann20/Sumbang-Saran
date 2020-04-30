@@ -72,22 +72,10 @@
 
     @if($ss->penilaian->count() > 0)
         @else
-        <div class="row border border-info bg-penilaian">
-            <div class="col-12 pt-4">
-                <h3 class="mb-4">FORM PENILAIAN</h3>
-
     <div class="row border border-info bg-penilaian">
         <div class="col-12 pt-4">
             <h4 class="mb-2 ml-2 font-italic">FORM PENILAIAN</h4>
         </div>
-        <div class="col-md-6 col-sm-12">
-            <pre>
-                <div class="form-group d-flex">
-                    <label>Menggunaan Material  : </label>
-                    <div class="d-flex">
-                    <input type="text" id="nilai1" min="0" max="100" onkeyup="sum()" class="form-control" placeholder="nilai 0 - 100">
-                </div>
-            </div>
             <div class="col-md-6 col-sm-12">
                 <pre>
                     <div class="form-group d-flex">
