@@ -15,7 +15,6 @@ class Jadwal extends Migration
     {
         Schema::create('jadwal', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('mulai');
             $table->string('selesai');
             $table->string('pemenang');
             $table->string('status');
