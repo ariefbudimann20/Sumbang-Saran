@@ -6,7 +6,7 @@
   <title>Admin | Log in</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <link rel="icon" href="{{url('assets/img/favicon.ico')}}" type="image/x-icon" />
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
   <!-- Ionicons -->
@@ -21,7 +21,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="{{url('/login')}}"><b>Admin</b></a>
+    <img src="{{url('assets/img/banner-sumbangsaran.png')}}" alt="Responsive Image" class="img-fluid mx-auto d-block mt-3 animate">
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -64,12 +64,12 @@
           <!-- /.col -->
         </div>
       </form>
-      <p class="mb-1">
+      {{-- <p class="mb-1">
         <a href="{{ route('password.request') }}">I forgot my password</a>
       </p>
       <p class="mb-0">
         <a href="{{url('/register')}}" class="text-center">Register</a>
-      </p>
+      </p> --}}
     </div>
     <!-- /.login-card-body -->
   </div>

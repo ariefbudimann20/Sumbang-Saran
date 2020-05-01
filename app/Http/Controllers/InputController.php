@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Validator;
 use App\SumbangSaran;
 use App\Karyawan;
+use App\Bagian;
+use App\Ext;
 
 class InputController extends Controller
 {
@@ -16,7 +18,10 @@ class InputController extends Controller
      */
     public function index()
     {
-        return view('form');
+        $bagian = Bagian::all();
+        $ext    = Ext::all();
+
+        return view('form',compact('bagian','ext'));
     }
 
     /**
