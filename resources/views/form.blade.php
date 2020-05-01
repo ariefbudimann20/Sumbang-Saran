@@ -15,28 +15,28 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-10 form-page">
-                <img src="{{url('assets/img/banner-sumbangsaran.png')}}" alt="Responsive Image" class="img-fluid mx-auto d-block mt-3">
+                <img src="{{url('assets/img/banner-sumbangsaran.png')}}" alt="Responsive Image" class="img-fluid mx-auto d-block mt-3 animate">
 
-                <div class="alert alert-primary text-center mt-4" role="alert">
+                <div class="alert alert-primary text-center mt-4 animate" role="alert">
                     Sampaikan Informasi, Saran, Keluhan anda demi kemajuan perusahaan. Kami menjamin <b>kerahasiaan</b> data Anda
                 </div>
                 <form action="{{url('input')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="form-group animate">
                                 <label>Nomor Induk Karyawan : </label>
                                 <input type="number" name="nik" class="form-control @error('nik') is-invalid @enderror" value="{{ old('nik') }}" >
                                 @error('nik') <span class="error invalid-feedback">{{$message}}</span> @enderror 
                             </div>
-                            <div class="form-group">
+                            <div class="form-group animate">
                                 <label for="nama">Nama Lengkap :</label>
                                 <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror" value="{{old('nama')}}" >
                                 @error('nama') <span class="error invalid-feedback">{{$message}}</span> @enderror
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="form-group animate">
                                 <label for="bagian">Bagian :</label>
                                 <select name="bagian" class="form-control @error('bagian') is-invalid @enderror" >
                                     <option value="">- Pilih -</option>
@@ -49,27 +49,27 @@
                                 </select>
                                 @error('bagian') <span class="error invalid-feedback">{{$message}}</span> @enderror
                             </div>
-                            <div class="form-group">
+                            <div class="form-group animate">
                                 <label for="ext">Ext :</label>
                                 <input name="ext" type="number" class="form-control @error('ext') is-invalid @enderror" value="{{old('ext')}}" >
                                 @error('ext') <span class="error invalid-feedback">{{$message}}</span> @enderror
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group animate">
                         <label for="judul">Judul Sumbang Saran :</label>
                         <input name="judul" type="text" id="judul" class="form-control @error('judul') is-invalid @enderror" value="{{old('judul')}}" >
                         @error('judul') <span class="error invalid-feedback">{{$message}}</span> @enderror
                     </div>
                     <div class="row">
-                        <div class="col-md-6 col-sm-12">
+                        <div class="col-md-6 col-sm-12 animate">
                             <div class="form-group">
                                 <label for="kondisi-awal">Gambarkan Kondisi Awal :</label>
                                 <textarea name="kondisi_awal" class="form-control @error('kondisi_awal') is-invalid @enderror" rows="5" >{{old('kondisi_awal')}}</textarea>
                                 @error('kondisi_awal') <span class="error invalid-feedback">{{$message}}</span> @enderror
                             </div>        
                         </div>
-                        <div class="col-md-6 col-sm-12">
+                        <div class="col-md-6 col-sm-12 animate">
                             <div class="form-group">
                                 <label for="foto">Foto : (Boleh dikosongkan)</label><br>
                                 <img id="blah" style="height:100px; margin-bottom:10px;" src="{{url('assets/img/dummy.jpg')}}" alt="your image" />
@@ -78,18 +78,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group animate">
                         <label for="kondisi-akhir">Gambarkan Kondisi Yang Diinginkan :</label>
                         <textarea name="kondisi_akhir" class="form-control @error('kondisi_akhir') is-invalid @enderror" rows="5" >{{old('kondisi_akhir')}}</textarea>
                         @error('kondisi_akhir') <span class="error invalid-feedback">{{$message}}</span> @enderror
                     </div>
-                    <div class="form-group">
+                    <div class="form-group animate">
                         <label for="manfaat">Manfaat Bagi Perusahaan :</label>
                         <textarea name="manfaat" class="form-control @error('manfaat') is-invalid @enderror" rows="3" >{{old('manfaat')}}</textarea>
                         @error('manfaat') <span class="error invalid-feedback">{{$message}}</span> @enderror
                     </div>
 
-                    <button  type="submit" class="btn btn-success btn-lg float-right my-3"> Kirim</button>
+                    <button  type="submit" class="btn btn-success btn-lg float-right my-3 animate"> Kirim</button>
                 </form>
             </div>
         </div>
@@ -120,10 +120,21 @@
     </script>
 
     {{-- Parallax effect --}}
-    <script>
+    {{-- <script>
         $(window).on('load', function() {
             $('.form-page').addClass('show-form');
         });
+    </script> --}}
+
+    <script>
+        $(window).on('load', function() {
+            $('.animate').each(function(i) {
+                setTimeout(function() {
+                    $('.animate').eq(i).addClass('show-form');
+                }, 100 * i)
+            })
+        })
     </script>
+
 </body>
 </html>
