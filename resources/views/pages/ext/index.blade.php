@@ -6,7 +6,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0 text-dark"><i class="nav-icon fas fa-phone-volume"></i> Extension
+              <h1 class="m-0 text-dark"><i class="nav-icon fas fa-headphones"></i></i> Extension
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -20,19 +20,14 @@
       <!-- /.content-header -->
 
     <section class="content">
-       <div class="row content-jadwal">
-           <div class="col-md-6 ml-3">
-            <a href="#mymodal" data-remote="{{route('extension.create')}}" data-toggle="modal" data-target="#mymodal" data-title="Tambah Extension"  class="btn btn-info">
-                <i class="fa fa-plus"></i> Extension
-            </a>
-            </div>
-       </div>
-
-       <div class="row mt-2">
+      <div class="row mt-2">
            <div class="col-12">
                {{-- Content Card --}}
                <div class="card">
                    <div class="card-body">
+                    <a href="#mymodal" data-remote="{{route('extension.create')}}" data-toggle="modal" data-target="#mymodal" data-title="Tambah Extension"  class="btn btn-info mb-3">
+                        <i class="fa fa-plus"></i> Extension
+                    </a>
                        <div class="table-responsive table-jadwal">
                            <table id="extension" class="table table-sm table-bordered table-striped" style="width:100%">
                                 <thead class="text-center">
@@ -44,8 +39,8 @@
                                     </tr>        
                                 </thead>
                                 <tbody class="text-center">
+                                    @foreach($extension as $ext)
                                     <tr>
-                                        @foreach($extension as $ext)
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$ext->bagian->nama}}</td>
                                         <td>{{$ext->nama}}</td>
@@ -61,8 +56,8 @@
                                                 </button>
                                             </form>
                                         </td>
-                                        @endforeach
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                        </div>
