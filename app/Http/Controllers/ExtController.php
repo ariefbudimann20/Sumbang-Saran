@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Jadwal;
-use App\Penilaian;
+use App\Bagian;
+use App\Ext;
 use Validator;
 
-class JadwalController extends Controller
+class ExtController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,9 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        $jadwal = Jadwal::orderBY('created_at','DESC')->get();
-        return view('pages.jadwal.index',compact('jadwal'));
+        $extension = Ext::with('bagian')->orderBY('created_at','DESC')->get();
+
+        return view('pages.ext.index',compact('extension'));
     }
 
     /**
@@ -27,7 +28,9 @@ class JadwalController extends Controller
      */
     public function create()
     {
-        //
+        $bagian = Bagian::all();
+
+        return view('pages.ext.create',compact('bagian'));
     }
 
     /**
@@ -38,11 +41,26 @@ class JadwalController extends Controller
      */
     public function store(Request $request)
     {
-        jadwal::create([
-            'selesai' => $request->selesai,
-        ]);
-
-        return back()->with('success','Data Jadwal Berhasil Di Simpan');
+        $messages = [
+            'required' => ':attribute Harus Di Isi',
+            'max' => ':attribute Harus Di Isi maksimal :max Digit',
+        ];
+        $validator = Validator::make($request->all(),[
+            'nama'           => 'required|max:15',
+            'bagian_id'      => 'required'
+        ],$messages);
+  
+        if ($validator->fails()) {
+            // dd($request->all());
+             return back()->withInput($request->input())->withErrors($validator->errors());
+        }else{
+            Ext::create([
+                'bagian_id' => $request->bagian_id,
+                'nama'  => $request->nama
+            ]);
+    
+            return back()->with('success','Data Extension Berhasil Di Simpan');
+        }
     }
 
     /**
@@ -64,10 +82,10 @@ class JadwalController extends Controller
      */
     public function edit($id)
     {
-        $jadwal = Jadwal::findOrFail($id);
-        $pemenang = Penilaian::where('nilai','=',500)->get();
+        $bagian = Bagian::all();
+        $ext = Ext::with('bagian')->findOrFail($id);
         
-        return view('pages.jadwal.edit',compact('jadwal','pemenang'));
+        return view('pages.ext.edit',compact('ext','bagian'));
     }
 
     /**
@@ -81,23 +99,23 @@ class JadwalController extends Controller
     {
         $messages = [
             'required' => ':attribute Harus Di Isi',
+            'max' => ':attribute Harus Di Isi maksimal :max Digit',
         ];
         $validator = Validator::make($request->all(),[
-            'status'        => 'required',
-            'pemenang'        => 'required',
+            'nama'           => 'required|max:15',
+            'bagian_id'      => 'required'
         ],$messages);
   
         if ($validator->fails()) {
             // dd($request->all());
              return back()->withInput($request->input())->withErrors($validator->errors());
         }else{
+            $extension =Bagian::findOrFail($id);
+            $extension->bagian_id = $request->bagian_id;
+            $extension->nama = $request->nama;
+            $extension->save();
 
-            $jadwal = Jadwal::findOrFail($id);
-            $jadwal->pemenang = $request->pemenang;
-            $jadwal->status = $request->status;
-            $jadwal->save();
-                
-            return back()->with('success', 'Data Jadwal dan Pemenang Berhasil Di Simpan');
+            return back()->with('success','Data Bagian Berhasil Di Hapus');
         }
     }
 
@@ -109,9 +127,9 @@ class JadwalController extends Controller
      */
     public function destroy($id)
     {
-        $jadwal = Jadwal::findOrFail($id);
-        $jadwal->delete();
+        $extension = Ext::findOrFail($id);
+        $extension->delete();
 
-        return back()->with('success','Data Jadwal Berhasil Di Hapus');
+        return back()->with('success','Data Extension Berhasil Di Hapus');
     }
 }

@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Jadwal;
-use App\Penilaian;
-use Validator;
 
-class JadwalController extends Controller
+class IndexController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,9 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        $jadwal = Jadwal::orderBY('created_at','DESC')->get();
-        return view('pages.jadwal.index',compact('jadwal'));
+        $jadwal = Jadwal::where('status','=',0)->first();
+
+        return view('index',compact('jadwal'));
     }
 
     /**
@@ -38,11 +37,7 @@ class JadwalController extends Controller
      */
     public function store(Request $request)
     {
-        jadwal::create([
-            'selesai' => $request->selesai,
-        ]);
-
-        return back()->with('success','Data Jadwal Berhasil Di Simpan');
+        //
     }
 
     /**
@@ -64,10 +59,7 @@ class JadwalController extends Controller
      */
     public function edit($id)
     {
-        $jadwal = Jadwal::findOrFail($id);
-        $pemenang = Penilaian::where('nilai','=',500)->get();
-        
-        return view('pages.jadwal.edit',compact('jadwal','pemenang'));
+        //
     }
 
     /**
@@ -79,26 +71,7 @@ class JadwalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $messages = [
-            'required' => ':attribute Harus Di Isi',
-        ];
-        $validator = Validator::make($request->all(),[
-            'status'        => 'required',
-            'pemenang'        => 'required',
-        ],$messages);
-  
-        if ($validator->fails()) {
-            // dd($request->all());
-             return back()->withInput($request->input())->withErrors($validator->errors());
-        }else{
-
-            $jadwal = Jadwal::findOrFail($id);
-            $jadwal->pemenang = $request->pemenang;
-            $jadwal->status = $request->status;
-            $jadwal->save();
-                
-            return back()->with('success', 'Data Jadwal dan Pemenang Berhasil Di Simpan');
-        }
+        //
     }
 
     /**
@@ -109,9 +82,6 @@ class JadwalController extends Controller
      */
     public function destroy($id)
     {
-        $jadwal = Jadwal::findOrFail($id);
-        $jadwal->delete();
-
-        return back()->with('success','Data Jadwal Berhasil Di Hapus');
+        //
     }
 }

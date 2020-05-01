@@ -27,7 +27,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive table-penilaian">
-                            <table id="sumbang-saran" class="table table-striped table-sm" style="width:100%">
+                            <table id="penilaian" class="table table-bordered table-striped table-sm" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>NO</th>
@@ -60,7 +60,7 @@
                                             <a href="#mymodal" data-remote="{{route('penilaian.show', $ss->id)}}" data-toggle="modal" data-target="#mymodal" data-title="Detail Sumbang Saran: {{$ss->judul}}"  class="btn btn-success btn-sm">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            {{-- <form action="{{url('sumbang-saran',$ss->id)}}" method="POST" class="d-inline">
+                                            {{-- <form action="{{url('penilaian',$ss->id)}}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('delete')
                                                 <button class="btn btn-danger btn-sm" type="submit">
@@ -95,7 +95,7 @@
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#sumbang-saran').DataTable();
+            $('#penilaian').DataTable();
         } );
     </script>
 
