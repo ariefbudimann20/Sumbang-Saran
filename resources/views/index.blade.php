@@ -70,7 +70,7 @@
                     <input type="checkbox" class="form-check-input mt-2" id="yourBox">
                     <label class="form-check-label"> <small class="text-muted">Saya telah membaca dan memahami syarat & ketentuan diatas</small></label>
                 </div>
-                <button onclick="window.location.href='/input'" id="yourbutton" disabled class="btn btn-primary d-block mx-auto font-weight-bold setuju" style="width: 100px;">Setuju</button>
+                <button onclick="window.location.href='/input'" id="yourbutton" disabled class="btn btn-primary d-block mx-auto font-weight-bold setuju" style="width: 100px;" data-toggle="tooltip" data-placement="right" title="Setuju">Setuju</button>
             </div>
         </div>
     </div>
@@ -121,6 +121,10 @@
           $('.persetujuan-kanan').addClass('showpersetujuan');
       })
     </script>
-  
+
+    {{-- Tooltip --}}
+
+
+
   </body>
 </html>

@@ -88,7 +88,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
                 </div>
               </div>
             </div>
@@ -107,7 +107,7 @@
                 </div>
                 <div class="modal-body">
                     <button class="btn btn-info mb-3" data-toggle="collapse" data-target="#collapseTambahextension" aria-expanded="false" aria-controls="collapseTambahextension"><i class="fas fa-plus"></i> Tambah Extension</button>
-                    <!-- Collapse Tambah Bagian -->
+                    <!-- Collapse Tambah Extension -->
                     <div class="collapse" id="collapseTambahextension">
                         <div class="card card-body">
                             <div class="form-group mt-3">
@@ -117,7 +117,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Collapse Tambah Bagian -->   
+                    <!-- Collapse Tambah Extension -->   
                 <div class="table-responsive table-sm table-modalextension">
                     <table class="table table-striped table-bordered">
                       <thead>
@@ -161,7 +161,7 @@
                 </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
                 </div>
               </div>
             </div>
