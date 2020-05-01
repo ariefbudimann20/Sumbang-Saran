@@ -110,10 +110,10 @@ html    {
 
 
 /* Sumbang Saran Page */
-.form-page {
+.animate {
     opacity: 0;
-    transform: translateY(-500px);
-    transition: 1.5s;
+    transform: translateX(-500px);
+    transition: .5s;
 }
 
 .form-page form label {
@@ -123,7 +123,7 @@ html    {
 .form-page input, .form-page select, .form-page textarea {
     border: 1px solid #b5b5b5;
 }
-.form-page.show-form {
+.animate.show-form {
     opacity: 1;
     transform: translate(0,0);
 }

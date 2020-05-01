@@ -29,14 +29,12 @@
                        <div class="row">
                            <div class="col-md-6">
                                <div class="form-group text-center">
-                                   <label for="mulai">Mulai</label>
-                                   <input type="text" id="mulai" class="form-control text-center">
+                                   <input type="text" id="mulai" placeholder="Mulai" class="form-control text-center">  
                                </div>
                            </div>
                            <div class="col-md-6">
                                <div class="form-group text-center">
-                                   <label for="selesai">Selesai</label>
-                                   <input type="text" id="selesai" class="form-control text-center">
+                                   <input type="text" id="selesai" placeholder="Selesai" class="form-control text-center">
                                </div>
                            </div>
                        </div>

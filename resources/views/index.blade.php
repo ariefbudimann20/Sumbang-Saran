@@ -31,7 +31,7 @@
 
                 <div class="hitungmundur mx-auto d-block">
                   <h5 class="periode">Periode Sumbang Saran : </h5>
-                  <h5 class="font-italic font-weight-bold tanggal">24 April 2020 - 1 Mei 2020</h5>
+                  <h5 class="font-italic font-weight-bold tanggal">30 April 2020 - 31 Mei 2020</h5>
                   <p class="waktu-tersisa">Waktu tersisa :</p>
 
                   <div class="box">
@@ -89,7 +89,7 @@
   
     {{-- Jam Digital --}}
     <script>
-      var CountDownDate = new Date("May 1, 2020 12:00:00").getTime();
+      var CountDownDate = new Date("May 31, 2020 12:00:00").getTime();
 
       var x = setInterval(function() {
 
