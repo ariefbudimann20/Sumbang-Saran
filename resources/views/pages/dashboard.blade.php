@@ -60,7 +60,7 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3 class="text-white">76</h3>
+                <h3 class="text-white">{{$penilaian->count()}}</h3>
 
                 <p class="text-white">Saran yang telah dinilai oleh TIM PENILAI</p>
               </div>
@@ -75,7 +75,7 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>10</h3>
+                <h3>{{$peserta}}</h3>
 
                 <p>Peserta Terbaik</p>
               </div>

@@ -26,21 +26,30 @@
 
                <div class="collapse mt-1" id="JadwalCollapse">
                    <div class="card card-body">
-                       <div class="row">
-                           <div class="col-md-6">
-                               <div class="form-group text-center">
-                                   <input type="text" id="mulai" placeholder="Mulai" class="form-control text-center">  
-                               </div>
-                           </div>
-                           <div class="col-md-6">
-                               <div class="form-group text-center">
-                                   <input type="text" id="selesai" placeholder="Selesai" class="form-control text-center">
-                               </div>
-                           </div>
-                       </div>
-                       <div class="row justify-content-center">
-                           <button class="btn btn-info font-weight-bold">Set Jadwal</button>
-                       </div>
+                       <form action="{{url('jadwal')}}" method="POST">
+                        @csrf
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text"><i class="far fa-clock"></i></span>
+                                    </div>
+                                    <input type="text" id="daterange" class="form-control" disabled />  
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text"><i class="far fa-clock"></i></span>
+                                    </div>
+                                    <input type="text" id="daterange1" class="form-control" name="selesai" />  
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <button type="submit" class="btn btn-info font-weight-bold">Set Jadwal</button>
+                        </div>
+                       </form>
                    </div>
                </div>
             </div>
@@ -63,28 +72,31 @@
                                     </tr>        
                                 </thead>
                                 <tbody class="text-center">
+                                    @foreach($jadwal as $jwl)
                                     <tr>
-                                        <td>1</td>
-                                        <td>30 Maret 2020 - 29 April 2020</td>
-                                        <td>Selesai</td>
-                                        <td>Reza Fahlevi</td>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$jwl->created_at}} - {{$jwl->selesai}}</td>
+                                        <td>@if($jwl->status == 0)
+                                            <span class="badge badge-info p-2">Berjalan</span>
+                                            @else
+                                            <span class="badge badge-success p-2">Selesai</span>
+                                            @endif
+                                        </td>
+                                        <td>{{$jwl->pemenang}}</td>
                                         <td>
-                                            <button class="btn btn-sm btn-danger" type="submit">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
+                                            <a href="#mymodal" data-remote="{{route('jadwal.edit',$jwl->id)}}" data-toggle="modal" data-target="#mymodal" data-title="Ubah Extension"  class="btn btn-info btn-sm">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <form action="{{url('jadwal',$jwl->id)}}" method="POST" class="d-inline">
+                                                @csrf
+                                                @method('delete')
+                                                <button class="btn btn-danger btn-sm" type="submit">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>30 April 2020 - 29 Mei 2020</td>
-                                        <td>Sedang Berlangsung</td>
-                                        <td>-</td>
-                                        <td>
-                                            <button class="btn btn-sm btn-danger disabled" type="submit">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                        </div>
@@ -95,7 +107,66 @@
     </section>
 @endsection
 
+@push('after-style')
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+@endpush
 @push('after-script')
+    <!-- daterangepicker -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+ 
+<script>
+
+    var date = new Date();
+    var aaaa = date.getFullYear();
+    var gg = date.getDate();
+    var mm = (date.getMonth() + 1);
+
+    if (gg < 10)
+        gg = "0" + gg;
+
+    if (mm < 10)
+        mm = "0" + mm;
+
+    var cur_day = aaaa + "-" + mm + "-" + gg;
+
+    var hours = date.getHours()
+    var minutes = date.getMinutes()
+    var seconds = date.getSeconds();
+
+    if (hours < 10)
+        hours = "0" + hours;
+
+    if (minutes < 10)
+        minutes = "0" + minutes;
+
+    if (seconds < 10)
+        seconds = "0" + seconds;
+
+    var today = cur_day + " " + hours + ":" + minutes + ":" + seconds;
+        $('#daterange').daterangepicker({ 
+            "singleDatePicker": true,
+            startDate: today, // after open picker you'll see this dates as picked
+            locale: {
+                "format": 'YYYY-MM-DD hh:mm:ss',
+            }
+        }, function (start, end, label) {
+            //what to do after change
+        }).val(today); 
+
+        $('#daterange1').daterangepicker({
+            "singleDatePicker": true,
+            "timePicker": true,
+            "timePicker24Hour": true,
+            "minDate": "YYYY-MM-DD",
+            "maxDate": "YYYY-MM-DD",
+            autoUpdateInput: true,
+            "locale": {
+            "format": 'YYYY-MM-DD hh:mm:ss',
+            "cancelLabel": 'Clear'
+            }
+        });
+        </script>
 
     <!-- Datatables -->
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
@@ -104,21 +175,33 @@
         $(document).ready(function() {
             $('#jadwal').DataTable();
         } );
-    </script>
+</script>
 
-    {{-- Date Picker --}}
-    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="{{url('assets/plugins/jquery-ui/jquery-ui.css')}}">
-
-    <script>
-        $(document).ready(function(){
-            $('#selesai, #mulai').datepicker({
-                dateFormat:"dd MM yy",
-                showOtherMonths: true,
-                changeMonth: true,
-                changeYear:true,
+        <!-- Modal -->
+        <script>
+            jQuery(document).ready(function($){
+                $('#mymodal').on('show.bs.modal',function(e){
+                    var button = $(e.relatedTarget);
+                    var modal = $(this);
+                    modal.find('.modal-body').load(button.data('remote'));
+                    modal.find('.modal-title').html(button.data('title'));
+                });
             });
-        });
-    </script>
+        </script>
+    
+        <div class="modal fade" id="mymodal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-info">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                <i class="fa fa-spinner fa-spin"></i>
+                </div>
+            </div>
+            </div>
+        </div>
 @endpush

@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Jadwal;
-use App\Penilaian;
+use App\Bagian;
 use Validator;
 
-class JadwalController extends Controller
+class BagianController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,9 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        $jadwal = Jadwal::orderBY('created_at','DESC')->get();
-        return view('pages.jadwal.index',compact('jadwal'));
+        $bagian = Bagian::orderBy('created_at','DESC')->get();
+
+        return view('pages.bagian.index',compact('bagian'));
     }
 
     /**
@@ -27,7 +27,7 @@ class JadwalController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.bagian.create');
     }
 
     /**
@@ -38,11 +38,24 @@ class JadwalController extends Controller
      */
     public function store(Request $request)
     {
-        jadwal::create([
-            'selesai' => $request->selesai,
-        ]);
-
-        return back()->with('success','Data Jadwal Berhasil Di Simpan');
+        $messages = [
+            'required' => ':attribute Harus Di Isi',
+            'max' => ':attribute Harus Di Isi maksimal :max Digit',
+        ];
+        $validator = Validator::make($request->all(),[
+            'nama'           => 'required|max:15',
+        ],$messages);
+  
+        if ($validator->fails()) {
+            // dd($request->all());
+             return back()->withInput($request->input())->withErrors($validator->errors());
+        }else{
+            Bagian::create([
+                'nama' => $request->nama
+            ]);
+    
+            return back()->with('success','Data Nama Bagian Berhasil Di Simpan');
+        }
     }
 
     /**
@@ -64,10 +77,9 @@ class JadwalController extends Controller
      */
     public function edit($id)
     {
-        $jadwal = Jadwal::findOrFail($id);
-        $pemenang = Penilaian::where('nilai','=',500)->get();
-        
-        return view('pages.jadwal.edit',compact('jadwal','pemenang'));
+        $bagian = Bagian::findOrFail($id);
+
+        return view('pages.bagian.edit',compact('bagian'));
     }
 
     /**
@@ -81,23 +93,21 @@ class JadwalController extends Controller
     {
         $messages = [
             'required' => ':attribute Harus Di Isi',
+            'max' => ':attribute Harus Di Isi maksimal :max Digit',
         ];
         $validator = Validator::make($request->all(),[
-            'status'        => 'required',
-            'pemenang'        => 'required',
+            'nama'           => 'required|max:15',
         ],$messages);
   
         if ($validator->fails()) {
             // dd($request->all());
              return back()->withInput($request->input())->withErrors($validator->errors());
         }else{
-
-            $jadwal = Jadwal::findOrFail($id);
-            $jadwal->pemenang = $request->pemenang;
-            $jadwal->status = $request->status;
-            $jadwal->save();
-                
-            return back()->with('success', 'Data Jadwal dan Pemenang Berhasil Di Simpan');
+            $bagian = Bagian::findOrFail($id);
+            $bagian -> nama = $request->nama;
+            $bagian->save();
+    
+            return back()->with('success','Data Bagian Berhasil Di Ubah');
         }
     }
 
@@ -109,9 +119,9 @@ class JadwalController extends Controller
      */
     public function destroy($id)
     {
-        $jadwal = Jadwal::findOrFail($id);
-        $jadwal->delete();
+        $bagian =Bagian::findOrFail($id);
+        $bagian->delete();
 
-        return back()->with('success','Data Jadwal Berhasil Di Hapus');
+        return back()->with('success','Data Bagian Berhasil Di Hapus');
     }
 }

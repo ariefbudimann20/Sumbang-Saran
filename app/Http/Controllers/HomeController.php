@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\SumbangSaran;
 use App\Karyawan;
+use App\Penilaian;
 
 class HomeController extends Controller
 {
@@ -27,6 +28,9 @@ class HomeController extends Controller
     {   
         $sumbangsaran = SumbangSaran::all();
         $karyawan = Karyawan::all();
-        return view('pages.dashboard',compact('sumbangsaran','karyawan'));
+        $peserta = Penilaian::with('karyawan','sumbangsaran')->where('nilai','>',300)->count();
+        $penilaian = Penilaian::all();
+
+        return view('pages.dashboard',compact('sumbangsaran','karyawan','peserta','penilaian'));
     }
 }

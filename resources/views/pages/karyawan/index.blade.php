@@ -15,6 +15,7 @@
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
+<<<<<<< HEAD
           <div class="top-bardk">
               <div class="col-12">
                 <button class="btn btn-info kelola-bagian" data-toggle="modal" data-target="#modal-bagian"><i class="fas fa-tasks"></i> Bagian</button>
@@ -168,6 +169,8 @@
           </div>
           <!-- Modal Extension -->
 
+=======
+>>>>>>> 54d1162674680b1599efa1c2307ad6e5b5ae3a63
         </div><!-- /.container-fluid -->
       </div>
       <!-- /.content-header -->
@@ -179,7 +182,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive-sm table-datakaryawan">
-                            <table id="sumbang-saran" class="table table-striped table-sm table-bordered" style="width:100%">
+                            <table id="karyawan" class="table table-striped table-sm table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>NO</th>
@@ -225,7 +228,7 @@
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#sumbang-saran').DataTable();
+            $('#karyawan').DataTable();
         } );
     </script>
 @endpush

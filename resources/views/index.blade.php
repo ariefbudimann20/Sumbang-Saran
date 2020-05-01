@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
+    <link rel="icon" href="{{url('assets/img/favicon.ico')}}" type="image/x-icon" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{{url('assets/css/style.css')}}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -31,25 +32,32 @@
 
                 <div class="hitungmundur mx-auto d-block">
                   <h5 class="periode">Periode Sumbang Saran : </h5>
-                  <h5 class="font-italic font-weight-bold tanggal">30 April 2020 - 31 Mei 2020</h5>
+                  @if(!empty($jadwal))
+                  <h5 class="font-italic font-weight-bold tanggal">{{$jadwal->created_at->format('d M Y')}} - {{date('d M Y', strtotime($jadwal->selesai))}}</h5>
+                  @else
+                  <h5 class="font-italic font-weight-bold tanggal">Sudah Selesai</h5>
+                  @endif
+                  @if(!empty($jadwal))
+                  <input type="hidden" id="end" value="{{$jadwal->selesai}}">
                   <p class="waktu-tersisa">Waktu tersisa :</p>
 
                   <div class="box">
-                    <p id="hari" class="satuan-angka"></p>
+                    <p id="days" class="satuan-angka"></p>
                     <p class="satuan-teks">Hari</p>
                   </div>
                   <div class="box">
-                    <p id="jam" class="satuan-angka"></p>
+                    <p id="hours" class="satuan-angka"></p>
                     <p class="satuan-teks">Jam</p>
                   </div>
                   <div class="box">
-                    <p id="menit" class="satuan-angka"></p>
+                    <p id="minutes" class="satuan-angka"></p>
                     <p class="satuan-teks">Menit</p>
                   </div>
                   <div class="box">
-                    <p id="detik" class="satuan-angka"></p>
+                    <p id="seconds" class="satuan-angka"></p>
                     <p class="satuan-teks">Detik</p>
                   </div>
+                  @endif
                 </div>
 
             </div>
@@ -65,13 +73,19 @@
                           <li>Pasal 27 ayat 3 UU ITE : Melarang setiap orang dengan sengaja dan tanpa hak mendistribusikan dan/atau mentransmisikan dan/atau membuat dapat di aksesnya informasi Elektronik dan/atau Dokumen Elektronik yang memiliki muatan penghinaan dan/atau pencemaran nama baik</li>
                   </div>
                 </div>
-  
+                @if(!empty($jadwal))
                 <div class="form-check my-2">
                     <input type="checkbox" class="form-check-input mt-2" id="yourBox">
                     <label class="form-check-label"> <small class="text-muted">Saya telah membaca dan memahami syarat & ketentuan diatas</small></label>
                 </div>
+<<<<<<< HEAD
                 <button onclick="window.location.href='/input'" id="yourbutton" disabled class="btn btn-primary d-block mx-auto font-weight-bold setuju" style="width: 100px;" data-toggle="tooltip" data-placement="right" title="Setuju">Setuju</button>
             </div>
+=======
+                <button onclick="window.location.href='/input'" id="yourbutton" disabled class="btn btn-primary d-block mx-auto font-weight-bold setuju" style="width: 100px;">Setuju</button>
+                @endif
+              </div>
+>>>>>>> 54d1162674680b1599efa1c2307ad6e5b5ae3a63
         </div>
     </div>
 
@@ -89,29 +103,57 @@
   
     {{-- Jam Digital --}}
     <script>
-      var CountDownDate = new Date("May 31, 2020 12:00:00").getTime();
-
-      var x = setInterval(function() {
-
+    
+    var dt = document.getElementById("end").value;
+    var now = new Date(dt);
+    var dateNow = now.toLocaleDateString('en-us', {timeZone: 'Asia/Jakarta'});
+    dateNow = dateNow.split('/');
+    var dateString = dateNow[2] + '/' + dateNow[0] + '/' + dateNow[1] + ' ' + dt.split(' ')[1];
+    var countDownDate = new Date(dateString);
+    countDownDate.setMinutes(countDownDate.getMinutes() + 1);
+    //console.log(countDownDate);
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+        // Get todays date and time
         var now = new Date().getTime();
+        //console.log(now);
+        // Find the distance between now an the count down date
+        var distance = countDownDate.getTime() - now;
+        //console.log(distance);
 
-        var distance = CountDownDate - now;
-
-        var days = Math.floor(distance / (1000*60*60*24));
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (100 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000 );
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        document.getElementById("hari").innerHTML = days;
-        document.getElementById("jam").innerHTML = hours;
-        document.getElementById("menit").innerHTML = minutes;
-        document.getElementById("detik").innerHTML = seconds;
-
-        if (distance < 0 ) {
-          clearInterval(x);
-          document.getElementById("hitungmundur").innerHTML="EXPIRED";
+        if (days < 0)  {
+            days = 0;
         }
-      }, 1000 );
+
+        if (hours < 0) {
+            hours = 0;
+        }
+
+        if (minutes < 0) {
+            minutes = 0;
+        }
+
+        if (seconds < 0) {
+            seconds = 0;
+        }
+
+        $('#days').html(days);
+        $('#hours').html(hours);
+        $('#minutes').html(minutes);
+        $('#seconds').html(seconds);
+        $('#finish').html(now);
+
+        if (distance <= 0) {
+            clearInterval(x);
+            $('.countdown').css("display", "none");
+        }
+    }, 1000);
     </script>
 
     {{-- Parallax effect --}}

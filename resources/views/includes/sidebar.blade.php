@@ -48,6 +48,35 @@
               <p>Data Karyawan</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{url('user')}}" class="nav-link {{Request::is('user') ? 'active' : ''}}">
+              <i class="fas fa-user-friends"></i>
+              <p>Manajemen User</p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Lainya
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview" style="display: none;">
+              <li class="nav-item">
+                <a href="{{url('bagian')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Bagian</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('extension')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Extension</p>
+                </a>
+              </li>
+            </ul>
+          </li>
           @else
           <li class="nav-header">JOB TIM PENILAI</li>
           <li class="nav-item">

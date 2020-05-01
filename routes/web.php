@@ -12,9 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('index');
-}); 
+Route::get('/','IndexController@index');
 Route::resource('/input', 'InputController');
 
 Auth::routes();
@@ -25,3 +23,6 @@ Route::resource('karyawan','KaryawanController')->middleware('auth');
 Route::resource('penilaian','PenilaianController')->middleware('auth');
 Route::resource('peserta-terbaik','PesertaTerbaikController')->middleware('auth');
 Route::resource('jadwal','JadwalController')->middleware('auth');
+Route::resource('bagian', 'BagianController')->middleware('auth');
+Route::resource('extension', 'ExtController')->middleware('auth');
+Route::resource('user', 'UserController')->middleware('auth');

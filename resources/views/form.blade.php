@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
+    <link rel="icon" href="{{url('assets/img/favicon.ico')}}" type="image/x-icon" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{{url('assets/css/style.css')}}">
-    <link rel="stylesheet" href="css/fontawesome-free-5.13.0-web/css/all.css">
     <title>Sumbang Saran</title>
   </head>
   <body>
@@ -40,12 +40,9 @@
                                 <label for="bagian">Bagian :</label>
                                 <select name="bagian" class="form-control @error('bagian') is-invalid @enderror" >
                                     <option value="">- Pilih -</option>
-                                    <option value="HRD">HRD</option>
-                                    <option value="Produksi">Produksi</option>
-                                    <option value="Peyimpanan">Penyimpanan</option>
-                                    <option value="QA">QA</option>
-                                    <option value="QC">QC</option>
-                                    <option value="QC">IT</option>
+                                    @foreach($bagian as $bg)
+                                    <option value="{{$bg->id}}">{{$bg->nama}}</option>
+                                    @endforeach
                                 </select>
                                 @error('bagian') <span class="error invalid-feedback">{{$message}}</span> @enderror
                             </div>
@@ -54,6 +51,15 @@
                                 <input name="ext" type="number" class="form-control @error('ext') is-invalid @enderror" value="{{old('ext')}}" >
                                 @error('ext') <span class="error invalid-feedback">{{$message}}</span> @enderror
                             </div>
+                            {{-- <div class="form-group animate">
+                                <label for="ext">Ext :</label>
+                                <select name="ext" class="form-control @error('ext') is-invalid @enderror" >
+                                    <option value="">- Pilih -</option>
+                                    @foreach($ext as $et)
+                                    <option value="{{$et->id}}">{{$et->nama}}</option>
+                                    @endforeach
+                                @error('ext') <span class="error invalid-feedback">{{$message}}</span> @enderror
+                            </div> --}}
                         </div>
                     </div>
                     <div class="form-group animate">
