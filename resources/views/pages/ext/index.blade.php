@@ -6,11 +6,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-<<<<<<< HEAD
-              <h1 class="m-0 text-dark"><i class="nav-icon fas fa-clipboard-list"></i> Extension
-=======
               <h1 class="m-0 text-dark"><i class="nav-icon fas fa-headphones"></i></i> Extension
->>>>>>> 5a7321b6abe54e74238e885bb77c0fccd55dec6c
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
