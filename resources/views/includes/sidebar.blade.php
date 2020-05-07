@@ -65,13 +65,13 @@
             <ul class="nav nav-treeview" style="display: none;">
               <li class="nav-item">
                 <a href="{{url('bagian')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-layer-group nav-icon"></i></i>
                   <p>Bagian</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{url('extension')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-headphones nav-icon"></i></i>
                   <p>Extension</p>
                 </a>
               </li>

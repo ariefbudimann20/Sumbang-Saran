@@ -6,7 +6,11 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
+<<<<<<< HEAD
               <h1 class="m-0 text-dark"><i class="nav-icon fas fa-clipboard-list"></i> Extension
+=======
+              <h1 class="m-0 text-dark"><i class="nav-icon fas fa-headphones"></i></i> Extension
+>>>>>>> 5a7321b6abe54e74238e885bb77c0fccd55dec6c
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -20,19 +24,14 @@
       <!-- /.content-header -->
 
     <section class="content">
-       <div class="row content-jadwal">
-           <div class="col-md-6 ml-3">
-            <a href="#mymodal" data-remote="{{route('extension.create')}}" data-toggle="modal" data-target="#mymodal" data-title="Tambah Extension"  class="btn btn-info">
-                <i class="fa fa-plus"></i> Extension
-            </a>
-            </div>
-       </div>
-
-       <div class="row mt-2">
+      <div class="row mt-2">
            <div class="col-12">
                {{-- Content Card --}}
                <div class="card">
                    <div class="card-body">
+                    <a href="#mymodal" data-remote="{{route('extension.create')}}" data-toggle="modal" data-target="#mymodal" data-title="Tambah Extension"  class="btn btn-info mb-3">
+                        <i class="fa fa-plus"></i> Extension
+                    </a>
                        <div class="table-responsive table-jadwal">
                            <table id="extension" class="table table-sm table-bordered table-striped" style="width:100%">
                                 <thead class="text-center">

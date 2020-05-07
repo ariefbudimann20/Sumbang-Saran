@@ -37,7 +37,7 @@
         <div class="form-group">
             <label for="foto">Foto :</label><br>
             <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="{{url('assets/images',$ss->foto)}}" data-lightbox="image-1">
-                <img style="width:auto; height:200px; margin-bottom:10px;" src="{{url('assets/images',$ss->foto)}}" /></a>
+                <img style="width:auto; height:150px; margin-bottom:10px;" src="{{url('assets/images',$ss->foto)}}" /></a>
             </div>
         </div>
     </div>

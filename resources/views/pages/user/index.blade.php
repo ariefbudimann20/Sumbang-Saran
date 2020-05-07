@@ -20,19 +20,14 @@
       <!-- /.content-header -->
 
     <section class="content">
-       <div class="row content-jadwal">
-           <div class="col-md-6 ml-3">
-            <a href="#mymodal" data-remote="{{route('user.create')}}" data-toggle="modal" data-target="#mymodal" data-title="Tambah User"  class="btn btn-info">
-                <i class="fa fa-plus"></i> User
-            </a>
-            </div>
-       </div>
-
        <div class="row mt-2">
            <div class="col-12">
                {{-- Content Card --}}
                <div class="card">
                    <div class="card-body">
+                    <a href="#mymodal" data-remote="{{route('user.create')}}" data-toggle="modal" data-target="#mymodal" data-title="Tambah User"  class="btn btn-info mb-3">
+                        <i class="fa fa-plus"></i> User
+                    </a>
                        <div class="table-responsive table-jadwal">
                            <table id="user" class="table table-sm table-bordered table-striped" style="width:100%">
                                 <thead class="text-center">
