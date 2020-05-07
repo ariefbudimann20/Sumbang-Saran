@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Karyawan;
+use App\SumbangSaran;
+use App\Penilaian;
 
 class KaryawanController extends Controller
 {
@@ -18,8 +20,9 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        $karyawan = Karyawan::orderBY('created_at','DESC')->get();
-
+        
+        $karyawan = Karyawan::with('bagian','ext')->orderBY('created_at','DESC')->get();
+        // dd($karyawan);
         return view('pages.karyawan.index',compact('karyawan'));
     }
 
@@ -88,6 +91,13 @@ class KaryawanController extends Controller
     {
         $karyawan = Karyawan::findorFail($id);
         $karyawan->delete();
+
+        $karyawan = SumbangSaran::where('karyawan_id', $id);
+        $karyawan->delete();
+
+        $penilaian = Penilaian::where('karyawan_id',$id);
+        $penilaian->delete();
+
 
         return back()->with('success','Data Karyawan Berhasil Di Hapus');
     }

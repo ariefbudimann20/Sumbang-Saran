@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/','IndexController@index');
-Route::resource('/input', 'InputController');
+// Route::post('input/fetch','InputController@fetch')->name('option.fetch');
+// Route::resource('input','InputController');
+Route::get('input', 'InputController@index');
+Route::get('ajax-sub','InputController@search');
+Route::post('input','InputController@store');
 
 Auth::routes();
 

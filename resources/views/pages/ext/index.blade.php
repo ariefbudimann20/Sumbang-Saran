@@ -6,7 +6,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0 text-dark"><i class="nav-icon fas fa-phone-volume"></i> Extension
+              <h1 class="m-0 text-dark"><i class="nav-icon fas fa-clipboard-list"></i> Extension
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -44,8 +44,8 @@
                                     </tr>        
                                 </thead>
                                 <tbody class="text-center">
+                                    @foreach($extension as $ext)
                                     <tr>
-                                        @foreach($extension as $ext)
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$ext->bagian->nama}}</td>
                                         <td>{{$ext->nama}}</td>
@@ -61,8 +61,8 @@
                                                 </button>
                                             </form>
                                         </td>
-                                        @endforeach
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                        </div>

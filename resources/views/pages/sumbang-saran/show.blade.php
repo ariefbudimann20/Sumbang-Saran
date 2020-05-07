@@ -16,13 +16,13 @@
     <div class="col-md-6 .col-sm-12">
         <div class="form-group">
             <label for="bagian">Bagian :</label>
-            <p>{{$ss->karyawan->bagian}}</p>
+            <p>{{$ss->karyawan->bagian->nama}}</p>
         </div>
     </div>
     <div class="col-md-6 .col-sm-12">
         <div class="form-group">
             <label for="ext">Ext :</label>
-            <p>{{$ss->karyawan->ext}}</p>
+            <p>{{$ss->karyawan->ext->nama}}</p>
         </div>
     </div>
 </div>

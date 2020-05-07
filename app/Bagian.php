@@ -12,4 +12,8 @@ class Bagian extends Model
     public function ext(){
         return $this->hasMany(Ext::class,'bagian_id');
     }
+
+    public function karyawan(){
+        return $this->hasMany(Karyawan::class,'bagian_id',);
+    }
 }

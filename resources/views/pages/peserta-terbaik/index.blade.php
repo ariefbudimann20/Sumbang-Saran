@@ -35,6 +35,7 @@
                                         <th>BAGIAN</th>
                                         <th>EXT</th>
                                         <th>JUDUL</th>
+                                        <th>PERIODE</th>
                                         <th>NILAI</th>
                                     </tr>
                                 </thead>
@@ -44,9 +45,10 @@
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$ky->karyawan->nik}}</td>
                                         <td>{{$ky->karyawan->nama}}</td>
-                                        <td>{{$ky->karyawan->bagian}}</td>
-                                        <td>{{$ky->karyawan->ext}}</td>
+                                        <td>{{$ky->karyawan->bagian->nama}}</td>
+                                        <td>{{$ky->karyawan->ext->nama}}</td>
                                         <td>{{$ky->sumbangsaran->judul}}</td>
+                                        <td>{{$ky->sumbangsaran->periode}}</td>
                                         <td>{{$ky->nilai}}</td>
                                     </tr>
                                     @endforeach

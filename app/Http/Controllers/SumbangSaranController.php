@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Validator;
 use App\SumbangSaran;
 use App\Karyawan;
+use App\Penilaian;
 
 class SumbangSaranController extends Controller
 {
@@ -92,6 +93,9 @@ class SumbangSaranController extends Controller
     {
         $ss = SumbangSaran::findOrFail($id);
         $ss->delete();
+
+        $penilaian = Penilaian::where('sumbang_saran_id',$id);
+        $penilaian->delete();
 
         return back()->with('success','Data Sumbang Saran Berhasil Di Hapus');
     }

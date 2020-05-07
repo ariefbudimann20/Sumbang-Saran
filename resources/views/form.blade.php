@@ -22,6 +22,11 @@
                 </div>
                 <form action="{{url('input')}}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @if(!empty($jadwal))
+                    <input type="hidden" name="periode" value="{{$jadwal->created_at->format('d M Y')}} - {{date('d M Y', strtotime($jadwal->selesai))}}">
+                    @else
+                    <input type="hidden" name="periode" value="Periode Sudah Habis">
+                    @endif
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group animate">
@@ -38,28 +43,24 @@
                         <div class="col-md-6">
                             <div class="form-group animate">
                                 <label for="bagian">Bagian :</label>
-                                <select name="bagian" class="form-control @error('bagian') is-invalid @enderror" >
+                                <select name="bagian" id="bagian" class="form-control @error('bagian') is-invalid @enderror" value="{{old('bagian')}}" >
                                     <option value="">- Pilih -</option>
                                     @foreach($bagian as $bg)
                                     <option value="{{$bg->id}}">{{$bg->nama}}</option>
+                                    {{-- <option value="{{$bg->id}}"  {{ old('bagian') == $bg->id ? 'selected' : '' }}>
+                                        {{$bg->nama}}
+                                    </option> --}}
                                     @endforeach
                                 </select>
                                 @error('bagian') <span class="error invalid-feedback">{{$message}}</span> @enderror
                             </div>
                             <div class="form-group animate">
                                 <label for="ext">Ext :</label>
-                                <input name="ext" type="number" class="form-control @error('ext') is-invalid @enderror" value="{{old('ext')}}" >
+                                <select name="ext" id="subbagian" class="form-control @error('ext') is-invalid @enderror" value="{{old('ext')}}">
+                                    <option value="">- Pilih -</option>
+                                </select>
                                 @error('ext') <span class="error invalid-feedback">{{$message}}</span> @enderror
                             </div>
-                            {{-- <div class="form-group animate">
-                                <label for="ext">Ext :</label>
-                                <select name="ext" class="form-control @error('ext') is-invalid @enderror" >
-                                    <option value="">- Pilih -</option>
-                                    @foreach($ext as $et)
-                                    <option value="{{$et->id}}">{{$et->nama}}</option>
-                                    @endforeach
-                                @error('ext') <span class="error invalid-feedback">{{$message}}</span> @enderror
-                            </div> --}}
                         </div>
                     </div>
                     <div class="form-group animate">
@@ -94,7 +95,7 @@
                         <textarea name="manfaat" class="form-control @error('manfaat') is-invalid @enderror" rows="3" >{{old('manfaat')}}</textarea>
                         @error('manfaat') <span class="error invalid-feedback">{{$message}}</span> @enderror
                     </div>
-
+                    {{ csrf_field() }}
                     <button  type="submit" class="btn btn-success btn-lg float-right my-3 animate"> Kirim</button>
                 </form>
             </div>
@@ -103,10 +104,28 @@
     @include('sweetalert::alert')
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="{{url('assets/plugins/jquery/jquery.min.js')}}"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
- 
+
+    <script>
+        $('#bagian').on('change',function(e){
+            console.log(e);
+
+            var bagian_id = e.target.value;
+
+            // Ajax
+            $.get('ajax-sub?bagian=' + bagian_id, function(data){
+                // console.log(data);
+                $('#subbagian').html('<option value="">- Pilih -</option>');
+                $.each(data,function(index, subbagObj){
+                    $('#subbagian').append('<option value="'+subbagObj.id+'">'+subbagObj.nama+'</option>')
+                })  
+            });
+        });
+    </script>
+
     <script>
         function readURL(input) {
         if (input.files && input.files[0]) {
@@ -131,7 +150,7 @@
             $('.form-page').addClass('show-form');
         });
     </script> --}}
-
+ 
     <script>
         $(window).on('load', function() {
             $('.animate').each(function(i) {

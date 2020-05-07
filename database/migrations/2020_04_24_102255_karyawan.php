@@ -17,8 +17,8 @@ class Karyawan extends Migration
             $table->id();
             $table->string('nik');
             $table->string('nama');
-            $table->string('bagian');
-            $table->string('ext');
+            $table->integer('bagian_id');
+            $table->integer('ext_id');
             $table->timestamps();
         });
     }

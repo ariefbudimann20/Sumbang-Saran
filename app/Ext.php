@@ -12,4 +12,8 @@ class Ext extends Model
     public function bagian(){
         return $this->belongsTo(Bagian::class,'bagian_id','id');
     }
+
+    public function karyawan(){
+        return $this->hasMany(Karyawan::class,'ext_id');
+    }
 }

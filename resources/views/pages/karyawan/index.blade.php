@@ -43,8 +43,8 @@
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$ky->nik}}</td>
                                         <td>{{$ky->nama}}</td>
-                                        <td>{{$ky->bagian}}</td>
-                                        <td>{{$ky->ext}}</td>
+                                        <td>{{$ky->bagian->nama}}</td>
+                                        <td>{{$ky->ext->nama}}</td>
                                         <td>
                                             <form action="{{url('karyawan',$ky->id)}}" method="POST" class="d-inline">
                                                 @csrf

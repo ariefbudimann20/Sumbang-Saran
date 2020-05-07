@@ -35,6 +35,7 @@
                                         <th>NAMA</th>
                                         <th>JUDUL</th>
                                         <th>BAGIAN</th>
+                                        <th>PERIODE</th>
                                         <th>NILAI</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -46,7 +47,8 @@
                                         <td>{{$ss->karyawan->nik}}</td>
                                         <td>{{$ss->karyawan->nama}}</td>
                                         <td>{{$ss->judul}}</td>
-                                        <td>{{$ss->karyawan->bagian}}</td>
+                                        <td>{{$ss->karyawan->bagian->nama}}</td>
+                                        <td>{{$ss->periode}}</td>
                                         <td> @if($ss->penilaian->count() > 0)
                                                 @foreach($ss->penilaian as $area)
                                                 {{$area->nilai}}

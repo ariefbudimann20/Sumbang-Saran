@@ -21,13 +21,13 @@
         <div class="col-md-6 col-sm-12">
             <div class="form-group">
                 <label>Bagian :</label>
-                <p>{{$ss->karyawan->bagian}}</p>
+                <p>{{$ss->karyawan->bagian->nama}}</p>
             </div>
         </div>
         <div class="col-md-6 col-sm-12">
             <div class="form-group">
                 <label>Ext :</label>
-                <p>{{$ss->karyawan->ext}}</p>
+                <p>{{$ss->karyawan->ext->nama}}</p>
             </div>
         </div>
     </div>
@@ -122,7 +122,7 @@
                 </pre>
             </div>
         </div>         
-    @endif
+
   
 </div>
 <hr>
@@ -131,6 +131,7 @@
     <button type="submit" class="btn btn-primary waves-effect waves-light ">Simpan</button>
 </div>
 </form>
+@endif
 
 <script>
     function startHitung(){

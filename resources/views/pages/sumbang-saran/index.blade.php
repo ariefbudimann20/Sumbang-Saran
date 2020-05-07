@@ -65,6 +65,7 @@
                                         <th>NAMA</th>
                                         <th>JUDUL</th>
                                         <th>BAGIAN</th>
+                                        <th>PERIODE</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -75,7 +76,8 @@
                                         <td>{{$ss->karyawan->nik}}</td>
                                         <td>{{$ss->karyawan->nama}}</td>
                                         <td>{{$ss->judul}}</td>
-                                        <td>{{$ss->karyawan->bagian}}</td>
+                                        <td>{{$ss->karyawan->bagian->nama}}</td>
+                                        <td>{{$ss->periode}}</td>
                                         <td>
                                             <a href="#mymodal" data-remote="{{route('sumbang-saran.show', $ss->id)}}" data-toggle="modal" data-target="#mymodal" data-title="Detail Sumbang Saran: {{$ss->judul}}"  class="btn btn-info btn-sm">
                                                 <i class="fa fa-eye"></i>

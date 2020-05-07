@@ -21,6 +21,7 @@ class SumbangSaran extends Migration
             $table->longText('kondisi_awal');
             $table->longText('kondisi_akhir');
             $table->longText('manfaat');
+            $table->string('periode');
             $table->timestamps();
         });
     }
