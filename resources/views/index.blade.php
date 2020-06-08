@@ -12,57 +12,112 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 
+    {{-- Google Font --}}
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+
     <title>Sumbang Saran</title>
   </head>
-  <body>
+  <body id="index">
     <div class="container-fluid">
-        <div class="row">
-          <div class="col-12 float-right"> 
-            <ul class="nav float-right">
-              <li class="nav-item">
-                <a href="{{url('/login')}}" class="btn btn-danger mt-2 font-weight-bold"><i class="fas fa-unlock-alt"></i> Login</a>
-              </li>
-            </ul>
+        <div class="row logo">
+          <div class="col-6"> 
+            <div class="icare">
+              <img src="{{url('assets/img/icare.png')}}" width="130px" alt="">
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="kimiafarma">
+              <img src="{{url('assets/img/kimiafarma.png')}}" width="130px" alt="">
+            </div> 
           </div>
         </div>
-        <div class="row justify-content-center no-gutters persetujuan">
-            <div class="col-md-4 offset-md-1 col-sm-12 persetujuan-kiri">
-              <h2 class="text-center">Sumbang Saran Karyawan</h2>
-              <img src="{{url('assets/img/banner-persetujuan.png')}}" alt=" Responsive Image" class="img-fluid mx-auto d-block">
+        <div class="row justify-content-center konten">
+            <div class="col-lg-6 col-sm-12 konten-kiri">
+              <h1>Sumbang Saran </h1>
+              <h2>PT. Kimia Farma Plant Jakarta</h2>
+              <br>
+              <h4 class="periode">Periode Sumbang Saran : </h4>
+              @if(!empty($jadwal))
+              <h3 class="font-italic  tanggal">{{$jadwal->created_at->format('d M Y')}} - {{date('d M Y', strtotime($jadwal->selesai))}}</h3>
+              @else
+              <h3 class="font-italic  tanggal">Sudah Selesai</h3>
+              @endif
+              @if(!empty($jadwal))
+              <input type="hidden" id="end" value="{{$jadwal->selesai}}">
 
-                <div class="hitungmundur mx-auto d-block">
-                  <h5 class="periode">Periode Sumbang Saran : </h5>
-                  @if(!empty($jadwal))
-                  <h5 class="font-italic font-weight-bold tanggal">{{$jadwal->created_at->format('d M Y')}} - {{date('d M Y', strtotime($jadwal->selesai))}}</h5>
-                  @else
-                  <h5 class="font-italic font-weight-bold tanggal">Sudah Selesai</h5>
-                  @endif
-                  @if(!empty($jadwal))
-                  <input type="hidden" id="end" value="{{$jadwal->selesai}}">
-                  <p class="waktu-tersisa">Waktu tersisa :</p>
+              <br>
+              <p class="waktu-tersisa">Waktu tersisa :</p>
+                <div class="hitungmundur">
 
                   <div class="box">
                     <p id="days" class="satuan-angka"></p>
                     <p class="satuan-teks">Hari</p>
                   </div>
+                  <div class="box-span">
+                    <p>:</p>
+                  </div>
                   <div class="box">
                     <p id="hours" class="satuan-angka"></p>
                     <p class="satuan-teks">Jam</p>
+                  </div>
+                  <div class="box-span">
+                    <p>:</p>
                   </div>
                   <div class="box">
                     <p id="minutes" class="satuan-angka"></p>
                     <p class="satuan-teks">Menit</p>
                   </div>
+                  <div class="box-span">
+                    <p>:</p>
+                  </div>
                   <div class="box">
                     <p id="seconds" class="satuan-angka"></p>
                     <p class="satuan-teks">Detik</p>
                   </div>
-                  @endif
                 </div>
-
+              @else
+              <p class="waktu-tersisa">Waktu tersisa :</p>
+              <div class="hitungmundur">
+                <div class="box">
+                  <p class="satuan-angka">0</p>
+                  <p class="satuan-teks">Hari</p>
+                </div>
+                <div class="box-span">
+                  <p>:</p>
+                </div>
+                <div class="box">
+                  <p class="satuan-angka">0</p>
+                  <p class="satuan-teks">Jam</p>
+                </div>
+                <div class="box-span">
+                  <p>:</p>
+                </div>
+                <div class="box">
+                  <p class="satuan-angka">0</p>
+                  <p class="satuan-teks">Menit</p>
+                </div>
+                <div class="box-span">
+                  <p>:</p>
+                </div>
+                <div class="box">
+                  <p class="satuan-angka">0</p>
+                  <p class="satuan-teks">Detik</p>
+                </div>
+              </div>
+              @endif
+              <a href="{{url('/login')}}" class="btn btn-warning btn-lg mt-4 font-weight-bold login"><i class="fas fa-sign-in-alt"></i> Login Sekarang</a>
+                
             </div>
 
-              <div class="col-md-6 col-sm-12 text-center persetujuan-kanan">
+            <div class="col-lg-6 col-sm-12 konten-kanan">
+              <img src="{{url('assets/img/illustration.png')}}" width="500px">
+            </div>
+
+            {{-- <div class="col-lg-6 col-sm-12 konten-kanan">
+              <img src="{{url('assets/img/illustration.png')}}" alt="">
+            </div> --}}
+
+              {{-- <div class="col-lg-6 col-sm-12 text-center konten-kanan">
                 <h4 class="text-center">Syarat & Ketentuan</h4>
                 <div class="row justify-content-center">
                   <div class="ketentuan text-left">
@@ -70,9 +125,10 @@
                           <li>Peserta yang mengisi Fitur ini harus mengikuti aturan yang berlaku</li>
                           <li>Peserta harus menggunakan bahasa yang baik dan benar</li>
                           <li>Peserta yang menggunakan Fitur ini harus menggunakan data yang valid dan tidak mengada-ada</li>
-                          <li>Pasal 27 ayat 3 UU ITE : Melarang setiap orang dengan sengaja dan tanpa hak mendistribusikan dan/atau mentransmisikan dan/atau membuat dapat di aksesnya informasi Elektronik dan/atau Dokumen Elektronik yang memiliki muatan penghinaan dan/atau pencemaran nama baik</li>
-                  </div>
-                </div>
+                          <li>Pasal 27 ayat 3 UU ITE : Melarang setiap orang dengan sengaja dan tanpa hak mendistribusikan dan/atau mentransmisikan dan/atau membuat dapat di aksesnya informasi Elektronik dan/atau Dokumen Elektronik yang memiliki muatan penghinaan dan/atau pencemaran nama baik</li> 
+                        </div>
+                      </div>
+                <img src="{{url('assets/img/illustration.png')}}" alt="">
                 @if(!empty($jadwal))
                 <div class="form-check my-2">
                     <input type="checkbox" class="form-check-input mt-2" id="yourBox">
@@ -80,7 +136,7 @@
                 </div>
                 <button onclick="window.location.href='/input'" id="yourbutton" disabled class="btn btn-primary d-block mx-auto font-weight-bold setuju" style="width: 100px;">Setuju</button>
                 @endif
-              </div>
+              </div> --}}
         </div>
     </div>
 
@@ -154,8 +210,8 @@
     {{-- Parallax effect --}}
     <script>  
       $(window).on('load', function() {
-          $('.persetujuan-kiri').addClass('showpersetujuan');
-          $('.persetujuan-kanan').addClass('showpersetujuan');
+          $('.konten-kiri').addClass('showkonten');
+          $('.konten-kanan').addClass('showkonten');
       })
     </script>
 

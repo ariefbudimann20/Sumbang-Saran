@@ -1,109 +1,249 @@
-html    {
+html {
     position: relative;
+    height: 100%;
 }
 
-/* Persetujuan Page */
-.persetujuan {
-    position: relative;
+body#index {
+    background: url(../img/bg-ss.png) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: white;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.persetujuan-kiri {
-    color: #204f8f;
+body#input {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* konten Page */
+.overlay {
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: #333;
+    background-color: #fff;
+    z-index: 99;
+    opacity: 1;
+}
+
+.overlay .box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 400px;
+    height: 400px;
+    background-image: url(../img/closed.jpg);
+    background-position-y: top;
+    background-position-x: center;
+    background-repeat: no-repeat;
+    background-size: 250px;
+    overflow: hidden;
+}
+
+.overlay .box span:nth-child(1) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 10px;
+    width: 100%;
+    background: #2B60FF;
+    border-radius: 10px;
+    animation: animate-top 5s linear infinite;
+}
+
+.overlay .box span:nth-child(2) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 10px;
+    background: #F47B25;
+    border-radius: 10px;
+    animation: animate-right 5s linear infinite;
+    animation-delay: 2.5s;
+}
+
+.overlay .box span:nth-child(3) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 10px;
+    width: 100%;
+    background: #2B60FF;
+    border-radius: 10px;
+    animation: animate-bottom 5s linear infinite;
+}
+
+.overlay .box span:nth-child(4) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 10px;
+    background: #F8CB28;
+    border-radius: 10px;
+    animation: animate-left 5s linear infinite;
+    animation-delay: 2.5s;
+}
+
+@keyframes animate-top {
+    0%{
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translateX(100%);
+    }
+}
+@keyframes animate-left {
+    0%{
+        transform: translateY(100%);
+    }
+    100%{
+        transform: translateY(-100%);
+    }
+}
+@keyframes animate-right {
+    0%{
+        transform: translateY(-100%);
+    }
+    100%{
+        transform: translateY(100%);
+    }
+}
+@keyframes animate-bottom {
+    0%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
+
+.overlay p {
+    margin-top: 170px;
+    font-size: 24px;
+    font-weight: 500;
+    font-family: 'Sriracha', cursive;
+    text-align: center;
+}
+
+.logo .icare {
+    padding: 3px;
+    margin-top: 5px;
+    width: 130px;
+    height: 130px;
+    border-radius: 100%;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+.logo .kimiafarma {
+    margin-top: 5px;
+    float: right;
+    align-items: center;
+    padding: 30px 10px 0 0;
+    width: 130px;
+    height: 130px;
+    border-radius: 100%;
+    background-color: white;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, .5);
+}
+
+.konten {
+    margin-top: -70px;
+    align-items: center;
+    height: 650px;
+}
+
+.konten-kiri {
+    display: block;
+    margin-right: -200px;
     opacity: 0;
     transform: translateX(300px);
     transition: 2s;
 }
 
-.persetujuan-kiri h2 {
-    margin-top: 13%;
+.konten-kiri h1 {
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 50px;
+}
+
+.konten-kiri h2 {
+    font-size: 40px;
+    font-family: 'Fjalla One', sans-serif;
+
+}
+
+.konten-kiri h3 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.konten-kiri .tanggal {
+    color: #ffc107;
+    font-size: 32px;
+    font-weight: 550;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, .8);
 }
 
 .hitungmundur {
     overflow: hidden;
     width: 600px;
-    transform: translateX(20px);
-    z-index: 2;
-
 }
 
 .hitungmundur .box {
     float: left;
-    width: 80px;
-    height: 70px;
-    border: 2px solid #204f8f;
+    width: 100px;
+    height: 90px;
+}
+
+.hitungmundur .box-span {
+    float: left;
+    width: 20px;
+    height: 90px;
+}
+
+.hitungmundur .box-span p {
+    font-size: 40px;
 }
 
 .hitungmundur .box p {
     text-align: center;
-    color: #204f8f;
 }
 
 .hitungmundur .box .satuan-angka {
-    font-size: 30px;
-    margin-top: -2px;
+    font-size: 40px;
     margin-bottom: -10px;
 }
 
 .hitungmundur .box .satuan-teks {
     font-size: 16px;
+    margin-top: 5px;
 }
 
-.persetujuan-kanan {
-    color: #204f8f;
+.konten-kanan {
     opacity: 0;
     transform: translateX(-300px);
     transition: 2s;
 }
 
-.persetujuan-kanan h4 {
-    margin-top: 15%;
+.konten-kanan img {
+    margin-top: -80px;
+    margin-left: 100px;
 }
 
-.persetujuan-kanan a {
-    background-color: #204f8f;
-    border: 1px solid #204f8f;
-}
-
-
-.ketentuan  {
-    width: 500px;
-    margin-top: 10px;
-    box-sizing: border-box;
-    border: 2px solid #6c757d;
-    border-radius: 15px;
-    padding : 20px;
-}
-
-.ketentuan h5 {
-    font-style: italic;
-}
-
-
-.form-check small {
-    font-style: italic;
-    font-weight: 500;
-
-}
-
-
-.ketentuan  {
-    width: 500px;
-    margin-top: 10px;
-    box-sizing: border-box;
-    border: 2px solid #204f8f;
-    border-radius: 15px;
-    padding : 20px;
-}
-
-.form-check small {
-    font-style: italic;
-    font-weight: 500;
-
-}
 
 /* Parallax Persetujuan Page */
-.persetujuan-kiri.showpersetujuan , .persetujuan-kanan.showpersetujuan {
+.konten-kiri.showkonten , .konten-kanan.showkonten {
     opacity: 1;
     transform: translate(0,0);
 }
@@ -142,12 +282,6 @@ html    {
     }
     /* Content */
     /* DASHBOARD */
-
-    /* JADWAL SUMBANG SARAN */
-    /* Content */
-
-    /* Content */
-    /* JADWAL SUMBANG SARAN */
 
     /* KELOLA SUMBANG SARAN */
     /* Top bar */
@@ -214,3 +348,160 @@ html    {
     }
     /* Penilaian */
 /* TIM PENILAI PAGE */
+
+
+/* RESPONSIVELY */
+@media screen and (max-width: 1440px) {
+    .konten-kiri h2 {
+        font-size: 40px;
+    }
+    
+    .konten-kanan  img {
+        width: 600px;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .konten-kiri h2 {
+        font-size: 48px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+
+    .konten-kanan {
+        order: -1;
+    }
+
+    .konten-kanan img {
+        display: block;
+        margin: 0 auto;
+        width: 400px;
+    }
+
+    .login {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .logo .icare img, .logo .kimiafarma img {
+        width: 80px;
+    }
+
+    .logo .icare, .logo .kimiafarma {
+        width: 80px;
+        height: 80px;
+    }
+
+    .logo .kimiafarma {
+        padding: 0;
+        padding-top: 20px;
+    }
+
+    .konten {
+        margin-top: 20px;
+    }
+
+    .konten-kanan img {
+        width: 300px;
+    }
+
+    .konten-kiri {
+        margin-right: 0;
+        text-align: center;
+    }
+
+    .konten-kiri h1 {
+        font-size: 30px;
+    }
+
+    .konten-kiri h2 {
+        font-size: 24px;
+    }
+
+    .konten-kiri .periode {
+        font-size: 18px;
+    }
+
+    .konten-kiri .tanggal {
+        font-size: 24px;
+    }
+
+    .konten-kiri .waktu-tersisa {
+        margin-bottom: -10px;
+        text-align: center;
+    }
+
+    .konten-kiri .hitungmundur {
+        width: 300px;
+        margin-left: 40px;
+        margin-bottom: -30px;
+    }
+
+    .konten-kiri .hitungmundur .box {
+        width: 50px;
+    }
+
+    .konten-kiri .hitungmundur .box-span p {
+        font-size: 26px;
+    }
+
+    .konten-kiri .hitungmundur .box .satuan-angka {
+        font-size: 26px;
+    }
+
+    .konten-kiri .hitungmundur .box .satuan-teks {
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .overlay .box {
+        width: 300px;
+        height: 400px;
+    }
+
+    .overlay .box p {
+        font-size: 18px;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    .konten-kiri h1 {
+        font-size: 56px;
+    }
+
+    .konten-kiri h2 {
+        font-size: 48px;
+    }
+
+    .konten-kiri .tanggal {
+        font-size: 48px;
+    }
+}
+
+
+@media screen and (min-width: 1280px) {
+    body#index {
+        overflow: hidden;
+    }
+}
+
+@media screen and (min-height: 900px) {
+    .konten {
+        margin-top: 80px;
+    }
+}
+
+@media screen and (min-height: 800px) {
+    .konten {
+        margin-top: 20px;
+    }
+}
+
+/* RESPONSIVELY */

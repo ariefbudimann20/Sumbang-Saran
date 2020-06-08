@@ -9,9 +9,28 @@
     <link rel="icon" href="{{url('assets/img/favicon.ico')}}" type="image/x-icon" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{{url('assets/css/style.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+    {{-- Google Fonts --}}
+    <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
+
     <title>Sumbang Saran</title>
   </head>
-  <body>
+  <body id="input">
+      <div class="overlay">
+          <div class="box">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <p>Maaf.. <br>
+                Sumbang Saran telah berakhir <br>
+                Silahkan tunggu periode berikutnya
+            </p>
+
+            <button class="btn btn-primary btn-md d-block mx-auto"><i class="fas fa-arrow-left"></i> Kembali</button>
+          </div>
+      </div>
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-10 form-page">
