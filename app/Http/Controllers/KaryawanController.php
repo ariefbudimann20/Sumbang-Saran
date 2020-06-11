@@ -21,8 +21,7 @@ class KaryawanController extends Controller
     public function index()
     {
         
-        $karyawan = Karyawan::with('bagian','ext')->orderBY('created_at','DESC')->get();
-        // dd($karyawan);
+        $karyawan = Karyawan::with('status','bagian','sub_bagian')->orderBY('created_at','DESC')->withCount('sumbangsaran')->get();
         return view('pages.karyawan.index',compact('karyawan'));
     }
 

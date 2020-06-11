@@ -6,11 +6,11 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0 text-dark"><i class="nav-icon fas fa-user-friends"></i> Manajemen User
+              <h1 class="m-0 text-dark"><i class="fas fa-users-cog"></i> Manajemen User
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="{{url('dashboard')}}">Home</a></li>
+                  <li class="breadcrumb-item"><a href="{{url('admin/dashboard')}}">Home</a></li>
                   <li class="breadcrumb-item active">Manajemen User</li>
                 </ol>
               </div><!-- /.col -->
@@ -25,7 +25,7 @@
                {{-- Content Card --}}
                <div class="card">
                    <div class="card-body">
-                    <a href="#mymodal" data-remote="{{route('user.create')}}" data-toggle="modal" data-target="#mymodal" data-title="Tambah User"  class="btn btn-info mb-3">
+                    <a href="#mymodal" data-remote="{{route('user.create')}}" data-toggle="modal" data-target="#mymodal" data-title="Tambah User"  class="btn btn-info font-weight-bold mb-3">
                         <i class="fa fa-plus"></i> User
                     </a>
                        <div class="table-responsive table-jadwal">
@@ -33,6 +33,7 @@
                                 <thead class="text-center">
                                     <tr>
                                         <th>No</th>
+                                        <th>Username</th>
                                         <th>Nama</th>
                                         <th>Email</th>
                                         <th>Status</th>
@@ -43,20 +44,23 @@
                                     @foreach($user as $usr)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
+                                        <td>{{$usr->username}}</td>
                                         <td>{{$usr->name}}</td>
                                         <td>{{$usr->email}}</td>
                                         <td>
-                                            @if($usr->role == 0)
+                                            @if($usr->hak_akses == 1)
                                                 <span class="badge badge-danger p-2">Admin</span>
-                                            @else
+                                            @elseif($usr->hak_akses == 2)
                                                 <span class="badge badge-primary p-2">Penilai</span>
+                                            @else
+                                                <span class="badge badge-success p-2">User</span>
                                             @endif
                                         </td>
                                         <td>
                                             <a href="#mymodal" data-remote="{{route('user.edit',$usr->id)}}" data-toggle="modal" data-target="#mymodal" data-title="Ubah User"  class="btn btn-info btn-sm">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <form action="{{url('user',$usr->id)}}" method="POST" class="d-inline">
+                                            <form action="{{url('admin/user',$usr->id)}}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('delete')
                                                 <button class="btn btn-danger btn-sm" type="submit">

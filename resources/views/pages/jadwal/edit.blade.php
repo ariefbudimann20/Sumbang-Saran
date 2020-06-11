@@ -1,16 +1,6 @@
-<form action="{{url('jadwal',$jadwal->id)}}" method="POST">
+<form action="{{url('admin/jadwal',$jadwal->id)}}" method="POST">
     @csrf
     @method('PUT')
-        <div class="form-group">
-            <label>Pemenang</label>
-            <select name="pemenang" class="form-control" required>
-                <option value="">- Pilih -</option>
-                @foreach($pemenang as $pg)
-                <option value="{{$pg->karyawan->nama}}">{{$pg->karyawan->nama}}</option>
-                @endforeach
-            </select>
-        </div>
-
         <div class="form-group">
             <label>Status</label>
             <select name="status" class="form-control" required>

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class SumbangSaran extends Model
 {
     protected $table ="sumbang_saran";
-    protected $fillable = ['karyawan_id','judul','foto','kondisi_awal','kondisi_akhir','manfaat','periode'];
+    protected $fillable = ['karyawan_id','judul','attachment','kondisi_awal','kondisi_akhir','manfaat','periode'];
 
     public function penilaian(){
         return $this->hasMany(Penilaian::class,'sumbang_saran_id');

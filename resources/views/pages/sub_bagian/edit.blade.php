@@ -1,4 +1,4 @@
-<form action="{{url('extension',$ext->id)}}" method="POST">
+<form action="{{url('admin/sub-bagian',$ext->id)}}" method="POST">
     @csrf
     @method('PUT')
         <div class="form-group">
@@ -12,7 +12,7 @@
         </div>
 
         <div class="form-group mb-3">
-            <label>Ext</label>
+            <label>Sub Bagian</label>
             <input type="text" name="nama" class="form-control" value="{{$ext->nama}}" required>
         </div>
         <hr>

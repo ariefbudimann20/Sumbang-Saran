@@ -21,36 +21,36 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="{{url('dashboard')}}" class="nav-link {{Request::is('dashboard') ? 'active' : ''}}">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>Dashboard</p>
-            </a>
-          </li>
-          @if(Auth::user()->role == 0)
-          <li class="nav-header">JOB ADMIN</li>
-          <li class="nav-item">
-            <a href="{{url('jadwal')}}" class="nav-link {{Request::is('jadwal') ? 'active' : ''}}">
-              <i class="nav-icon fas fa-calendar-plus"></i>
+            with font-awesome or any other icon font library -->
+               @if(Auth::user()->hak_akses <= 1)
+               <li class="nav-item">
+                 <a href="{{url('admin/dashboard')}}" class="nav-link {{Request::is('admin/dashboard') ? 'active' : ''}}">
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <p>Dashboard</p>
+                </a>
+              </li>
+              <li class="nav-header">JOB ADMIN</li>
+              <li class="nav-item">
+            <a href="{{url('admin/jadwal')}}" class="nav-link {{Request::is('admin/jadwal') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-calendar-alt"></i>
               <p>Jadwal Sumbang Saran</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{url('sumbang-saran')}}" class="nav-link {{Request::is('sumbang-saran') ? 'active' : ''}}">
+            <a href="{{url('admin/sumbang-saran')}}" class="nav-link {{Request::is('admin/sumbang-saran') ? 'active' : ''}}">
               <i class="nav-icon fab fa-audible"></i>
               <p>Kelola Sumbang Saran</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{url('karyawan')}}" class="nav-link {{Request::is('karyawan') ? 'active' : ''}}">
+            <a href="{{url('admin/karyawan')}}" class="nav-link {{Request::is('admin/karyawan') ? 'active' : ''}}">
               <i class="nav-icon fas fa-database"></i>
               <p>Data Karyawan</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{url('user')}}" class="nav-link {{Request::is('user') ? 'active' : ''}}">
-              <i class="fas fa-user-friends"></i>
+            <a href="{{url('admin/user')}}" class="nav-link {{Request::is('admin/user') ? 'active' : ''}}">
+              <i class="fas fa-users-cog"></i>
               <p>Manajemen User</p>
             </a>
           </li>
@@ -64,31 +64,43 @@
             </a>
             <ul class="nav nav-treeview" style="display: none;">
               <li class="nav-item">
-                <a href="{{url('bagian')}}" class="nav-link">
+                <a href="{{url('admin/bagian')}}" class="nav-link">
                   <i class="fas fa-layer-group nav-icon"></i></i>
                   <p>Bagian</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{url('extension')}}" class="nav-link">
-                  <i class="fas fa-headphones nav-icon"></i></i>
-                  <p>Extension</p>
+                <a href="{{url('admin/sub-bagian')}}" class="nav-link">
+                  <i class="fas fa-layer-group nav-icon"></i></i>
+                  <p>Sub Bagian</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('admin/status')}}" class="nav-link">
+                  <i class="fas fa-user-friends nav-icon"></i></i>
+                  <p>Status</p>
                 </a>
               </li>
             </ul>
           </li>
           @else
+          <li class="nav-item">
+            <a href="{{url('penilai/dashboard')}}" class="nav-link {{Request::is('penilai/dashboard') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
           <li class="nav-header">JOB TIM PENILAI</li>
           <li class="nav-item">
-            <a href="{{url('penilaian')}}" class="nav-link {{Request::is('penilaian') ? 'active' : ''}}">
+            <a href="{{url('penilai/penilaian')}}" class="nav-link {{Request::is('penilai/penilaian') ? 'active' : ''}}">
               <i class="nav-icon fas fa-star-half-alt"></i>
               <p>Penilaian</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{url('peserta-terbaik')}}" class="nav-link {{Request::is('peserta-terbaik') ? 'active' : ''}}">
+            <a href="{{url('penilai/finalis')}}" class="nav-link {{Request::is('penilai/finalis') ? 'active' : ''}}">
               <i class="nav-icon fas fa-medal"></i>
-              <p>Peserta Terbaik</p>
+              <p>Finalis</p>
             </a>
           </li>
           @endif

@@ -10,7 +10,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{{url('dashboard')}}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{url('admin/dashboard')}}">Home</a></li>
                 <li class="breadcrumb-item active">Karyawan</li>
               </ol>
             </div><!-- /.col -->
@@ -29,11 +29,13 @@
                             <table id="karyawan" class="table table-striped table-sm table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>NO</th>
-                                        <th>NIK</th>
-                                        <th>NAMA</th>
-                                        <th>BAGIAN</th>
-                                        <th>EXT</th>
+                                        <th>No</th>
+                                        <th>Nik</th>
+                                        <th>Nama</th>
+                                        <th>Bagian</th>
+                                        <th>Sub Bagian</th>
+                                        <th>Jumlah</th>
+                                        <th>Status</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -44,9 +46,11 @@
                                         <td>{{$ky->nik}}</td>
                                         <td>{{$ky->nama}}</td>
                                         <td>{{$ky->bagian->nama}}</td>
-                                        <td>{{$ky->ext->nama}}</td>
+                                        <td>{{$ky->sub_bagian->nama}}</td>
+                                        <td>{{$ky->sumbangsaran_count}}</td>
+                                        <td>{{$ky->status->nama}}</td>
                                         <td>
-                                            <form action="{{url('karyawan',$ky->id)}}" method="POST" class="d-inline">
+                                            <form action="{{url('admin/karyawan',$ky->id)}}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('delete')
                                                 <button href="" class="btn btn-danger btn-sm" type="submit">

@@ -10,7 +10,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{{url('dashboard')}}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{url('penilai/dashboard')}}">Home</a></li>
                 <li class="breadcrumb-item active">Penilaian</li>
               </ol>
             </div><!-- /.col -->
@@ -22,7 +22,6 @@
     <section class="content">
         <div class="row">
             <div class="col-12">
-                <button class="btn btn-info mb-2 font-weight-bold disabled"><i class="fas fa-upload"></i> Publish Hasil</button>
                 <!-- Content Card -->
                 <div class="card">
                     <div class="card-body">
@@ -46,7 +45,7 @@
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$ss->karyawan->nik}}</td>
                                         <td>{{$ss->karyawan->nama}}</td>
-                                        <td>{{$ss->judul}}</td>
+                                        <td>{{Str::limit($ss->judul, 20)}}</td>
                                         <td>{{$ss->karyawan->bagian->nama}}</td>
                                         <td>{{$ss->periode}}</td>
                                         <td> @if($ss->penilaian->count() > 0)
@@ -59,9 +58,15 @@
                                         </td>
                                        
                                         <td>
-                                            <a href="#mymodal" data-remote="{{route('penilaian.show', $ss->id)}}" data-toggle="modal" data-target="#mymodal" data-title="Detail Sumbang Saran: {{$ss->judul}}"  class="btn btn-success btn-sm">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
+                                            @if($ss->penilaian->count() > 0)
+                                                <a href="#mymodal" data-remote="{{route('penilaian.show', $ss->id)}}" data-toggle="modal" data-target="#mymodal" data-title="Detail Sumbang Saran: {{$ss->judul}}"  class="btn btn-info btn-sm">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                            @else
+                                                <a href="#mymodal" data-remote="{{route('penilaian.show', $ss->id)}}" data-toggle="modal" data-target="#mymodal" data-title="Detail Sumbang Saran: {{$ss->judul}}"  class="btn btn-success btn-sm">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                            @endif
                                             {{-- <form action="{{url('penilaian',$ss->id)}}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('delete')

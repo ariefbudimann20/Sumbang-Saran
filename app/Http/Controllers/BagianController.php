@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Bagian;
+use App\Sub_Bagian;
 use Validator;
 
 class BagianController extends Controller
@@ -39,8 +40,8 @@ class BagianController extends Controller
     public function store(Request $request)
     {
         $messages = [
-            'required' => ':attribute Harus Di Isi',
-            'max' => ':attribute Harus Di Isi maksimal :max Digit',
+            'required'  => ':attribute Harus Di Isi',
+            'max'       => ':attribute Harus Di Isi maksimal :max Digit',
         ];
         $validator = Validator::make($request->all(),[
             'nama'           => 'required|max:15',
@@ -54,7 +55,7 @@ class BagianController extends Controller
                 'nama' => $request->nama
             ]);
     
-            return back()->with('success','Data Nama Bagian Berhasil Di Simpan');
+            return back()->with('success','Data Bagian Berhasil Di Simpan');
         }
     }
 
@@ -119,7 +120,10 @@ class BagianController extends Controller
      */
     public function destroy($id)
     {
-        $bagian =Bagian::findOrFail($id);
+        $bagian = Bagian::findOrFail($id);
+        $bagian->delete();
+
+        $bagian = Sub_Bagian::where('bagian',$id);
         $bagian->delete();
 
         return back()->with('success','Data Bagian Berhasil Di Hapus');

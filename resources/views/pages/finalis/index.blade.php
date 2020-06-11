@@ -1,17 +1,17 @@
 @extends('layouts.frame')
-@section('title','Peserta Terbaik')
+@section('title','Finalis')
 @section('content')
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0 text-dark"> <i class="nav-icon fas fa-medal"></i> Peserta Terbaik</h1>
+              <h1 class="m-0 text-dark"> <i class="nav-icon fas fa-medal"></i> Finalis</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{{url('dashboard')}}">Home</a></li>
-                <li class="breadcrumb-item active">Peserta Terbaik</li>
+                <li class="breadcrumb-item"><a href="{{url('penilai/dashboard')}}">Home</a></li>
+                <li class="breadcrumb-item active">Finalis</li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
@@ -26,7 +26,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive-sm table-sm table-datakaryawan">
-                            <table id="peserta-terbaik" class="table table-striped table-bordered" style="width:100%">
+                            <table id="finalis" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>NO</th>
@@ -54,6 +54,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            <h6><strong>* Data Yang Tampil Dengan Nilai Minimal 350 Point</strong></h6>
                         </div>
                     </div>
                 </div>
@@ -68,7 +69,7 @@
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#peserta-terbaik').DataTable();
+            $('#finalis').DataTable();
         } );
     </script>
 @endpush

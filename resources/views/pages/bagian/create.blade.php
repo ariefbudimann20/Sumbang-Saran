@@ -1,4 +1,4 @@
-<form action="{{url('bagian')}}" method="POST">
+<form action="{{url('admin/bagian')}}" method="POST">
 @csrf
     <div class="form-group mb-4">
         <label>Nama</label>

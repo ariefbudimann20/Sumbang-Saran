@@ -14,11 +14,12 @@ class Karyawan extends Migration
     public function up()
     {
         Schema::create('karyawan', function (Blueprint $table) {
-            $table->id();
-            $table->string('nik');
+            $table->bigIncrements('id');
+            $table->integer('nik');
             $table->string('nama');
+            $table->integer('status_id');
             $table->integer('bagian_id');
-            $table->integer('ext_id');
+            $table->integer('sub_bagian_id');
             $table->timestamps();
         });
     }

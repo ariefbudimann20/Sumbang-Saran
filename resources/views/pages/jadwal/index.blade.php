@@ -1,5 +1,8 @@
 @extends('layouts.frame')
 @section('title','Jadwal Sumbang Saran')
+@push('after-style')
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+@endpush
 @section('content')
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -10,7 +13,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{{url('dashboard')}}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{url('admin/dashboard')}}">Home</a></li>
                 <li class="breadcrumb-item active">Sumbang Saran</li>
               </ol>
             </div><!-- /.col -->
@@ -22,11 +25,11 @@
     <section class="content">
        <div class="row content-jadwal">
            <div class="col-md-6 ml-3">
-               <button class="btn btn-info font-weight-bold" type="button" data-toggle="collapse" data-target="#JadwalCollapse" aria-expanded="false" aria-controls="JadwalCollapse"><i class="fas fa-calendar-plus"></i> Buat Jadwal</button>
+               <button class="btn btn-info font-weight-bold" type="button" data-toggle="collapse" data-target="#JadwalCollapse" aria-expanded="false" aria-controls="JadwalCollapse"><i class="fa fa-plus"></i> Jadwal</button>
 
                <div class="collapse mt-1" id="JadwalCollapse">
                    <div class="card card-body">
-                       <form action="{{url('jadwal')}}" method="POST">
+                       <form action="{{url('admin/jadwal')}}" method="POST">
                         @csrf
                         <div class="row mb-4">
                             <div class="col-md-6">
@@ -34,8 +37,10 @@
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="far fa-clock"></i></span>
                                     </div>
-                                    <input type="text" id="daterange" class="form-control" disabled />  
+                                    <input type="text" id="daterange" class="form-control" disabled /> 
+                                   
                                 </div>
+                                <input type="hidden" id="mulai" name="awal"> 
                             </div>
                             <div class="col-md-6">
                                 <div class="input-group">
@@ -67,7 +72,6 @@
                                         <th>No</th>
                                         <th>Periode</th>
                                         <th>Status</th>
-                                        <th>Pemenang</th>
                                         <th>Aksi</th>
                                     </tr>        
                                 </thead>
@@ -82,12 +86,11 @@
                                             <span class="badge badge-success p-2">Selesai</span>
                                             @endif
                                         </td>
-                                        <td>{{$jwl->pemenang}}</td>
                                         <td>
-                                            <a href="#mymodal" data-remote="{{route('jadwal.edit',$jwl->id)}}" data-toggle="modal" data-target="#mymodal" data-title="Ubah Extension"  class="btn btn-info btn-sm">
+                                            <a href="#mymodal" data-remote="{{route('jadwal.edit',$jwl->id)}}" data-toggle="modal" data-target="#mymodal" data-title="Ubah Sub Bagian"  class="btn btn-info btn-sm">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <form action="{{url('jadwal',$jwl->id)}}" method="POST" class="d-inline">
+                                            <form action="{{url('admin/jadwal',$jwl->id)}}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('delete')
                                                 <button class="btn btn-danger btn-sm" type="submit">
@@ -106,10 +109,6 @@
        </div>
     </section>
 @endsection
-
-@push('after-style')
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-@endpush
 @push('after-script')
     <!-- daterangepicker -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -144,11 +143,12 @@
         seconds = "0" + seconds;
 
     var today = cur_day + " " + hours + ":" + minutes + ":" + seconds;
+    document.getElementById("mulai").value = today;
         $('#daterange').daterangepicker({ 
             "singleDatePicker": true,
             startDate: today, // after open picker you'll see this dates as picked
             locale: {
-                "format": 'YYYY-MM-DD hh:mm:ss',
+                "format": 'YYYY-MM-DD HH:mm:ss',
             }
         }, function (start, end, label) {
             //what to do after change
@@ -158,11 +158,11 @@
             "singleDatePicker": true,
             "timePicker": true,
             "timePicker24Hour": true,
-            "minDate": "YYYY-MM-DD",
-            "maxDate": "YYYY-MM-DD",
+            "minDate": "YYYY-MM-DD HH:mm:ss",
+            "maxDate": "YYYY-MM-DD HH:mm:ss",
             autoUpdateInput: true,
             "locale": {
-            "format": 'YYYY-MM-DD hh:mm:ss',
+            "format": 'YYYY-MM-DD HH:mm:ss',
             "cancelLabel": 'Clear'
             }
         });

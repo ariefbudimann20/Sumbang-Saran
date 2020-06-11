@@ -1,4 +1,4 @@
-<form action="{{url('penilaian')}}" method="POST">
+<form action="{{url('penilai/penilaian')}}" method="POST">
 @csrf
 <input type="hidden" name="sumbang_saran_id" value="{{$ss->id}}">
 <input type="hidden" name="karyawan_id" value="{{$ss->karyawan_id}}">
@@ -26,8 +26,8 @@
         </div>
         <div class="col-md-6 col-sm-12">
             <div class="form-group">
-                <label>Ext :</label>
-                <p>{{$ss->karyawan->ext->nama}}</p>
+                <label>Sub Bagian :</label>
+                <p>{{$ss->karyawan->sub_bagian->nama}}</p>
             </div>
         </div>
     </div>
@@ -40,9 +40,9 @@
         </div>
         <div class="col-md-6 col-sm-12">
             <div class="form-group">
-                <label for="foto">Foto :</label><br>
-                <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="{{url('assets/images',$ss->foto)}}" data-lightbox="image-1">
-                    <img style="width:auto; height:80px; margin-bottom:10px;" src="{{url('assets/images',$ss->foto)}}" /></a>
+                <label for="foto">Attachment :</label><br>
+                <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="{{url('assets/attachment',$ss->attachment)}}" data-lightbox="image-1">
+                    <img style="width:auto; height:80px; margin-bottom:10px;" src="{{url('assets/attachment',$ss->attachment)}}" /></a>
                 </div>
             </div>
         </div>
@@ -50,13 +50,13 @@
     <div class="row">
         <div class="col-md-6 col-sm-12">
             <div class="form-group">
-                <label>Gambarkan Kondisi Awal :</label>
+                <label>Cerita Kondisi Awal :</label>
                 <p class="text-justify">{{$ss->kondisi_awal}}</p>
             </div>  
         </div>
         <div class="col-md-6 col-sm-12">
             <div class="form-group">
-                <label>Gambarkan Kondisi Yang Diinginkan :</label>
+                <label>Cerita Kondisi Yang Diinginkan :</label>
                 <p class="text-justify">{{$ss->kondisi_akhir}}</p>
             </div>  
         </div>
@@ -115,7 +115,7 @@
                     <div class="form-group d-flex total">
                         <label>Total                                 : </label>
                         <div class="d-flex">
-                            <input type="text"  id="total" value="0"  class="form-control" >
+                            <input type="text"  id="total" value="0"  class="form-control" disabled >
                             <input type="hidden" name="nilai" id="nilai">
                         </div>
                     </div>    

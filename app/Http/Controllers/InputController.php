@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
 use Validator;
+use Auth;
+use Alert;
 use App\SumbangSaran;
 use App\Karyawan;
 use App\Bagian;
-use App\Ext;
+use App\Sub_Bagian;
 use App\Jadwal;
 
 class InputController extends Controller
@@ -21,20 +23,20 @@ class InputController extends Controller
      */
     public function index()
     {
-        $bagian = Bagian::all();
-        $ext    = Ext::all();
-        $jadwal = Jadwal::where('status','=',0)->first();
+        $bagian         = Bagian::all();
+        $sub_bagian     = Sub_Bagian::all();
+        $jadwal         = Jadwal::where('status','=',0)->first();
 
-        return view('form',compact('bagian','ext','jadwal'));
+        return view('form',compact('bagian','sub_bagian','jadwal'));
     }
 
     public function search(Request $request)
     {
         // $bagian_id = $request->bagian;
-        $bagian_id = $request->get('bagian');
-        $extension = Ext::where('bagian_id','=',$bagian_id)->get();
+        $bagian_id  = $request->get('bagian');
+        $sub_bagian = Sub_Bagian::where('bagian_id','=',$bagian_id)->get();
 
-        return Response::json($extension);
+        return Response::json($sub_bagian);
 
     }
     /**
@@ -58,17 +60,15 @@ class InputController extends Controller
         $messages = [
             'required' => ':attribute Harus Di Isi',
             'min' => ':attribute Harus Di Isi minimal :min Digit',
-            'max' => ':attribute Harus Di Isi maksimal :max Digit',
-            'mimes' => ':attribute Foto Harus JPG,JPEG,PNG'
+            'max' => ':attribute Harus Di Isi maksimal :max Digit'
         ];
         $validator = Validator::make($request->all(),[
-            'nik'           => 'required|min:5|max:10',
+            // 'nik'           => 'required|min:5|max:10',
             'nama'          => 'required',
             'bagian'        => 'required',
-            'ext'           => 'required|max:5',
+            'sub_bagian'    => 'required',
             'judul'         => 'required',
             'kondisi_awal'  => 'required',
-            'foto'          => 'required|mimes:jpg,jpeg,png',
             'kondisi_akhir' => 'required',
             'manfaat'       => 'required'
         ],$messages);
@@ -77,57 +77,69 @@ class InputController extends Controller
             // dd($request->all());
              return back()->withInput($request->input())->withErrors($validator->errors());
         }else{
-            $namapic = request()->foto->getClientOriginalName();
-            request()->foto->move(public_path('assets/images'),$namapic);
-            
-            $karyawan = Karyawan::all();
-            
-                if ($karyawan->contains('nik', $request->nik) == $request->nik) {
-                    $flight = Karyawan::firstOrCreate(
-                        ['nik' => $request->nik,
-                        'nama'      => $request->nama,
-                        'bagian_id'    => $request->bagian,
-                        'ext_id'       => $request->ext,
+            if (empty($request->attachment)) {
+                $namapic = "default.jpg";
+            }else{       
+                $namapic = request()->nik."_".request()->attachment->getClientOriginalName();
+                request()->attachment->move(public_path('assets/attachment'),$namapic);
+            }
+                if(empty($request->nik)) {
+                    $nik = 0;
+                    $flight = Karyawan::firstOrCreate([
+                        'nik'          => $nik,
+                        'nama'          => $request->nama,
+                        'status_id'     => $request->status,
+                        'bagian_id'     => $request->bagian,
+                        'sub_bagian_id' => $request->sub_bagian,
                     ]);
                     SumbangSaran::create([
                         'karyawan_id'   => $flight->id,
-                        // 'nik'           => $request->nik,
-                        // 'nama'          => $request->nama,
-                        // 'bagian'        => $request->bagian,
-                        // 'ext'           => $request->ext,
                         'judul'         => $request->judul,
-                        'foto'          => $namapic,
+                        'attachment'    => $namapic,
                         'kondisi_awal'  => $request->kondisi_awal,
                         'kondisi_akhir' => $request->kondisi_akhir,
                         'manfaat'       => $request->manfaat,
                         'periode'       => $request->periode
                     ]);
-
-           
-
-      
                 }else{
-                    $flight = Karyawan::create([
-                        'nik'       => $request ->nik,
-                        'nama'      => $request->nama,
-                        'bagian_id'    => $request->bagian,
-                        'ext_id'       => $request->ext,
-                    ]);
+                    $nik = $request->nik;
                     
-                    SumbangSaran::create([
-                        'karyawan_id'   => $flight->id,
-                        'judul'         => $request->judul,
-                        'foto'          => $namapic,
-                        'kondisi_awal'  => $request->kondisi_awal,
-                        'kondisi_akhir' => $request->kondisi_akhir,
-                        'manfaat'       => $request->manfaat,
-                        'periode'       => $request->periode
-                    ]);
-                    
- 
+                    $karyawan    = Karyawan::where('nik',$nik)->first();
+                    // dd($karyawan->id);
+                    if($karyawan) {
+                        SumbangSaran::create([
+                            'karyawan_id'   => $karyawan->id,
+                            'judul'         => $request->judul,
+                            'attachment'    => $namapic,
+                            'kondisi_awal'  => $request->kondisi_awal,
+                            'kondisi_akhir' => $request->kondisi_akhir,
+                            'manfaat'       => $request->manfaat,
+                            'periode'       => $request->periode
+                        ]);
+
+                    }else{
+                        $kyn = Karyawan::create([
+                            'nik'           => $request ->nik,
+                            'nama'          => $request->nama,
+                            'status_id'     => $request->status,
+                            'bagian_id'     => $request->bagian,
+                            'sub_bagian_id' => $request->sub_bagian,
+                        ]);
+                        
+                        SumbangSaran::create([
+                            'karyawan_id'   => $kyn->id,
+                            'judul'         => $request->judul,
+                            'attachment'    => $namapic,
+                            'kondisi_awal'  => $request->kondisi_awal,
+                            'kondisi_akhir' => $request->kondisi_akhir,
+                            'manfaat'       => $request->manfaat,
+                            'periode'       => $request->periode
+                        ]);
+                    }
                 }
-            
-            return back()->with('success', 'Terima Kasih Sudah Berpartipasi Untuk Sumbang Saran');
+            Alert::success('Success', 'Terima Kasih Sudah Berpartipasi Untuk Sumbang Saran');
+            Auth::logout();
+            return redirect('/');
         }
     }
 

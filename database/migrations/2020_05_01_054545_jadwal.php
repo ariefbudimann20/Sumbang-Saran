@@ -14,10 +14,10 @@ class Jadwal extends Migration
     public function up()
     {
         Schema::create('jadwal', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('selesai');
-            $table->string('pemenang');
-            $table->string('status');
+            $table->id();
+            $table->dateTime('mulai', 0);
+            $table->dateTime('selesai',0);
+            $table->integer('status');
             $table->timestamps();
         });
     }

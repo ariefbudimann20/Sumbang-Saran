@@ -4,8 +4,8 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use App\Jadwal;
 use Carbon\Carbon;
+use App\Jadwal;
 
 class Kernel extends ConsoleKernel
 {
@@ -26,12 +26,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
-        $mytime = Carbon::now();
-   
-        $schedule->call(function () {
-            Jadwal::where('selesai','=',$mytime->toDateTimeString())->update(['status' => 1]);
-        })->hourly();
+         $schedule->command('command:name')->everyMinute();
+        // $schedule->call(function () {
+        //     $mytime = Carbon::now();
+        //     Jadwal::whereDate('selesai', '<', $mytime->toDateTimeString())->update(['status' => 1]);
+        // })->everyMinute();
+
     }
 
     /**

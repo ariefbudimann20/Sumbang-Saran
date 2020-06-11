@@ -1,4 +1,4 @@
-<form action="{{url('extension')}}" method="POST">
+<form action="{{url('admin/sub-bagian')}}" method="POST">
     @csrf
         <div class="form-group">
             <label>Bagian</label>
@@ -11,7 +11,7 @@
         </div>
 
         <div class="form-group mb-3">
-            <label>Ext</label>
+            <label>Sub Bagian</label>
             <input type="text" name="nama" class="form-control" required>
         </div>
         <hr>

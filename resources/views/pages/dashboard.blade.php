@@ -10,7 +10,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{url('dashboard')}}">Home</a></li>
+              <li class="breadcrumb-item">Home</li>
               <li class="breadcrumb-item active">Dashboard</li>
             </ol>
           </div><!-- /.col -->
@@ -24,7 +24,7 @@
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-          @if(Auth::user()->role == 0)
+          @if(Auth::user()->hak_akses <= 1)
           <div class="col-lg-6 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
@@ -36,7 +36,7 @@
               <div class="icon">
                 <i class="fab fa-audible"></i>
               </div>
-              <a href="{{url('sumbang-saran')}}" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{url('admin/sumbang-saran')}}" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -51,7 +51,7 @@
               <div class="icon">
                 <i class="fas fa-database"></i>
               </div>
-              <a href="{{url('karyawan')}}" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{url('admin/karyawan')}}" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -67,7 +67,7 @@
               <div class="icon">
                 <i class="fas fa-star-half-alt"></i>
               </div>
-              <a href="{{url('penilaian')}}" class="small-box-footer"><p class=" text-white d-inline">Selengkapnya</p> <i class="fas fa-arrow-circle-right text-white"></i></a>
+              <a href="{{url('penilai/penilaian')}}" class="small-box-footer"><p class=" text-white d-inline">Selengkapnya</p> <i class="fas fa-arrow-circle-right text-white"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -77,12 +77,12 @@
               <div class="inner">
                 <h3>{{$peserta}}</h3>
 
-                <p>Peserta Terbaik</p>
+                <p>Finalis</p>
               </div>
               <div class="icon">
                 <i class="nav-icon fas fa-medal"></i>
               </div>
-              <a href="{{url('peserta-terbaik')}}" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{url('penilai/finalis')}}" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
