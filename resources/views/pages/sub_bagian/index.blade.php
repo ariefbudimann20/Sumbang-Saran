@@ -1,17 +1,17 @@
 @extends('layouts.frame')
-@section('title','Extension')
+@section('title','Sub Bagian')
 @section('content')
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0 text-dark"><i class="nav-icon fas fa-headphones"></i></i> Extension
+              <h1 class="m-0 text-dark"><i class="nav-icon fas fa-layer-group"></i></i> Sub Bagian
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="{{url('dashboard')}}">Home</a></li>
-                  <li class="breadcrumb-item active">Extension</li>
+                  <li class="breadcrumb-item"><a href="{{url('admin/dashboard')}}">Home</a></li>
+                  <li class="breadcrumb-item active">Sub Bagian</li>
                 </ol>
               </div><!-- /.col -->
           </div><!-- /.row -->
@@ -25,30 +25,30 @@
                {{-- Content Card --}}
                <div class="card">
                    <div class="card-body">
-                    <a href="#mymodal" data-remote="{{route('extension.create')}}" data-toggle="modal" data-target="#mymodal" data-title="Tambah Extension"  class="btn btn-info mb-3">
-                        <i class="fa fa-plus"></i> Extension
+                    <a href="#mymodal" data-remote="{{route('sub-bagian.create')}}" data-toggle="modal" data-target="#mymodal" data-title="Tambah Sub Bagian"  class="btn btn-info font-weight-bold mb-3">
+                        <i class="fa fa-plus"></i> Sub Bagian
                     </a>
                        <div class="table-responsive table-jadwal">
-                           <table id="extension" class="table table-sm table-bordered table-striped" style="width:100%">
+                           <table id="sub-bagian" class="table table-sm table-bordered table-striped" style="width:100%">
                                 <thead class="text-center">
                                     <tr>
                                         <th style="width:10%">No</th>
-                                        <th style="width:40%">Nama Bagian</th>
-                                        <th style="width:30%">Ext</th>
+                                        <th style="width:40%">Nama</th>
+                                        <th style="width:30%">Sub Bagian</th>
                                         <th style="width:20%">Aksi</th>
                                     </tr>        
                                 </thead>
                                 <tbody class="text-center">
-                                    @foreach($extension as $ext)
+                                    @foreach($sub_bagian as $ext)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$ext->bagian->nama}}</td>
                                         <td>{{$ext->nama}}</td>
                                         <td>
-                                            <a href="#mymodal" data-remote="{{route('extension.edit',$ext->id)}}" data-toggle="modal" data-target="#mymodal" data-title="Ubah Extension"  class="btn btn-info btn-sm">
+                                            <a href="#mymodal" data-remote="{{route('sub-bagian.edit',$ext->id)}}" data-toggle="modal" data-target="#mymodal" data-title="Ubah Sub Bagian"  class="btn btn-info btn-sm">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <form action="{{url('extension',$ext->id)}}" method="POST" class="d-inline">
+                                            <form action="{{url('admin/sub-bagian',$ext->id)}}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('delete')
                                                 <button class="btn btn-danger btn-sm" type="submit">
@@ -75,7 +75,7 @@
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#extension').DataTable();
+            $('#sub-bagian').DataTable();
         } );
     </script>
 

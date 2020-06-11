@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Jadwal;
 use App\Penilaian;
 use Validator;
+use Alert;
 
 class JadwalController extends Controller
 {
@@ -38,11 +39,18 @@ class JadwalController extends Controller
      */
     public function store(Request $request)
     {
-        jadwal::create([
-            'selesai' => $request->selesai,
-        ]);
-
-        return back()->with('success','Data Jadwal Berhasil Di Simpan');
+        // dd($request->awal <= $request->selesai);
+        if($request->awal <= $request->selesai ){
+            jadwal::create([
+                'mulai' => $request->awal,
+                'selesai' => $request->selesai,
+                'status'   => 0
+            ]);
+    
+            return back()->with('success','Data Jadwal Berhasil Di Simpan');
+        }
+        Alert::error('Gagal', 'Waktu Selesai Tidak Boleh Kurang Dari Waktu Mulai');
+        return back();
     }
 
     /**
@@ -84,7 +92,7 @@ class JadwalController extends Controller
         ];
         $validator = Validator::make($request->all(),[
             'status'        => 'required',
-            'pemenang'        => 'required',
+            // 'pemenang'        => 'required',
         ],$messages);
   
         if ($validator->fails()) {
@@ -93,11 +101,11 @@ class JadwalController extends Controller
         }else{
 
             $jadwal = Jadwal::findOrFail($id);
-            $jadwal->pemenang = $request->pemenang;
+            // $jadwal->pemenang = $request->pemenang;
             $jadwal->status = $request->status;
             $jadwal->save();
                 
-            return back()->with('success', 'Data Jadwal dan Pemenang Berhasil Di Simpan');
+            return back()->with('success', 'Data Jadwal Berhasil Di Simpan');
         }
     }
 

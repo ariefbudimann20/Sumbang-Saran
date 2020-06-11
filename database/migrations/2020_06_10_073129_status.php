@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Ext extends Migration
+class Status extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class Ext extends Migration
      */
     public function up()
     {
-        Schema::create('ext', function (Blueprint $table) {
+        Schema::create('status', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('bagian_id');
             $table->string('nama');
             $table->timestamps();
         });
+
     }
 
     /**

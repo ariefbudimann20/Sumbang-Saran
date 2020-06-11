@@ -14,10 +14,10 @@ class SumbangSaran extends Migration
     public function up()
     {
         Schema::create('sumbang_saran', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->integer('karyawan_id');
             $table->string('judul');
-            $table->string('foto');
+            $table->string('attachment');
             $table->longText('kondisi_awal');
             $table->longText('kondisi_akhir');
             $table->longText('manfaat');

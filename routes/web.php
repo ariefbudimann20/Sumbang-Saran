@@ -15,19 +15,23 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/','IndexController@index');
 // Route::post('input/fetch','InputController@fetch')->name('option.fetch');
-// Route::resource('input','InputController');
-Route::get('input', 'InputController@index');
+Route::get('input', 'InputController@index')->middleware('role:user')->name('user.page');
 Route::get('ajax-sub','InputController@search');
 Route::post('input','InputController@store');
 
 Auth::routes();
 
-Route::get('/dashboard', 'HomeController@index')->middleware('auth');
-Route::resource('sumbang-saran', 'SumbangSaranController')->middleware('auth');
-Route::resource('karyawan','KaryawanController')->middleware('auth');
-Route::resource('penilaian','PenilaianController')->middleware('auth');
-Route::resource('peserta-terbaik','PesertaTerbaikController')->middleware('auth');
-Route::resource('jadwal','JadwalController')->middleware('auth');
-Route::resource('bagian', 'BagianController')->middleware('auth');
-Route::resource('extension', 'ExtController')->middleware('auth');
-Route::resource('user', 'UserController')->middleware('auth');
+/* Admin */
+Route::get('admin/dashboard', 'HomeController@admin')->middleware('role:admin')->name('admin.page');
+Route::resource('admin/jadwal','JadwalController')->middleware('role:admin');
+Route::resource('admin/sumbang-saran', 'SumbangSaranController')->middleware('role:admin');
+Route::resource('admin/karyawan','KaryawanController')->middleware('role:admin');
+Route::resource('admin/user', 'UserController')->middleware('role:admin');
+Route::resource('admin/bagian', 'BagianController')->middleware('role:admin');
+Route::resource('admin/sub-bagian', 'Sub_BagianController')->middleware('role:admin');
+Route::resource('admin/status', 'StatusController')->middleware('role:admin');
+
+/* Penilai */
+Route::get('penilai/dashboard', 'HomeController@penilai')->middleware('role:penilai')->name('penilai.page');;
+Route::resource('penilai/penilaian','PenilaianController')->middleware('role:penilai');
+Route::resource('penilai/finalis','FinalisController')->middleware('role:penilai');

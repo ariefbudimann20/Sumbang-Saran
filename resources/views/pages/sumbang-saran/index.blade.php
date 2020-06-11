@@ -10,7 +10,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{{url('dashboard')}}">Home</a></li>
+                <li class="breadcrumb-item"><a href="admin/dashboard')}}">Home</a></li>
                 <li class="breadcrumb-item active">Sumbang Saran</li>
               </ol>
             </div><!-- /.col -->
@@ -29,12 +29,13 @@
                             <table id="sumbangsaran" class="table table-striped table-sm table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>NO</th>
-                                        <th>NIK</th>
-                                        <th>NAMA</th>
-                                        <th>JUDUL</th>
-                                        <th>BAGIAN</th>
-                                        <th>PERIODE</th>
+                                        <th>No</th>
+                                        <th>Nik</th>
+                                        <th>Nama</th>
+                                        <th>Judul</th>
+                                        <th>Bagian</th>
+                                        <th>Periode</th>
+                                        <th>Tanggal</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -44,15 +45,16 @@
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$ss->karyawan->nik}}</td>
                                         <td>{{$ss->karyawan->nama}}</td>
-                                        <td>{{$ss->judul}}</td>
+                                        <td>{{Str::limit($ss->judul, 20)}}</td>
                                         <td>{{$ss->karyawan->bagian->nama}}</td>
                                         <td>{{$ss->periode}}</td>
+                                        <td>{{$ss->created_at->format('d M Y H:i:s')}}</td>
                                         <td>
                                             <a href="#mymodal" data-remote="{{route('sumbang-saran.show', $ss->id)}}" data-toggle="modal" data-target="#mymodal" data-title="Detail Sumbang Saran: {{$ss->judul}}"  class="btn btn-info btn-sm">
                                                 <i class="fa fa-eye"></i>
 
                                             </a>
-                                            <form action="{{url('sumbang-saran',$ss->id)}}" method="POST" class="d-inline">
+                                            <form action="{{url('admin/sumbang-saran',$ss->id)}}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('delete')
                                                 <button class="btn btn-danger btn-sm" type="submit">
@@ -71,7 +73,16 @@
         </div>
     </section>
 @endsection
-
+@push('after-style')
+<style>
+@media (min-width: 768px) {
+  .modal-xl {
+    width: 90%;
+   max-width:1200px;
+  }
+}
+</style>
+@endpush
 @push('after-script')
 
     <!-- Datatables -->
@@ -96,8 +107,8 @@
     </script>
     <script></script>
 
-    <div class="modal fade bd-example-modal-lg" id="mymodal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal fade bd-example-modal-xl" id="mymodal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header bg-info">
             <h5 class="modal-title">Modal title</h5>

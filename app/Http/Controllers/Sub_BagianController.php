@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Bagian;
-use App\Ext;
+use App\Sub_Bagian;
 use Validator;
 
-class ExtController extends Controller
+class Sub_BagianController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,9 @@ class ExtController extends Controller
      */
     public function index()
     {
-        $extension = Ext::with('bagian')->orderBY('created_at','DESC')->get();
+        $sub_bagian = Sub_Bagian::with('bagian')->orderBY('created_at','DESC')->get();
 
-        return view('pages.ext.index',compact('extension'));
+        return view('pages.sub_bagian.index',compact('sub_bagian'));
     }
 
     /**
@@ -30,7 +30,7 @@ class ExtController extends Controller
     {
         $bagian = Bagian::all();
 
-        return view('pages.ext.create',compact('bagian'));
+        return view('pages.sub_bagian.create',compact('bagian'));
     }
 
     /**
@@ -54,12 +54,12 @@ class ExtController extends Controller
             // dd($request->all());
              return back()->withInput($request->input())->withErrors($validator->errors());
         }else{
-            Ext::create([
+            Sub_Bagian::create([
                 'bagian_id' => $request->bagian_id,
                 'nama'  => $request->nama
             ]);
     
-            return back()->with('success','Data Extension Berhasil Di Simpan');
+            return back()->with('success','Data Sub Bagian Berhasil Di Simpan');
         }
     }
 
@@ -82,10 +82,10 @@ class ExtController extends Controller
      */
     public function edit($id)
     {
-        $bagian = Bagian::all();
-        $ext = Ext::with('bagian')->findOrFail($id);
+        $bagian     = Bagian::all();
+        $sub_bagian = Sub_Bagian::with('bagian')->findOrFail($id);
         
-        return view('pages.ext.edit',compact('ext','bagian'));
+        return view('pages.sub_bagian.edit',compact('sub_bagian','bagian'));
     }
 
     /**
@@ -110,12 +110,12 @@ class ExtController extends Controller
             // dd($request->all());
              return back()->withInput($request->input())->withErrors($validator->errors());
         }else{
-            $extension =Bagian::findOrFail($id);
-            $extension->bagian_id = $request->bagian_id;
-            $extension->nama = $request->nama;
-            $extension->save();
+            $sub_bagian =Bagian::findOrFail($id);
+            $sub_bagian->bagian_id = $request->bagian_id;
+            $sub_bagian->nama = $request->nama;
+            $sub_bagian->save();
 
-            return back()->with('success','Data Bagian Berhasil Di Hapus');
+            return back()->with('success','Data Bagian Berhasil Di Update');
         }
     }
 
@@ -127,9 +127,9 @@ class ExtController extends Controller
      */
     public function destroy($id)
     {
-        $extension = Ext::findOrFail($id);
-        $extension->delete();
+        $sub_bagian = Sub_Bagian::findOrFail($id);
+        $sub_bagian->delete();
 
-        return back()->with('success','Data Extension Berhasil Di Hapus');
+        return back()->with('success','Data Sub Bagian Berhasil Di Hapus');
     }
 }

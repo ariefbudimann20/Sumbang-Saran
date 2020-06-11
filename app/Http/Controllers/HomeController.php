@@ -24,7 +24,17 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function admin()
+    {   
+        $sumbangsaran = SumbangSaran::all();
+        $karyawan = Karyawan::all();
+        $peserta = Penilaian::with('karyawan','sumbangsaran')->where('nilai','>',300)->count();
+        $penilaian = Penilaian::all();
+
+        return view('pages.dashboard',compact('sumbangsaran','karyawan','peserta','penilaian'));
+    }
+
+    public function penilai()
     {   
         $sumbangsaran = SumbangSaran::all();
         $karyawan = Karyawan::all();

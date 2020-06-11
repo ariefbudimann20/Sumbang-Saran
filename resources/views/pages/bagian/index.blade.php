@@ -10,7 +10,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="{{url('dashboard')}}">Home</a></li>
+                  <li class="breadcrumb-item"><a href="{{url('admin/dashboard')}}">Home</a></li>
                   <li class="breadcrumb-item active">Bagian</li>
                 </ol>
               </div><!-- /.col -->
@@ -25,7 +25,7 @@
                {{-- Content Card --}}
                <div class="card">
                    <div class="card-body">
-                    <a href="#mymodal" data-remote="{{route('bagian.create')}}" data-toggle="modal" data-target="#mymodal" data-title="Tambah Bagian"  class="btn btn-info mb-3">
+                    <a href="#mymodal" data-remote="{{route('bagian.create')}}" data-toggle="modal" data-target="#mymodal" data-title="Tambah Bagian"  class="btn btn-info font-weight-bold mb-3">
                         <i class="fa fa-plus"></i> Bagian
                     </a>
                        <div class="table-responsive table-jadwal">
@@ -46,7 +46,7 @@
                                             <a href="#mymodal" data-remote="{{route('bagian.edit',$bg->id)}}" data-toggle="modal" data-target="#mymodal" data-title="Ubah Bagian"  class="btn btn-info btn-sm">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <form action="{{url('bagian',$bg->id)}}" method="POST" class="d-inline">
+                                            <form action="{{url('admin/bagian',$bg->id)}}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('delete')
                                                 <button class="btn btn-danger btn-sm" type="submit">

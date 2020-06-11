@@ -1,4 +1,4 @@
-<form action="{{url('bagian',$bagian->id)}}" method="POST">
+<form action="{{url('admin/bagian',$bagian->id)}}" method="POST">
     @csrf
     @method('PUT')
         <div class="form-group mb-4">

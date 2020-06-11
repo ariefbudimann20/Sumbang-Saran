@@ -9,8 +9,8 @@ class Bagian extends Model
     protected $table = 'bagian';
     protected $fillable = ['nama'];
 
-    public function ext(){
-        return $this->hasMany(Ext::class,'bagian_id');
+    public function sub_bagian(){
+        return $this->hasMany(Sub_Bagian::class,'bagian_id');
     }
 
     public function karyawan(){

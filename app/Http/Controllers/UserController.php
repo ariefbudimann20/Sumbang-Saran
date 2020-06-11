@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\HasRole;
 use Validator;
+use HasRoles;
 
 class UserController extends Controller
 {
@@ -38,12 +40,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $messages = [
+            'required'  => ':attribute Harus Di Isi',
+            'unique'    => ':attribute Harus Berbeda',
+        ];
+
         $validator = Validator::make($request->all(),[
+            'username'      => 'required|unique:users,username',
             'name'          => 'required',
             'email'         => 'required|email|unique:users,email',
             'password'      => 'required|min:6|same:password_confirmation',
-            'role'          => 'required',
-         ]);
+            'hak_akses'     => 'required',
+        ],$messages);
 
         if ($validator->fails()) {
              return back()->withErrors($validator->errors());
@@ -55,13 +63,20 @@ class UserController extends Controller
                     request()->foto->move(public_path('assets/img/user'),$namapic);
                 }
     
-                User::create([
+        $user  = User::create([
+                    'username'      => $request->username,
                     'name'          => $request->name,
                     'email'         => $request->email,
                     'password'      => Hash::make($request->password),
                     'foto'          => $namapic,
-                    'role'          => $request->role,
+                    'hak_akses'     => $request->hak_akses,
                     
+                ]);
+
+                HasRole::create([
+                    'role_id'       => $request->hak_akses,
+                    'model_type'    => 'App\User',
+                    'model_id'      =>  $user->id
                 ]);
         
             return back()->with('success','Data User Berhasil Di Simpan');
@@ -101,12 +116,18 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $messages = [
+            'required'  => ':attribute Harus Di Isi',
+            'unique'    => ':attribute Harus Berbeda',
+        ];
+
         $validator = Validator::make($request->all(),[
+            'username'      => 'required|unique:users,username,' . $id,
             'name'          => 'required',
             'email'         => 'required|email|unique:users,email,' . $id,
             'password'      => 'same:password_confirmation',
-            'role'          => 'required',
-         ]);
+            'hak_akses'     => 'required',
+        ],$messages);
 
         if ($validator->fails()) {
              return back()->withErrors($validator->errors());
@@ -127,15 +148,20 @@ class UserController extends Controller
                     request()->foto->move(public_path('assets/img/user'),$namapic);
                 }else {   
                     $namapic = $request->input('foto_old');
-        
                 }
                 // dd($namapic);
                 $user               = User::findOrFail($id);
+                $user->username     = $request->username;
                 $user->name         = $request->name;
                 $user->email        = $request->email;
-                $user->role         = $request->role;
+                $user->hak_akses    = $request->hak_akses;
                 $user->foto         = $namapic;
                 $user->save();
+
+                $akses              = HasRole::where('model_id',$id)->firstOrFail();
+                $akses->role_id     = $request->hak_akses;
+                $akses->model_type  = $request->model_type;
+                $akses->save();
 
                 return back()->with('success','Data User Berhasil Di Ubah');
         }

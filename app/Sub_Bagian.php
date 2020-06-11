@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Ext extends Model
+class Sub_Bagian extends Model
 {
-    protected $table = 'ext';
+    protected $table = 'sub_bagian';
     protected $fillable = ['bagian_id','nama'];
 
     public function bagian(){
@@ -14,6 +14,6 @@ class Ext extends Model
     }
 
     public function karyawan(){
-        return $this->hasMany(Karyawan::class,'ext_id');
+        return $this->hasMany(Karyawan::class,'sub_bagian_id');
     }
 }

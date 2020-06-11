@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {{-- @extends('errors::minimal')
 
 @section('title', __('Forbidden'))
@@ -94,3 +95,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>
+=======
+@extends('errors::minimal')
+
+@section('title', __('Forbidden'))
+@section('code', '403')
+@section('message', __($exception->getMessage() ?: 'Forbidden'))
+>>>>>>> 782ec8f840b4313259890bb5907a9fc3b87fcc3f

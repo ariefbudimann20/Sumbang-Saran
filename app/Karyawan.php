@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Karyawan extends Model
 {
     protected $table = "karyawan";
-    protected $fillable = ['nik','nama','bagian_id','ext_id'];
+    protected $fillable = ['nik','nama','status_id','bagian_id','sub_bagian_id'];
 
     public function sumbangsaran(){
         return $this->hasMany(SumbangSaran::class,'karyawan_id');
@@ -17,11 +17,15 @@ class Karyawan extends Model
         return $this->hasMany(Penilaian::class,'karyawan_id');
     }
 
+    public function status(){
+        return $this->belongsTo(Status::class,'status_id','id');
+    }
+
     public function bagian(){
         return $this->belongsTo(Bagian::class,'bagian_id','id');
     }
 
-    public function ext(){
-        return $this->belongsTo(Ext::class,'ext_id','id');
+    public function sub_bagian(){
+        return $this->belongsTo(Sub_Bagian::class,'sub_bagian_id','id');
     }
 }

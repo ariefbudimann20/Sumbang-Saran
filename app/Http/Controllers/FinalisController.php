@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Karyawan;
 use App\Penilaian;
 
-class PesertaTerbaikController extends Controller
+class FinalisController extends Controller
 {
     public function __construct()
     {
@@ -19,9 +19,9 @@ class PesertaTerbaikController extends Controller
      */
     public function index()
     {
-        $karyawan = Penilaian::with('karyawan','sumbangsaran')->where('nilai','>',300)->get();
+        $karyawan = Penilaian::with('karyawan','sumbangsaran')->where('nilai','>=',350)->get();
         // dd($karyawan);
-        return view('pages.peserta-terbaik.index',compact('karyawan'));
+        return view('pages.finalis.index',compact('karyawan'));
     }
 
     /**

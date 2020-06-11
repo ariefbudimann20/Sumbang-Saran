@@ -14,10 +14,11 @@ class Penilaian extends Migration
     public function up()
     {
         Schema::create('penilaian', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->integer('sumbang_saran_id');
             $table->integer('karyawan_id');
-            $table->string('nilai');
+            $table->integer('user_id');
+            $table->integer('nilai');
             $table->timestamps();
         }); 
     }
