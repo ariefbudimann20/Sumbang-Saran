@@ -24,26 +24,12 @@ body#input {
 
 /* konten Page */
 .logo .icare {
-    padding: 3px;
-    margin-top: 5px;
-    width: 130px;
-    height: 130px;
-    border-radius: 100%;
-    background-color: white;
-    box-sizing: border-box;
+    margin-top: 10px;
 }
 
 .logo .kimiafarma {
-    margin-top: 5px;
     float: right;
-    align-items: center;
-    padding: 30px 10px 0 0;
-    width: 130px;
-    height: 130px;
-    border-radius: 100%;
-    background-color: white;
-    box-sizing: border-box;
-    box-shadow: 1px 1px 6px rgba(0, 0, 0, .5);
+    margin-top: 10px;
 }
 
 .konten {
@@ -58,6 +44,7 @@ body#input {
     opacity: 0;
     transform: translateX(300px);
     transition: 2s;
+    
 }
 
 .konten-kiri h1 {
@@ -70,25 +57,32 @@ body#input {
     font-family: 'Merriweather', serif;
 }
 
-.konten-kiri h3 {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
 .konten-kiri .tanggal {
     color: #ffc107;
-    font-size: 32px;
+    font-size: 30px;
     font-weight: 550;
     text-shadow: 3px 3px 5px rgba(0, 0, 0, .8);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.konten-kiri .periode {
+    font-size: 14px;
 }
 
 .hitungmundur {
     overflow: hidden;
     width: 600px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.konten-kiri .waktu-tersisa {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
 }
 
 .hitungmundur .box {
     float: left;
-    width: 100px;
+    width: 70px;
     height: 90px;
 }
 
@@ -100,20 +94,25 @@ body#input {
 
 .hitungmundur .box-span p {
     font-size: 40px;
+    font-family: 'Montserrat', sans-serif;
+
 }
 
 .hitungmundur .box p {
     text-align: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .hitungmundur .box .satuan-angka {
     font-size: 40px;
     margin-bottom: -10px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .hitungmundur .box .satuan-teks {
     font-size: 16px;
     margin-top: 5px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .konten-kanan {
@@ -122,9 +121,9 @@ body#input {
     transition: 2s;
 }
 
-.konten-kanan img {
-    margin-top: -80px;
-    margin-left: 100px;
+.konten-kanan .carouselKFUPJ {
+    max-width: 500px;
+    max-height: 375px;
 }
 
 
@@ -286,6 +285,24 @@ body#input {
     transition: .1s;
 }
 
+/* Form Page */
+.form-page .alert {
+    background: #c9c8e6;
+    color: #0f0e20;
+}
+
+.form-page button {
+    background: #0f0e20;
+    border: none;
+    transition: .2s ease-in-out;
+}
+
+.form-page button:hover {
+    background: #c9c8e6;
+    color: #0f0e20;
+}
+/* Form Page */
+
 
 /* ADMIN PAGE */
     /* DASHBOARD */
@@ -373,10 +390,7 @@ body#input {
     .konten-kiri h2 {
         font-size: 30px;
     }
-    
-    .konten-kanan  img {
-        width: 600px;
-    }
+
 }
 
 @media screen and (max-width: 1280px) {
@@ -391,6 +405,19 @@ body#input {
         overflow-y: scroll;
     }
 
+    .konten-kiri {
+        margin-right: 0;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .konten-kiri .hitungmundur {
+        display: block;
+        margin: 0 auto;
+        width: fit-content;
+
+    }
+
     .konten-kanan {
         order: -1;
     }
@@ -398,7 +425,6 @@ body#input {
     .konten-kanan img {
         display: block;
         margin: 0 auto;
-        width: 400px;
     }
 
     .login {
@@ -418,7 +444,6 @@ body#input {
 
     .logo .kimiafarma {
         padding: 0;
-        padding-top: 20px;
     }
 
     .konten {
@@ -451,14 +476,14 @@ body#input {
     }
 
     .konten-kiri .waktu-tersisa {
-        margin-bottom: -10px;
+        margin: 10px 0 -10px;
         text-align: center;
     }
 
     .konten-kiri .hitungmundur {
-        width: 300px;
-        margin-left: 40px;
-        margin-bottom: -30px;
+        width: fit-content;
+        display: block;
+        margin: 5px auto;
     }
 
     .konten-kiri .hitungmundur .box {
@@ -475,6 +500,10 @@ body#input {
 
     .konten-kiri .hitungmundur .box .satuan-teks {
         font-size: 10px;
+    }
+
+    .login {
+        margin-top: -30px;
     }
 }
 
@@ -499,7 +528,7 @@ body#input {
     }
 
     .konten-kiri .tanggal {
-        font-size: 40px;
+        font-size: 30px;
     }
 }
 

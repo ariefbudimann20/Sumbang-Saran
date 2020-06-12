@@ -105,12 +105,24 @@
                 </div>
               </div>
               @endif
-              <a href="{{url('/login')}}" class="btn btn-warning btn-lg mt-4 font-weight-bold login"><i class="fas fa-sign-in-alt"></i> Login Sekarang</a>
+              <a href="{{url('/login')}}" class="btn btn-warning btn-sm mt-4 font-weight-bold login"><i class="fas fa-sign-in-alt"></i> Login Sekarang</a>
                 
             </div>
 
             <div class="col-lg-6 col-sm-12 konten-kanan">
-              <img src="{{url('assets/img/illustration.png')}}" width="500px">
+              <div id="carouselKFUPJ" class="carousel slide carousel-fade" data-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                      <img src="{{url('assets/img/kimiafarma/kfpj1.png')}}" class="d-block mx-auto" width="500px" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{{url('assets/img/kimiafarma/kfpj2.png')}}" class="d-block mx-auto" width="500px" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{{url('assets/img/kimiafarma/kfpj3.png')}}" class="d-block mx-auto" width="500px" alt="...">
+                  </div>
+                </div>
+              </div>
             </div>
 
         </div>

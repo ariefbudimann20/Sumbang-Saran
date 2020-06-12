@@ -44,10 +44,11 @@
                     </ul>
                     </div>
                     <div class="modal-footer">
-                        <div class="d-flex justify-content-between">
-                            <input type="checkbox" class='modal-check mr-2' name='modal-check' id="yourBox" /><small class="text-muted mr-2" style="font-size:12px;"><i>Saya telah membaca dan memahami syarat & ketentuan di atas</i></small>
-                           <input type="button" id="yourbutton"  class="btn btn-primary mr-1" value="Setuju" data-dismiss="modal" disabled />  
-                       </div>
+                        <div class="form-check d-block mx-auto">
+                            <input type="checkbox" class='modal-check mr-2 form-check-input' name='modal-check' id="yourBox" />
+                            <label for="yourBox" class="form-check-label"><small class="text-muted ">Saya telah membaca dan memahami syarat & ketentuan di atas</small></label>
+                        </div>
+                        <input type="button" id="yourbutton"  class="btn btn-primary mr-1" value="Setuju" data-dismiss="modal" disabled />  
                     </div>
                 </div>
             </div>
@@ -55,9 +56,9 @@
       <div class="container-fluid">
           <div class="row justify-content-center">
               <div class="col-10 form-page">
-                  <img src="{{url('assets/img/banner-sumbangsaran-form.png')}}" width="50%" height="auto" alt="Responsive Image" class="img-fluid mx-auto d-block mt-3 animate">
+                  <img src="{{url('assets/img/kimiafarma-login.png')}}"  alt="Responsive Image" class="img-fluid mx-auto d-block mt-3 animate">
   
-                  <div class="alert alert-primary text-center mt-4 animate" role="alert">
+                  <div class="alert text-center mt-4 animate" role="alert">
                       Sampaikan Informasi, Saran, Keluhan anda demi kemajuan perusahaan. Kami menjamin <b>kerahasiaan</b> data Anda
                   </div>
                   <form action="{{url('input')}}" method="POST" enctype="multipart/form-data">
@@ -124,24 +125,29 @@
                       <div class="row">
                           <div class="col-md-12 col-sm-12 animate">
                               <div class="form-group">
-                                  <label>Ceritakan Kondisi Awal <span class="text-danger">*</span></label></label>
+                                  <label>Gambaran/Deskripsi kondisi saat ini <span class="text-danger">*</span></label></label>
                                   <textarea name="kondisi_awal" class="form-control @error('kondisi_awal') is-invalid @enderror" rows="5" >{{old('kondisi_awal')}}</textarea>
                                   @error('kondisi_awal') <span class="error invalid-feedback">{{$message}}</span> @enderror
                               </div>        
                           </div>
                       </div>
                       <div class="form-group animate">
-                          <label>Ceritakan Kondisi Yang Diinginkan <span class="text-danger">*</span></label></label>
+                          <label>Usulan /Ide Perbaikan <span class="text-danger">*</span></label></label>
                           <textarea name="kondisi_akhir" class="form-control @error('kondisi_akhir') is-invalid @enderror" rows="5" >{{old('kondisi_akhir')}}</textarea>
                           @error('kondisi_akhir') <span class="error invalid-feedback">{{$message}}</span> @enderror
                       </div>
                       <div class="form-group animate">
-                          <label>Manfaat Bagi Perusahaan <span class="text-danger">*</span></label></label>
-                          <textarea name="manfaat" class="form-control @error('manfaat') is-invalid @enderror" rows="3" >{{old('manfaat')}}</textarea>
+                          <label>Biaya atau Investasi yang dibutuhkan (Estimasi) <span class="text-danger">*</span></label></label>
+                          <textarea name="kondisi_akhir" class="form-control @error('kondisi_akhir') is-invalid @enderror" rows="3" >{{old('kondisi_akhir')}}</textarea>
+                          @error('kondisi_akhir') <span class="error invalid-feedback">{{$message}}</span> @enderror
+                      </div>
+                      <div class="form-group animate">
+                          <label>Manfaat yang diperoleh <span class="text-danger">*</span></label></label>
+                          <textarea name="manfaat" class="form-control @error('manfaat') is-invalid @enderror" rows="5" >{{old('manfaat')}}</textarea>
                           @error('manfaat') <span class="error invalid-feedback">{{$message}}</span> @enderror
                       </div>
-                      <span class="text-danger float-left my-3 animate">* Required</span>
-                      <button type="submit" class="btn btn-success btn-lg float-right my-3 animate"><i class="fas fa-paper-plane"></i> Kirim</button>
+                      <span class="text-danger float-left my-3 animate">* Wajib diisi</span>
+                      <button type="submit" class="btn btn-success float-right my-3 animate"><i class="fas fa-paper-plane"></i> Kirim</button>
                   </form>
               </div>
           </div>

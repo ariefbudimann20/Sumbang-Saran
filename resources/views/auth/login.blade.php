@@ -21,7 +21,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <img src="{{url('assets/img/banner-sumbangsaran.png')}}" alt="Responsive Image" class="img-fluid mx-auto d-block mt-3 animate">
+    <img src="{{url('assets/img/kimiafarma-login.png')}}" alt="Responsive Image" class="img-fluid mx-auto d-block mt-3 animate">
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -34,7 +34,7 @@
           <input type="username" name="username" class="form-control @error('username') is-invalid @enderror" value="{{old('username')}}" placeholder="Username">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+              <span class="fas fa-user"></span>
             </div>
           </div>
           @error('username') <span class="error invalid-feedback">{{$message}}</span> @enderror
