@@ -92,12 +92,13 @@
 @endsection
 @push('after-style')
 <style>
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .modal-xl {
     width: 90%;
    max-width:1200px;
   }
 }
+
 </style>
 @endpush
 @push('after-script')
@@ -123,10 +124,10 @@
     </script>
 
     <div class="modal fade" id="mymodal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl d-block mx-auto" role="document">
         <div class="modal-content">
-            <div class="modal-header bg-info">
-            <h5 class="modal-title">Modal title</h5>
+            <div class="modal-header" style="background: #c9c8e0">
+            <h5 class="modal-title" style="color: #0f0e20">Modal title</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>

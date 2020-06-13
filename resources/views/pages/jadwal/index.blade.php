@@ -37,7 +37,7 @@
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="far fa-clock"></i></span>
                                     </div>
-                                    <input type="text" id="daterange" class="form-control" disabled /> 
+                                    <input type="text" id="daterange" class="form-control" /> 
                                    
                                 </div>
                                 <input type="hidden" id="mulai" name="awal"> 

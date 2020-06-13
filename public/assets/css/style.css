@@ -1,14 +1,16 @@
 html {
     position: relative;
     height: 100%;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body#index {
-    background: url(../img/bg-ss.png) no-repeat center center fixed; 
+    /* background: url(../img/bg-ss.png) no-repeat center center fixed;  */
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    background-color: #0f0e20;
     color: white;
     height: 100%;
     font-family: Arial, Helvetica, sans-serif;
@@ -21,6 +23,140 @@ body#input {
 }
 
 /* konten Page */
+.logo .icare {
+    margin-top: 10px;
+}
+
+.logo .kimiafarma {
+    float: right;
+    margin-top: 10px;
+}
+
+.konten {
+    margin-top: -70px;
+    align-items: center;
+    height: 650px;
+}
+
+.konten-kiri {
+    display: block;
+    margin-right: -200px;
+    opacity: 0;
+    transform: translateX(300px);
+    transition: 2s;
+    
+}
+
+.konten-kiri h1 {
+    font-size: 40px;
+    font-family: 'Merriweather', serif;
+}
+
+.konten-kiri h2 {
+    font-size: 30px;
+    font-family: 'Merriweather', serif;
+}
+
+.konten-kiri .tanggal {
+    color: #ffc107;
+    font-size: 30px;
+    font-weight: 550;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, .8);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.konten-kiri .periode {
+    font-size: 14px;
+}
+
+.hitungmundur {
+    overflow: hidden;
+    width: 600px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.konten-kiri .waktu-tersisa {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+}
+
+.hitungmundur .box {
+    float: left;
+    width: 70px;
+    height: 90px;
+}
+
+.hitungmundur .box-span {
+    float: left;
+    width: 20px;
+    height: 90px;
+}
+
+.hitungmundur .box-span p {
+    font-size: 40px;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+.hitungmundur .box p {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.hitungmundur .box .satuan-angka {
+    font-size: 40px;
+    margin-bottom: -10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.hitungmundur .box .satuan-teks {
+    font-size: 16px;
+    margin-top: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.konten-kanan {
+    opacity: 0;
+    transform: translateX(-300px);
+    transition: 2s;
+}
+
+.konten-kanan .carouselKFUPJ {
+    max-width: 500px;
+    max-height: 375px;
+}
+
+
+/* Parallax Persetujuan Page */
+.konten-kiri.showkonten , .konten-kanan.showkonten {
+    opacity: 1;
+    transform: translate(0,0);
+}
+
+
+/* Sumbang Saran Page */
+.animate {
+    opacity: 0;
+    transform: translateX(-500px);
+    transition: .5s;
+}
+
+.form-page {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.form-page form label {
+    font-weight: 500;
+}
+
+.form-page input, .form-page select, .form-page textarea {
+    border: 1px solid #b5b5b5;
+}
+.animate.show-form {
+    opacity: 1;
+    transform: translate(0,0);
+}
+
 .overlay {
     position: relative;
     display: flex;
@@ -55,7 +191,7 @@ body#input {
     left: 0;
     height: 10px;
     width: 100%;
-    background: #2B60FF;
+    background: #0f0e20;
     border-radius: 10px;
     animation: animate-top 5s linear infinite;
 }
@@ -78,7 +214,7 @@ body#input {
     left: 0;
     height: 10px;
     width: 100%;
-    background: #2B60FF;
+    background: #0f0e20;
     border-radius: 10px;
     animation: animate-bottom 5s linear infinite;
 }
@@ -130,143 +266,42 @@ body#input {
 
 .overlay p {
     margin-top: 170px;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 500;
-    font-family: 'Sriracha', cursive;
+    font-family: 'Montserrat', sans-serif;
     text-align: center;
 }
 
-.logo .icare {
-    padding: 3px;
-    margin-top: 5px;
-    width: 130px;
-    height: 130px;
-    border-radius: 100%;
-    background-color: white;
-    box-sizing: border-box;
+.overlay button {
+    font-family: 'monserrat', sans-serif;
+    margin-top: 40px;
+    background-color: #0f0e20;
+    border: none;
 }
 
-.logo .kimiafarma {
-    margin-top: 5px;
-    float: right;
-    align-items: center;
-    padding: 30px 10px 0 0;
-    width: 130px;
-    height: 130px;
-    border-radius: 100%;
-    background-color: white;
-    box-sizing: border-box;
-    box-shadow: 1px 1px 6px rgba(0, 0, 0, .5);
+.overlay button:hover {
+    background-color: #0f0e20;
+    color: #b5b5b5;
+    transition: .1s;
 }
 
-.konten {
-    margin-top: -70px;
-    align-items: center;
-    height: 650px;
+/* Form Page */
+.form-page .alert {
+    background: #c9c8e6;
+    color: #0f0e20;
 }
 
-.konten-kiri {
-    display: block;
-    margin-right: -200px;
-    opacity: 0;
-    transform: translateX(300px);
-    transition: 2s;
+.form-page button {
+    background: #0f0e20;
+    border: none;
+    transition: .2s ease-in-out;
 }
 
-.konten-kiri h1 {
-    font-family: 'Fjalla One', sans-serif;
-    font-size: 50px;
+.form-page button:hover {
+    background: #c9c8e6;
+    color: #0f0e20;
 }
-
-.konten-kiri h2 {
-    font-size: 40px;
-    font-family: 'Fjalla One', sans-serif;
-
-}
-
-.konten-kiri h3 {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.konten-kiri .tanggal {
-    color: #ffc107;
-    font-size: 32px;
-    font-weight: 550;
-    text-shadow: 3px 3px 5px rgba(0, 0, 0, .8);
-}
-
-.hitungmundur {
-    overflow: hidden;
-    width: 600px;
-}
-
-.hitungmundur .box {
-    float: left;
-    width: 100px;
-    height: 90px;
-}
-
-.hitungmundur .box-span {
-    float: left;
-    width: 20px;
-    height: 90px;
-}
-
-.hitungmundur .box-span p {
-    font-size: 40px;
-}
-
-.hitungmundur .box p {
-    text-align: center;
-}
-
-.hitungmundur .box .satuan-angka {
-    font-size: 40px;
-    margin-bottom: -10px;
-}
-
-.hitungmundur .box .satuan-teks {
-    font-size: 16px;
-    margin-top: 5px;
-}
-
-.konten-kanan {
-    opacity: 0;
-    transform: translateX(-300px);
-    transition: 2s;
-}
-
-.konten-kanan img {
-    margin-top: -80px;
-    margin-left: 100px;
-}
-
-
-/* Parallax Persetujuan Page */
-.konten-kiri.showkonten , .konten-kanan.showkonten {
-    opacity: 1;
-    transform: translate(0,0);
-}
-
-
-/* Sumbang Saran Page */
-.animate {
-    opacity: 0;
-    transform: translateX(-500px);
-    transition: .5s;
-}
-
-.form-page form label {
-    font-weight: 500;
-}
-
-.form-page input, .form-page select, .form-page textarea {
-    border: 1px solid #b5b5b5;
-}
-.animate.show-form {
-    opacity: 1;
-    transform: translate(0,0);
-}
+/* Form Page */
 
 
 /* ADMIN PAGE */
@@ -327,24 +362,9 @@ body#input {
 
 /* TIM PENILAI PAGE */
     /* Penilaian */
-    .table-penilaian thead tr th, .table-penilaian tbody tr td {
-        text-align: center;
-    }
-    .bg-penilaian {
-        border-radius: 10px;
-    }
-
-    .bg-penilaian pre {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        color: #212529;
-    }
-
-    .bg-penilaian .quality, .bg-penilaian .total {
-        margin-bottom: -50px;
-    }
-
-    .bg-penilaian .form-group label {
-        font-size: 18px;
+    .penilaian {
+        font-family: 'Montserrat', sans-serif;
+        border-top: 2px solid #0f0e20;
     }
     /* Penilaian */
 /* TIM PENILAI PAGE */
@@ -353,17 +373,14 @@ body#input {
 /* RESPONSIVELY */
 @media screen and (max-width: 1440px) {
     .konten-kiri h2 {
-        font-size: 40px;
+        font-size: 30px;
     }
-    
-    .konten-kanan  img {
-        width: 600px;
-    }
+
 }
 
 @media screen and (max-width: 1280px) {
     .konten-kiri h2 {
-        font-size: 48px;
+        font-size: 30px;
     }
 }
 
@@ -373,6 +390,19 @@ body#input {
         overflow-y: scroll;
     }
 
+    .konten-kiri {
+        margin-right: 0;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .konten-kiri .hitungmundur {
+        display: block;
+        margin: 0 auto;
+        width: fit-content;
+
+    }
+
     .konten-kanan {
         order: -1;
     }
@@ -380,7 +410,6 @@ body#input {
     .konten-kanan img {
         display: block;
         margin: 0 auto;
-        width: 400px;
     }
 
     .login {
@@ -400,7 +429,6 @@ body#input {
 
     .logo .kimiafarma {
         padding: 0;
-        padding-top: 20px;
     }
 
     .konten {
@@ -433,14 +461,14 @@ body#input {
     }
 
     .konten-kiri .waktu-tersisa {
-        margin-bottom: -10px;
+        margin: 10px 0 -10px;
         text-align: center;
     }
 
     .konten-kiri .hitungmundur {
-        width: 300px;
-        margin-left: 40px;
-        margin-bottom: -30px;
+        width: fit-content;
+        display: block;
+        margin: 5px auto;
     }
 
     .konten-kiri .hitungmundur .box {
@@ -458,6 +486,10 @@ body#input {
     .konten-kiri .hitungmundur .box .satuan-teks {
         font-size: 10px;
     }
+
+    .login {
+        margin-top: -30px;
+    }
 }
 
 @media screen and (max-width: 400px) {
@@ -473,15 +505,15 @@ body#input {
 
 @media screen and (min-width: 1300px) {
     .konten-kiri h1 {
-        font-size: 56px;
+        font-size: 40px;
     }
 
     .konten-kiri h2 {
-        font-size: 48px;
+        font-size: 30px;
     }
 
     .konten-kiri .tanggal {
-        font-size: 48px;
+        font-size: 30px;
     }
 }
 
