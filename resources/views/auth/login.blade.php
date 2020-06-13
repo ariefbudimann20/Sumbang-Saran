@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Admin | Log in</title>
+  <title>Login | Sumbang Saran KFUPJ</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="{{url('assets/img/favicon.ico')}}" type="image/x-icon" />
@@ -14,19 +14,15 @@
   <!-- icheck bootstrap -->
   <link rel="stylesheet" href="{{url('assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{url('assets/dist/css/adminlte.min.css')}}">
+  <link rel="stylesheet" href="{{url('assets/dist/css/adminlte.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="hold-transition login-page">
-<div class="login-box">
-  <div class="login-logo">
-    <img src="{{url('assets/img/kimiafarma-login.png')}}" alt="Responsive Image" class="img-fluid mx-auto d-block mt-3 animate">
-  </div>
-  <!-- /.login-logo -->
+<body class="hold-transition login-page"><div class="login-box">
   <div class="card">
+    <img src="{{url('assets/img/kimiafarma-login.png')}}" alt="Responsive Image" class="img-fluid mx-auto d-block mt-3 animate">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg">Login untuk memberikan saran</p>
 
       <form method="POST" action="{{ route('login') }}">
         @csrf
@@ -59,7 +55,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-warning btn-block">Sign In</button>
+            <button type="submit" class="btn btn-warning font-weight-bold btn-block">Login</button>
           </div>
           <!-- /.col -->
         </div>

@@ -72,11 +72,11 @@
 
     @if($ss->penilaian->count() > 0)
         @else
-    <div class="row border border-info bg-penilaian">
+    <div class="row penilaian">
         <div class="col-12 pt-4">
-            <h4 class="mb-2 ml-2 font-italic">FORM PENILAIAN</h4>
+            <h4 class="mb-2">FORM PENILAIAN</h4>
         </div>
-            <div class="col-md-6 col-sm-12">
+            {{-- <div class="col-md-6 col-sm-12">
                 <pre>
                     <div class="form-group d-flex">
                         <label>Menggunaan Material  : </label>
@@ -120,9 +120,90 @@
                         </div>
                     </div>    
                 </pre>
-            </div>
+            </div> --}}
         </div>         
-
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-12">            
+                <p>Latar Belakang / Ide</p>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">            
+                <input type="text" class="form-control">
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">            
+                <p class="text-secondary text-right">Bobot 10%</p>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">            
+                <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-12">            
+                <p>Gambaran/kondisi saat ini</p>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">            
+                <input type="text" class="form-control">
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">            
+                <p class="text-secondary text-right">Bobot 5%</p>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">            
+                <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-12">            
+                <p>Usulan/ide perbaikan</p>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">            
+                <input type="text" class="form-control">
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">            
+                <p class="text-secondary text-right">Bobot 30%</p>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">            
+                <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-12">            
+                <p>Biaya/investasi yang dibutuhkan</p>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">            
+                <input type="text" class="form-control">
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">            
+                <p class="text-secondary text-right">Bobot 25%</p>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">            
+                <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-12">            
+                <p>Manfaat yang diperolah</p>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">            
+                <input type="text" class="form-control">
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">            
+                <p class="text-secondary text-right">Bobot 30%</p>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">            
+                <input type="text" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-12">            
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">            
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">            
+                <p class="text-secondary text-right">TOTAL</p>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">            
+                <input type="text" class="form-control">
+            </div>
+        </div>
   
 </div>
 <hr>

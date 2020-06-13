@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;1,500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
 
-    <title>Sumbang Saran</title>
+    <title>Sumbang Saran KFUPJ</title>
   </head>
   <body id="index">
     <div class="container-fluid">

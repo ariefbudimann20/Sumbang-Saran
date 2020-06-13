@@ -4,6 +4,11 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="icon" href="{{url('assets/img/favicon.ico')}}" type="image/x-icon" />
+  {{-- Google Font --}}
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{url('assets/css/style.css')}}">
+  
   <title>@yield('title')</title>
 
   @stack('before-style')
