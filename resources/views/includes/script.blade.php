@@ -21,9 +21,9 @@
 {{-- <!-- Tempusdominus Bootstrap 4 -->
 <script src="{{url('assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script> --}}
 <!-- Summernote -->
-<script src="{{url('assets/plugins/summernote/summernote-bs4.min.js')}}"></script>
+{{-- <script src="{{url('assets/plugins/summernote/summernote-bs4.min.js')}}"></script> --}}
 <!-- overlayScrollbars -->
-<script src="{{url('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+{{-- <script src="{{url('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script> --}}
 <!-- AdminLTE App -->
 <script src="{{url('assets/dist/js/adminlte.js')}}"></script>
 {{-- <!-- AdminLTE dashboard demo (This is only for demo purposes) -->

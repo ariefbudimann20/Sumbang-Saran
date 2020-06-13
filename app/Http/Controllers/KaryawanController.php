@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Exports\KaryawanExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Karyawan;
 use App\SumbangSaran;
 use App\Penilaian;
+use Carbon\Carbon;
+use PDF;
+
 
 class KaryawanController extends Controller
 {
@@ -23,6 +28,22 @@ class KaryawanController extends Controller
         
         $karyawan = Karyawan::with('status','bagian','sub_bagian')->orderBY('created_at','DESC')->withCount('sumbangsaran')->get();
         return view('pages.karyawan.index',compact('karyawan'));
+    }
+
+    public function export_excel() 
+    {
+        $mytime = Carbon::now();
+         return Excel::download(new KaryawanExport, 'Karyawan_'.$mytime->toDateTimeString().'.xlsx');
+    }
+    
+    public function export_pdf() 
+    {
+        $mytime = Carbon::now();
+        $date = $mytime->toDateTimeString();
+        $karyawan = Karyawan::with('status','bagian','sub_bagian')->withCount('sumbangsaran')->get();
+        $pdf = \PDF::loadview('pages.karyawan.export-pdf',compact('karyawan','date'));
+        $pdf->setPaper('legal', 'landscape');
+        return $pdf->download('Karyawan_'.$date.'.pdf');
     }
 
     /**

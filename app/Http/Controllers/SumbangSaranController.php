@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Exports\SumbangSaranExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Validator;
 use App\SumbangSaran;
 use App\Karyawan;
 use App\Penilaian;
+use Carbon\Carbon;
+use PDF;
 
 class SumbangSaranController extends Controller
 {
@@ -24,6 +28,22 @@ class SumbangSaranController extends Controller
         $sumbangsaran = SumbangSaran::with('karyawan')->orderBY('created_at','DESC')->get();
         //dd($sumbangsaran);
         return view('pages.sumbang-saran.index',compact('sumbangsaran'));
+    }
+
+    public function export_excel() 
+    {
+        $mytime = Carbon::now();
+         return Excel::download(new SumbangSaranExport, 'Sumbang Saran_'.$mytime->toDateTimeString().'.xlsx');
+    }
+    
+    public function export_pdf() 
+    {
+        $mytime = Carbon::now();
+        $date = $mytime->toDateTimeString();
+        $sumbangsaran = SumbangSaran::with('karyawan')->get(); 
+        $pdf = \PDF::loadview('pages.sumbang-saran.export-pdf',compact('sumbangsaran','date'));
+        $pdf->setPaper('legal', 'landscape');
+        return $pdf->download('Sumbang Saran_'.$date.'.pdf');
     }
 
     /**

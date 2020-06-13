@@ -57,16 +57,22 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="#mymodal" data-remote="{{route('user.edit',$usr->id)}}" data-toggle="modal" data-target="#mymodal" data-title="Ubah User"  class="btn btn-info btn-sm">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
-                                            <form action="{{url('admin/user',$usr->id)}}" method="POST" class="d-inline">
-                                                @csrf
-                                                @method('delete')
-                                                <button class="btn btn-danger btn-sm" type="submit">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </form>
+                                            @if($usr->id == 1)
+                                                <a href="#mymodal" data-remote="{{route('user.edit',$usr->id)}}" data-toggle="modal" data-target="#mymodal" data-title="Ubah User"  class="btn btn-info btn-sm">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                            @else
+                                                <a href="#mymodal" data-remote="{{route('user.edit',$usr->id)}}" data-toggle="modal" data-target="#mymodal" data-title="Ubah User"  class="btn btn-info btn-sm">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                                <form action="{{url('admin/user',$usr->id)}}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button class="btn btn-danger btn-sm" type="submit">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            @endif
                                         </td>
                                     </tr>
                                     @endforeach

@@ -24,7 +24,11 @@ Auth::routes();
 /* Admin */
 Route::get('admin/dashboard', 'HomeController@admin')->middleware('role:admin')->name('admin.page');
 Route::resource('admin/jadwal','JadwalController')->middleware('role:admin');
+Route::get('admin/sumbang-saran/export-pdf', 'SumbangSaranController@export_pdf')->middleware('role:admin');
+Route::get('admin/sumbang-saran/export-excel', 'SumbangSaranController@export_excel')->middleware('role:admin');
 Route::resource('admin/sumbang-saran', 'SumbangSaranController')->middleware('role:admin');
+Route::get('admin/karyawan/export-pdf', 'KaryawanController@export_pdf')->middleware('role:admin');
+Route::get('admin/karyawan/export-excel', 'KaryawanController@export_excel')->middleware('role:admin');
 Route::resource('admin/karyawan','KaryawanController')->middleware('role:admin');
 Route::resource('admin/user', 'UserController')->middleware('role:admin');
 Route::resource('admin/bagian', 'BagianController')->middleware('role:admin');
