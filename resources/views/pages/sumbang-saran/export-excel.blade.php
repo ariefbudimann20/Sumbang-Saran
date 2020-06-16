@@ -22,10 +22,17 @@
                 <th style="font-weight:bold " align="center">No</th>
                 <th style="font-weight:bold " align="center">Nik</th>
                 <th style="font-weight:bold " align="center">Nama</th>
-                <th style="font-weight:bold " align="center" width="50">Judul</th>
                 <th style="font-weight:bold " align="center">Bagian</th>
-                <th style="font-weight:bold " align="center" width="30">Periode</th>
+                <th style="font-weight:bold " align="center">Sub Bagian</th>
+                <th style="font-weight:bold " align="center" width="50">Judul</th>
+                <th style="font-weight:bold " align="center" width="30">Latar Belakang Ide</th>
+                <th style="font-weight:bold " align="center" width="30">Deskripsi kondisi saat ini</th>
+                <th style="font-weight:bold " align="center" width="30">Usulan /Ide Perbaikan</th>
+                <th style="font-weight:bold " align="center" width="30">Biaya atau Investasi yang dibutuhkan (Estimasi) </th>
+                <th style="font-weight:bold " align="center" width="30">Manfaat yang diperoleh</th>
+                <th style="font-weight:bold " align="center" width="30">Attachment</th>
                 <th style="font-weight:bold " align="center" width="30">Tanggal</th>
+                <th style="font-weight:bold " align="center" width="30">Periode</th>
             </tr>
         </thead>
         <tbody>
@@ -34,8 +41,15 @@
                 <td align="center">{{$loop->iteration}}</td>
                 <td align="center">{{$ss->karyawan->nik}}</td>
                 <td align="center">{{$ss->karyawan->nama}}</td>
-                <td align="center">{{$ss->judul}}</td>
                 <td align="center">{{$ss->karyawan->bagian->nama}}</td>
+                <td align="center">{{$ss->karyawan->sub_bagian->nama}}</td>
+                <td align="center">{{$ss->judul}}</td>
+                <td align="center">{{$ss->latar_belakang}}</td>
+                <td align="center">{{$ss->kondisi_awal}}</td>
+                <td align="center">{{$ss->kondisi_awal}}</td>
+                <td align="center">{{$ss->biaya}}</td>
+                <td align="center">{{$ss->manfaat}}</td>
+                <td align="center">{{url('assets/attachment',$ss->attachment)}}</td>
                 <td align="center">{{$ss->periode}}</td>
                 <td align="center">{{$ss->created_at->format('d M Y H:i:s')}}</td>
             </tr>

@@ -25,7 +25,7 @@
                {{-- Content Card --}}
                <div class="card">
                    <div class="card-body">
-                    <a href="#mymodal" data-remote="{{route('user.create')}}" data-toggle="modal" data-target="#mymodal" data-title="Tambah User"  class="btn btn-info font-weight-bold mb-3">
+                    <a href="#mymodal" data-remote="{{route('user.create')}}" data-toggle="modal" data-target="#mymodal" data-title="Tambah User"  class="btn btn-primary font-weight-bold mb-3">
                         <i class="fa fa-plus"></i> User
                     </a>
                        <div class="table-responsive table-jadwal">
@@ -65,13 +65,8 @@
                                                 <a href="#mymodal" data-remote="{{route('user.edit',$usr->id)}}" data-toggle="modal" data-target="#mymodal" data-title="Ubah User"  class="btn btn-info btn-sm">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
-                                                <form action="{{url('admin/user',$usr->id)}}" method="POST" class="d-inline">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button class="btn btn-danger btn-sm" type="submit">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button>
-                                                </form>
+                                                <meta name="csrf-token" content="{{ csrf_token() }}">
+                                                <a href="#" role="button" data-id="{{$usr->id}}" data-name="{{$usr->name}}" class="servdeletebtn btn btn-danger btn-sm "><i class="fas fa-trash"></i></a>
                                             @endif
                                         </td>
                                     </tr>
@@ -85,9 +80,11 @@
        </div>
     </section>
 @endsection
-
+@push('after-style')
+    <!-- Sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+@endpush
 @push('after-script')
-
     <!-- Datatables -->
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
@@ -95,6 +92,51 @@
         $(document).ready(function() {
             $('#user').DataTable();
         } );
+    </script>
+
+    <!-- Hapus Item -->
+    <script>
+        $(document).ready(function(){
+            $('.servdeletebtn').click(function(e){
+                e.preventDefault();
+                var postId = $(this).data('id'); 
+                var postName = $(this).data('name');
+                var token = $("meta[name='csrf-token']").attr("content"); 
+                // alert(postId);
+                Swal.fire({
+                    title: 'Apa Kamu Yakin?',
+                    // text: "Menghapus Data Sumbang Saran " + postName,
+                    html: '<span class="text-center">Hapus Data User <strong>'+ postName +'</strong>, Data Yang Berhubungan Dengan Data Ini Akan Terhapus</span>',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya'
+                }).then((result) => {
+                    if (result.value) {
+                        $.ajax({
+                            url : "/admin/user/" + postId,
+                            type: "DELETE",
+                            data: {
+                                '_token' : token,
+                                'id': postId
+                            },
+                            success: function(response){
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Data User Berhasil Di Hapus',
+                                })
+                                .then((result) => {
+                                    location.reload();
+                                })
+                            },
+
+                        });
+            
+                    }
+                })
+            })
+        });
     </script>
 
     <!-- Modal -->

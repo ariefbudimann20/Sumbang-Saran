@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Status;
 use App\Karyawan;
+use App\SumbangSaran;
 use Validator;
 
 class StatusController extends Controller
@@ -123,9 +124,6 @@ class StatusController extends Controller
         $status = Status::findOrFail($id);
         $status->delete();
 
-        $status = Karyawan::where('status_id',$id);
-        $status->delete();
-
-        return back()->with('success','Data Status Berhasil Di Hapus');
+        return response()->json();
     }
 }

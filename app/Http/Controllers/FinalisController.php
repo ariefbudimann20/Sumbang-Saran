@@ -3,8 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Exports\FinalisExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Karyawan;
 use App\Penilaian;
+use App\SumbangSaran;
+use App\User;
+use DB;
+use Carbon\Carbon;
 
 class FinalisController extends Controller
 {
@@ -19,11 +25,43 @@ class FinalisController extends Controller
      */
     public function index()
     {
-        $karyawan = Penilaian::with('karyawan','sumbangsaran')->where('nilai','>=',350)->get();
+        $sumbangsaran = SumbangSaran::with('karyawan','penilaian')->get();
+        $sumbangsaran -> map(function ($item, $key){
+            return $item['nilai_total'] = $item->penilaian()->sum('nilai');
+        });
+        $sumbangsaran -> map(function ($item, $key){
+            return $item['jml_sdh_nilai'] = $item->penilaian()->count();
+        });
+
+        $sorted = $sumbangsaran->sortByDesc('nilai_total');
+        $karyawan = $sorted->values()->all();
+
+        $penilai = User::where('hak_akses',2)->count();
         // dd($karyawan);
-        return view('pages.finalis.index',compact('karyawan'));
+        return view('pages.finalis.index',compact('karyawan','penilai'));
     }
 
+    public function export_excel() 
+    {
+        $mytime = Carbon::now();
+         return Excel::download(new FinalisExport, 'Finalis_'.$mytime->toDateTimeString().'.xlsx');
+    }
+
+    public function export_pdf() 
+    {
+        $mytime = Carbon::now();
+        $date = $mytime->toDateTimeString();
+        $sumbangsaran = SumbangSaran::with('karyawan','penilaian')->get();
+        $sumbangsaran -> map(function ($item, $key){
+            return $item['nilai_total'] = $item->penilaian()->sum('nilai');
+        });
+
+        $sorted = $sumbangsaran->sortByDesc('nilai_total');
+        $karyawan = $sorted->values()->all();
+        $pdf = \PDF::loadview('pages.finalis.export-pdf',compact('karyawan','date'));
+        $pdf->setPaper('legal', 'landscape');
+        return $pdf->download('Finalis_'.$date.'.pdf');
+    }
     /**
      * Show the form for creating a new resource.
      *

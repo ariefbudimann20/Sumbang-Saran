@@ -25,7 +25,7 @@
                {{-- Content Card --}}
                <div class="card">
                    <div class="card-body">
-                    <a href="#mymodal" data-remote="{{route('bagian.create')}}" data-toggle="modal" data-target="#mymodal" data-title="Tambah Bagian"  class="btn btn-info font-weight-bold mb-3">
+                    <a href="#mymodal" data-remote="{{route('bagian.create')}}" data-toggle="modal" data-target="#mymodal" data-title="Tambah Bagian"  class="btn btn-primary font-weight-bold mb-3">
                         <i class="fa fa-plus"></i> Bagian
                     </a>
                        <div class="table-responsive table-jadwal">
@@ -46,13 +46,7 @@
                                             <a href="#mymodal" data-remote="{{route('bagian.edit',$bg->id)}}" data-toggle="modal" data-target="#mymodal" data-title="Ubah Bagian"  class="btn btn-info btn-sm">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <form action="{{url('admin/bagian',$bg->id)}}" method="POST" class="d-inline">
-                                                @csrf
-                                                @method('delete')
-                                                <button class="btn btn-danger btn-sm" type="submit">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </form>
+                                            <a href="#" role="button" data-id="{{$bg->id}}" data-name="{{$bg->nama}}" class="servdeletebtn btn btn-danger btn-sm "><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -65,9 +59,12 @@
        </div>
     </section>
 @endsection
+@push('after-style')
+     <!-- Sweetalert -->
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+@endpush
 
 @push('after-script')
-
     <!-- Datatables -->
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
@@ -75,6 +72,50 @@
         $(document).ready(function() {
             $('#bagian').DataTable();
         } );
+    </script>
+
+    <!-- Hapus Item -->
+    <script>
+        $(document).ready(function(){
+            $('.servdeletebtn').click(function(e){
+                e.preventDefault();
+                var postId = $(this).data('id'); 
+                var postName = $(this).data('name'); 
+                // alert(postId);
+                Swal.fire({
+                    title: 'Apa Kamu Yakin?',
+                    html: '<span class="text-center">Hapus Data Bagian <strong>'+ postName +'</strong>, Data Yang Berhubungan Dengan Data Ini Akan Terhapus</span>',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya'
+                }).then((result) => {
+                    if (result.value) {
+                        $.ajax({
+                            url : "/admin/bagian/" + postId,
+                            type: "DELETE",
+                            data: {
+                                '_token' : $('input[name=_token]').val(),
+                                'id': postId
+                            },
+                            success: function(response){
+                                Swal.fire(
+                                'Success!',
+                                'Data Bagian Berhasil Di Hapus',
+                                'success'
+                                )
+                                .then((result) => {
+                                    location.reload();
+                                })
+                            },
+
+                        });
+            
+                    }
+                })
+            })
+        });
     </script>
 
     <!-- Modal -->
@@ -90,7 +131,7 @@
     </script>
 
     <div class="modal fade" id="mymodal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
+        <div class="modal-dialog d-block mx-auto" role="document">
         <div class="modal-content">
             <div class="modal-header bg-info">
             <h5 class="modal-title">Modal title</h5>

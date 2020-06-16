@@ -8,36 +8,38 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <title>Export Sumbang Saran</title>
+    <title>Export Finalis</title>
 
   </head>
   <body>
-    <h3>Report Sumbang Saran</h3>
+    <h3>Report Finalis</h3>
     <h3>Tanggal: {{$date}}</h3>
     <table class="text-center table table-striped table-sm table-bordered" >
         <thead>
             <tr></tr>
             <tr></tr>
             <tr>
-                <th style="font-weight:bold " align="center">No</th>
-                <th style="font-weight:bold " align="center">Nik</th>
-                <th style="font-weight:bold " align="center">Nama</th>
-                <th style="font-weight:bold " align="center" width="50">Judul</th>
-                <th style="font-weight:bold " align="center">Bagian</th>
-                <th style="font-weight:bold " align="center" width="30">Periode</th>
-                <th style="font-weight:bold " align="center" width="30">Tanggal</th>
+                <th style="font-weight:bold" align="center">No</th>
+                <th style="font-weight:bold" align="center" width="20">Nik</th>
+                <th style="font-weight:bold" align="center" width="20">Nama</th>
+                <th style="font-weight:bold" align="center" width="20">Bagian</th>
+                <th style="font-weight:bold" align="center" width="20">Sub Bagian</th>
+                <th style="font-weight:bold" align="center" width="50">Judul</th>
+                <th style="font-weight:bold" align="center" width="30">Periode</th>
+                <th style="font-weight:bold" align="center" width="20">Jumlah Nilai</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($sumbangsaran as $ss)
+            @foreach ($karyawan as $ky)
             <tr>
                 <td align="center">{{$loop->iteration}}</td>
-                <td align="center">{{$ss->karyawan->nik}}</td>
-                <td align="center">{{$ss->karyawan->nama}}</td>
-                <td align="center">{{$ss->judul}}</td>
-                <td align="center">{{$ss->karyawan->bagian->nama}}</td>
-                <td align="center">{{$ss->periode}}</td>
-                <td align="center">{{$ss->created_at->format('d M Y H:i:s')}}</td>
+                <td align="center">{{$ky->karyawan->nik}}</td>
+                <td align="center">{{$ky->karyawan->nama}}</td>
+                <td align="center">{{$ky->karyawan->bagian->nama}}</td>
+                <td align="center">{{$ky->karyawan->sub_bagian->nama}}</td>
+                <td align="center">{{$ky->judul}}</td>
+                <td align="center">{{$ky->periode}}</td>
+                <td align="center">{{$ky->nilai_total}}</td>
             </tr>
             @endforeach
         </tbody>

@@ -54,22 +54,33 @@
 <div class="row">
     <div class="col-md-6 .col-sm-12">
         <div class="form-group">
-            <label for="kondisi-awal">Cerita Kondisi Awal :</label>
+            <label for="kondisi-awal">Latar Belakang Ide :</label>
+            <p class="text-justify">{{$ss->latar_belakang}}</p>
+        </div>   
+    </div>
+    <div class="col-md-6 .col-sm-12">
+        <div class="form-group">
+            <label for="kondisi-awal">Deskripsi kondisi saat ini :</label>
             <p class="text-justify">{{$ss->kondisi_awal}}</p>
         </div>   
     </div>
     <div class="col-md-6 .col-sm-12">
         <div class="form-group">
-            <label for="kondisi-akhir">Cerita Kondisi Yang Diinginkan :</label>
+            <label for="kondisi-akhir">Usulan /Ide Perbaikan :</label>
             <p class="text-justify">{{$ss->kondisi_akhir}}</p>
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-12">
+        <div class="form-group">
+            <label>Biaya atau Investasi yang dibutuhkan (Estimasi) :</label>
+            <p class="text-justify">{{$ss->biaya}}</p>
         </div>
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12 .col-sm-12">
-
+    <div class="col-md-6 col-sm-12">
         <div class="form-group">
-            <label for="manfaat">Manfaat Bagi Perusahaan :</label>
+            <label>Manfaat yang diperoleh :</label>
             <p class="text-justify">{{$ss->manfaat}}</p>
         </div>
     </div>

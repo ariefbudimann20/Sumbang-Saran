@@ -17,7 +17,7 @@
         <hr>
     <div class="d-flex justify-content-end">
         <button type="button" class="btn btn-secondary waves-effect mr-2" data-dismiss="modal">Batal</button>
-        <button type="submit" class="btn btn-info waves-effect ">Simpan</button>
+        <button type="submit" class="btn btn-primary waves-effect ">Simpan</button>
     </div>
 </form>
     

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Bagian;
 use App\Sub_Bagian;
+use App\Karyawan;
+use App\SumbangSaran;
 use Validator;
 
 class BagianController extends Controller
@@ -97,7 +99,7 @@ class BagianController extends Controller
             'max' => ':attribute Harus Di Isi maksimal :max Digit',
         ];
         $validator = Validator::make($request->all(),[
-            'nama'           => 'required|max:15',
+            'nama'           => 'required|max:50',
         ],$messages);
   
         if ($validator->fails()) {
@@ -123,9 +125,6 @@ class BagianController extends Controller
         $bagian = Bagian::findOrFail($id);
         $bagian->delete();
 
-        $bagian = Sub_Bagian::where('bagian',$id);
-        $bagian->delete();
-
-        return back()->with('success','Data Bagian Berhasil Di Hapus');
+        return response()->json();
     }
 }

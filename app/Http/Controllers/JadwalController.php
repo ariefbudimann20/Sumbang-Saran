@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Jadwal;
 use App\Penilaian;
+use App\SumbangSaran;
+use App\Karyawan;
 use Validator;
 use Alert;
+use Carbon\Carbon;
 
 class JadwalController extends Controller
 {
@@ -17,7 +20,8 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        $jadwal = Jadwal::orderBY('created_at','DESC')->get();
+        $jadwal = Jadwal::with('juara1','juara2','juara3')->orderBY('created_at','DESC')->get();
+        // dd($jadwal);
         return view('pages.jadwal.index',compact('jadwal'));
     }
 
@@ -39,10 +43,10 @@ class JadwalController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->awal <= $request->selesai);
-        if($request->awal <= $request->selesai ){
+ 
+        if($request->mulai <= $request->selesai ){
             jadwal::create([
-                'mulai' => $request->awal,
+                'mulai' => $request->mulai,
                 'selesai' => $request->selesai,
                 'status'   => 0
             ]);
@@ -51,6 +55,7 @@ class JadwalController extends Controller
         }
         Alert::error('Gagal', 'Waktu Selesai Tidak Boleh Kurang Dari Waktu Mulai');
         return back();
+       
     }
 
     /**
@@ -73,9 +78,19 @@ class JadwalController extends Controller
     public function edit($id)
     {
         $jadwal = Jadwal::findOrFail($id);
+        $sumbangsaran = SumbangSaran::with('karyawan','penilaian')->get();
+        $sumbangsaran -> map(function ($item, $key){
+            return $item['nilai_total'] = $item->penilaian()->sum('nilai');
+        });
+        $sumbangsaran -> map(function ($item, $key){
+            return $item['jml_sdh_nilai'] = $item->penilaian()->count();
+        });
+
+        $sorted = $sumbangsaran->sortByDesc('nilai_total');
+        $finalis = $sorted->values()->all();
         $pemenang = Penilaian::where('nilai','=',500)->get();
         
-        return view('pages.jadwal.edit',compact('jadwal','pemenang'));
+        return view('pages.jadwal.edit',compact('jadwal','pemenang','finalis'));
     }
 
     /**
@@ -92,16 +107,16 @@ class JadwalController extends Controller
         ];
         $validator = Validator::make($request->all(),[
             'status'        => 'required',
-            // 'pemenang'        => 'required',
         ],$messages);
   
         if ($validator->fails()) {
-            // dd($request->all());
              return back()->withInput($request->input())->withErrors($validator->errors());
         }else{
 
             $jadwal = Jadwal::findOrFail($id);
-            // $jadwal->pemenang = $request->pemenang;
+            $jadwal->juara1 = $request->juara1;
+            $jadwal->juara2 = $request->juara2;
+            $jadwal->juara3 = $request->juara3;
             $jadwal->status = $request->status;
             $jadwal->save();
                 
@@ -120,6 +135,6 @@ class JadwalController extends Controller
         $jadwal = Jadwal::findOrFail($id);
         $jadwal->delete();
 
-        return back()->with('success','Data Jadwal Berhasil Di Hapus');
+        return response()->json();
     }
 }

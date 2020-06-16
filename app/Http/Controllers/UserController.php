@@ -178,6 +178,6 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        return back()->with('success','Data User Berhasil Di Hapus');
+        return response()->json();
     }
 }

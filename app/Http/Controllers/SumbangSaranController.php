@@ -114,9 +114,7 @@ class SumbangSaranController extends Controller
         $ss = SumbangSaran::findOrFail($id);
         $ss->delete();
 
-        $penilaian = Penilaian::where('sumbang_saran_id',$id);
-        $penilaian->delete();
-
-        return back()->with('success','Data Sumbang Saran Berhasil Di Hapus');
+        return response()->json();
+        // return back()->with('success','Data Sumbang Saran Berhasil Di Hapus');
     }
 }

@@ -13,6 +13,7 @@ use App\Karyawan;
 use App\Bagian;
 use App\Sub_Bagian;
 use App\Jadwal;
+use App\Status;
 
 class InputController extends Controller
 {
@@ -23,11 +24,12 @@ class InputController extends Controller
      */
     public function index()
     {
+        $status         = Status::all();
         $bagian         = Bagian::all();
         $sub_bagian     = Sub_Bagian::all();
         $jadwal         = Jadwal::where('status','=',0)->first();
 
-        return view('form',compact('bagian','sub_bagian','jadwal'));
+        return view('form',compact('status','bagian','sub_bagian','jadwal'));
     }
 
     public function search(Request $request)
@@ -64,13 +66,15 @@ class InputController extends Controller
         ];
         $validator = Validator::make($request->all(),[
             // 'nik'           => 'required|min:5|max:10',
-            'nama'          => 'required',
-            'bagian'        => 'required',
-            'sub_bagian'    => 'required',
-            'judul'         => 'required',
-            'kondisi_awal'  => 'required',
-            'kondisi_akhir' => 'required',
-            'manfaat'       => 'required'
+            'nama'              => 'required',
+            'bagian'            => 'required',
+            'sub_bagian'        => 'required',
+            'judul'             => 'required',
+            'latar_belakang'    => 'required',
+            'kondisi_awal'      => 'required',
+            'kondisi_akhir'     => 'required',
+            'biaya'             => 'required',
+            'manfaat'           => 'required'
         ],$messages);
   
         if ($validator->fails()) {
@@ -83,7 +87,7 @@ class InputController extends Controller
                 $namapic = request()->nik."_".request()->attachment->getClientOriginalName();
                 request()->attachment->move(public_path('assets/attachment'),$namapic);
             }
-                if(empty($request->nik)) {
+                if($request->nik == 0) {
                     $nik = 0;
                     $flight = Karyawan::firstOrCreate([
                         'nik'          => $nik,
@@ -96,8 +100,10 @@ class InputController extends Controller
                         'karyawan_id'   => $flight->id,
                         'judul'         => $request->judul,
                         'attachment'    => $namapic,
+                        'latar_belakang'=> $request->latar_belakang,
                         'kondisi_awal'  => $request->kondisi_awal,
                         'kondisi_akhir' => $request->kondisi_akhir,
+                        'biaya'         => $request->biaya,
                         'manfaat'       => $request->manfaat,
                         'periode'       => $request->periode
                     ]);
@@ -111,8 +117,10 @@ class InputController extends Controller
                             'karyawan_id'   => $karyawan->id,
                             'judul'         => $request->judul,
                             'attachment'    => $namapic,
+                            'latar_belakang'=> $request->latar_belakang,
                             'kondisi_awal'  => $request->kondisi_awal,
                             'kondisi_akhir' => $request->kondisi_akhir,
+                            'biaya'         => $request->biaya,
                             'manfaat'       => $request->manfaat,
                             'periode'       => $request->periode
                         ]);
@@ -130,8 +138,10 @@ class InputController extends Controller
                             'karyawan_id'   => $kyn->id,
                             'judul'         => $request->judul,
                             'attachment'    => $namapic,
+                            'latar_belakang'=> $request->latar_belakang,
                             'kondisi_awal'  => $request->kondisi_awal,
                             'kondisi_akhir' => $request->kondisi_akhir,
+                            'biaya'         => $request->biaya,
                             'manfaat'       => $request->manfaat,
                             'periode'       => $request->periode
                         ]);

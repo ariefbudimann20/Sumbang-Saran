@@ -74,8 +74,9 @@
                                 <label>Status <span class="text-danger">*</span></label>
                                 <select name="status" id="status_select" class="form-control @error('status') is-invalid @enderror" >
                                     <option value="">- Pilih -</option>
-                                    <option value="1">OS</option>
-                                    <option value="2">Karyawan</option>
+                                    @foreach($status as $sts)
+                                        <option value="{{$sts->id}}">{{$sts->nama}}</option>
+                                    @endforeach
                                 </select>
                                 @error('status') <span class="error invalid-feedback">{{$message}}</span> @enderror
                               </div>
@@ -115,7 +116,7 @@
                                   @error('sub_bagian') <span class="error invalid-feedback">{{$message}}</span> @enderror
                               </div>
                                 <div class="form-group animate">
-                                    <label>Attachment (Boleh dikosongkan)</label><br>
+                                    <label>Attachment</label> <small class="text-muted">(Boleh dikosongkan)</small><br>
                                     <img id="blah" style="height:100px; margin-bottom:10px;" src="{{url('assets/img/dummy.jpg')}}" alt="your image" />
                                     <input id="imgInp" name="attachment" type="file" class="form-control-file @error('attachment') is-invalid @enderror" >
                                     @error('attachment') <span class="error invalid-feedback">{{$message}}</span> @enderror
@@ -123,6 +124,13 @@
                           </div>
                       </div>
                       <div class="row">
+                        <div class="col-md-12 col-sm-12 animate">
+                            <div class="form-group">
+                                <label>Latarbelakang Ide <span class="text-danger">*</span></label></label>
+                                <textarea name="latar_belakang" class="form-control @error('latar_belakang') is-invalid @enderror" rows="5" >{{old('latar_belakang')}}</textarea>
+                                @error('latar_belakang') <span class="error invalid-feedback">{{$message}}</span> @enderror
+                            </div>        
+                        </div>
                           <div class="col-md-12 col-sm-12 animate">
                               <div class="form-group">
                                   <label>Gambaran/Deskripsi kondisi saat ini <span class="text-danger">*</span></label></label>
@@ -138,8 +146,8 @@
                       </div>
                       <div class="form-group animate">
                           <label>Biaya atau Investasi yang dibutuhkan (Estimasi) <span class="text-danger">*</span></label></label>
-                          <textarea name="kondisi_akhir" class="form-control @error('kondisi_akhir') is-invalid @enderror" rows="3" >{{old('kondisi_akhir')}}</textarea>
-                          @error('kondisi_akhir') <span class="error invalid-feedback">{{$message}}</span> @enderror
+                          <textarea name="biaya" class="form-control @error('biaya') is-invalid @enderror" rows="3" >{{old('biaya')}}</textarea>
+                          @error('biaya') <span class="error invalid-feedback">{{$message}}</span> @enderror
                       </div>
                       <div class="form-group animate">
                           <label>Manfaat yang diperoleh <span class="text-danger">*</span></label></label>
@@ -147,7 +155,7 @@
                           @error('manfaat') <span class="error invalid-feedback">{{$message}}</span> @enderror
                       </div>
                       <span class="text-danger float-left my-3 animate">* Wajib diisi</span>
-                      <button type="submit" class="btn btn-success float-right my-3 animate"><i class="fas fa-paper-plane"></i> Kirim</button>
+                      <button type="submit" class="btn float-right text-white my-3 animate"><i class="fas fa-paper-plane"></i> Kirim</button>
                   </form>
               </div>
           </div>
@@ -218,7 +226,10 @@
     <script>
         $('#status_select').change(function(){
             if($(this).val() == 1){
+                nilai = 0;
+                $('#status').val(nilai);
                 $('#status').attr('disabled','disabled');
+
             }else{
                 $('#status').removeAttr('disabled');     
             }

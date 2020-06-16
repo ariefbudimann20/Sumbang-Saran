@@ -33,14 +33,15 @@
                             <table id="finalis" class="text-center table table-striped table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>NO</th>
-                                        <th>NIK</th>
-                                        <th>NAMA</th>
-                                        <th>BAGIAN</th>
-                                        <th>EXT</th>
-                                        <th>JUDUL</th>
-                                        <th>PERIODE</th>
-                                        <th>NILAI</th>
+                                        <th>No</th>
+                                        <th>Nik</th>
+                                        <th>Nama</th>
+                                        <th>Bagian</th>
+                                        <th>Sub Bagian</th>
+                                        <th>Judul</th>
+                                        <th>Periode</th>
+                                        {{-- <th>Status</th> --}}
+                                        <th>Nilai</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -50,15 +51,35 @@
                                         <td>{{$ky->karyawan->nik}}</td>
                                         <td>{{$ky->karyawan->nama}}</td>
                                         <td>{{$ky->karyawan->bagian->nama}}</td>
-                                        <td>{{$ky->karyawan->ext->nama}}</td>
-                                        <td>{{$ky->sumbangsaran->judul}}</td>
-                                        <td>{{$ky->sumbangsaran->periode}}</td>
-                                        <td>{{$ky->nilai}}</td>
+                                        <td>{{$ky->karyawan->sub_bagian->nama}}</td>
+                                        <td>{{Str::limit($ky->judul, 20)}}</td>
+                                        <td>{{$ky->periode}}</td>
+                                        {{-- <td>@if($ky->jml_sdh_nilai == $penilai)
+                                            <small class="badge badge-success p-2">Complete</small>
+                                            @else
+                                            <small class="badge badge-info p-2">Sudah Di Nilai {{$ky->jml_sdh_nilai}} : {{$penilai}}</small>
+                                            @endif
+                                        </td> --}}
+                                        <td>
+                                            {{$ky->nilai_total}}
+                                            {{-- @php
+                                                $total = 0;
+                                            @endphp
+                                            @foreach($ky->penilaian as $area)
+                                            @php
+                                                $total += $area->nilai;
+                                            @endphp
+                                            @endforeach
+                                            {{ $total}} --}}
+                                            
+                                            {{-- @foreach($ky->penilaian as $total)
+                                            {{$total->nilai}}
+                                            @endforeach --}}
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
                             </table>
-                            <h6><strong>* Data Yang Tampil Dengan Nilai Minimal 350 Point</strong></h6>
                         </div>
                     </div>
                 </div>

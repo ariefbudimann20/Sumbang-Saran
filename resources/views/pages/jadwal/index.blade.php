@@ -1,5 +1,5 @@
 @extends('layouts.frame')
-@section('title','Jadwal Sumbang Saran')
+@section('title','Jadwal')
 @push('after-style')
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 @endpush
@@ -9,7 +9,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0 text-dark"><i class="nav-icon far fa-calendar-alt"></i></i> Jadwal Sumbang Saran</h1>
+              <h1 class="m-0 text-dark"><i class="nav-icon far fa-calendar-alt"></i></i> Jadwal</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
@@ -25,7 +25,7 @@
     <section class="content">
        <div class="row content-jadwal">
            <div class="col-md-6 ml-3">
-               <button class="btn btn-info font-weight-bold" type="button" data-toggle="collapse" data-target="#JadwalCollapse" aria-expanded="false" aria-controls="JadwalCollapse"><i class="fa fa-plus"></i> Jadwal</button>
+               <button class="btn btn-primary font-weight-bold" type="button" data-toggle="collapse" data-target="#JadwalCollapse" aria-expanded="false" aria-controls="JadwalCollapse"><i class="fa fa-plus"></i> Jadwal</button>
 
                <div class="collapse mt-1" id="JadwalCollapse">
                    <div class="card card-body">
@@ -33,16 +33,16 @@
                         @csrf
                         <div class="row mb-4">
                             <div class="col-md-6">
+                                <label>Mulai</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="far fa-clock"></i></span>
                                     </div>
-                                    <input type="text" id="daterange" class="form-control" /> 
-                                   
+                                    <input type="text" id="daterange" name="mulai" class="form-control" />    
                                 </div>
-                                <input type="hidden" id="mulai" name="awal"> 
                             </div>
                             <div class="col-md-6">
+                                <label>Selesai</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="far fa-clock"></i></span>
@@ -52,7 +52,7 @@
                             </div>
                         </div>
                         <div class="row justify-content-center">
-                            <button type="submit" class="btn btn-info font-weight-bold">Set Jadwal</button>
+                            <button type="submit" class="btn btn-primary btn-sm font-weight-bold">Set Jadwal</button>
                         </div>
                        </form>
                    </div>
@@ -71,6 +71,9 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Periode</th>
+                                        <th>Juara I</th>
+                                        <th>Juara II</th>
+                                        <th>Juara III</th>
                                         <th>Status</th>
                                         <th>Aksi</th>
                                     </tr>        
@@ -79,7 +82,10 @@
                                     @foreach($jadwal as $jwl)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-                                        <td>{{$jwl->created_at}} - {{$jwl->selesai}}</td>
+                                        <td>{{$jwl->mulai}} - {{$jwl->selesai}}</td>
+                                        <td>{{$jwl->juara1}}</td>
+                                        <td>{{$jwl->juara2}}</td>
+                                        <td>{{$jwl->juara3}}</td>
                                         <td>@if($jwl->status == 0)
                                             <span class="badge badge-info p-2">Berjalan</span>
                                             @else
@@ -87,16 +93,11 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="#mymodal" data-remote="{{route('jadwal.edit',$jwl->id)}}" data-toggle="modal" data-target="#mymodal" data-title="Ubah Sub Bagian"  class="btn btn-info btn-sm">
+                                            <a href="#mymodal" data-remote="{{route('jadwal.edit',$jwl->id)}}" data-toggle="modal" data-target="#mymodal" data-title="Ubah Jadwal"  class="btn btn-info btn-sm">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <form action="{{url('admin/jadwal',$jwl->id)}}" method="POST" class="d-inline">
-                                                @csrf
-                                                @method('delete')
-                                                <button class="btn btn-danger btn-sm" type="submit">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </form>
+                                            <meta name="csrf-token" content="{{ csrf_token() }}">
+                                            <a href="#" role="button" data-id="{{$jwl->id}}" class="servdeletebtn btn btn-danger btn-sm "><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -109,13 +110,16 @@
        </div>
     </section>
 @endsection
+@push('after-style')
+    <!-- Sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+@endpush
 @push('after-script')
     <!-- daterangepicker -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
  
 <script>
-
     var date = new Date();
     var aaaa = date.getFullYear();
     var gg = date.getDate();
@@ -143,30 +147,32 @@
         seconds = "0" + seconds;
 
     var today = cur_day + " " + hours + ":" + minutes + ":" + seconds;
-    document.getElementById("mulai").value = today;
         $('#daterange').daterangepicker({ 
-            "singleDatePicker": true,
-            startDate: today, // after open picker you'll see this dates as picked
-            locale: {
-                "format": 'YYYY-MM-DD HH:mm:ss',
-            }
-        }, function (start, end, label) {
-            //what to do after change
-        }).val(today); 
-
-        $('#daterange1').daterangepicker({
             "singleDatePicker": true,
             "timePicker": true,
             "timePicker24Hour": true,
-            "minDate": "YYYY-MM-DD HH:mm:ss",
-            "maxDate": "YYYY-MM-DD HH:mm:ss",
+            "minDate": today,
+            // "maxDate": "YYYY-MM-DD HH:mm:ss",
             autoUpdateInput: true,
             "locale": {
             "format": 'YYYY-MM-DD HH:mm:ss',
             "cancelLabel": 'Clear'
             }
         });
-        </script>
+
+        $('#daterange1').daterangepicker({
+            "singleDatePicker": true,
+            "timePicker": true,
+            "timePicker24Hour": true,
+            "minDate":today,
+            // "maxDate": "YYYY-MM-DD HH:mm:ss",
+            autoUpdateInput: true,
+            "locale": {
+            "format": 'YYYY-MM-DD HH:mm:ss',
+            "cancelLabel": 'Clear'
+            }
+        });
+</script>
 
     <!-- Datatables -->
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
@@ -175,10 +181,54 @@
         $(document).ready(function() {
             $('#jadwal').DataTable();
         } );
-</script>
+    </script>
 
-        <!-- Modal -->
-        <script>
+    <!-- Hapus Item -->
+    <script>
+        $(document).ready(function(){
+            $('.servdeletebtn').click(function(e){
+                e.preventDefault();
+                var postId = $(this).data('id'); 
+                var postName = $(this).data('name');
+                var token = $("meta[name='csrf-token']").attr("content"); 
+                // alert(postId);
+                Swal.fire({
+                    title: 'Apa Kamu Yakin?',
+                    html: '<span class="text-center">Hapus Data Jadwal</span>',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya'
+                }).then((result) => {
+                    if (result.value) {
+                        $.ajax({
+                            url : "/admin/jadwal/" + postId,
+                            type: "DELETE",
+                            data: {
+                                '_token' : token,
+                                'id': postId
+                            },
+                            success: function(response){
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Data Jadwal Berhasil Di Hapus',
+                                })
+                                .then((result) => {
+                                    location.reload();
+                                })
+                            },
+
+                        });
+            
+                    }
+                })
+            })
+        });
+    </script>
+
+    <!-- Modal -->
+    <script>
             jQuery(document).ready(function($){
                 $('#mymodal').on('show.bs.modal',function(e){
                     var button = $(e.relatedTarget);
@@ -187,10 +237,10 @@
                     modal.find('.modal-title').html(button.data('title'));
                 });
             });
-        </script>
+    </script>
     
-        <div class="modal fade" id="mymodal" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
+    <div class="modal fade" id="mymodal" tabindex="-1" role="dialog">
+            <div class="modal-dialog d-block mx-auto" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-info">
                 <h5 class="modal-title">Modal title</h5>
@@ -203,5 +253,5 @@
                 </div>
             </div>
             </div>
-        </div>
+    </div>
 @endpush

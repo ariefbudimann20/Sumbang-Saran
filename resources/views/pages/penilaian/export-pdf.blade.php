@@ -8,37 +8,47 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <title>Export Sumbang Saran</title>
+    <title>Export Penilaian</title>
 
   </head>
   <body>
-    <h5>Report Sumbang Saran</h5>
+    <h5>Report Penilaian</h5>
     <h5>Tanggal: {{$date}}</h5>
     <table class="text-center table table-striped table-sm table-bordered mt-3" >
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Nik</th>
-                <th>Nama</th>
-                <th>Judul</th>
-                <th>Bagian</th>
-                <th>Periode</th>
-                <th>Tanggal</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($sumbangsaran as $ss)
-            <tr>
-                <td>{{$loop->iteration}}</td>
-                <td>{{$ss->karyawan->nik}}</td>
-                <td>{{$ss->karyawan->nama}}</td>
-                <td>{{$ss->judul}}</td>
-                <td>{{$ss->karyawan->bagian->nama}}</td>
-                <td>{{$ss->periode}}</td>
-                <td>{{$ss->created_at->format('d M Y H:i:s')}}</td>
-            </tr>
-            @endforeach
-        </tbody>
+      <thead>
+        <tr>
+            <th>No</th>
+            <th>Nik</th>
+            <th>Nama</th>
+            <th>Judul</th>
+            <th>Bagian</th>
+            <th>Sub Bagian</th>
+            <th>Periode</th>
+            <th>Nilai</th>
+        </tr>
+      </thead>
+      <tbody>
+          @foreach ($sumbangsaran as $ss)
+          <tr>
+              <td>{{$loop->iteration}}</td>
+              <td>{{$ss->karyawan->nik}}</td>
+              <td>{{$ss->karyawan->nama}}</td>
+              <td>{{$ss->judul}}</td>
+              <td>{{$ss->karyawan->bagian->nama}}</td>
+              <td>{{$ss->karyawan->sub_bagian->nama}}</td>
+              <td>{{$ss->periode}}</td>
+              <td> 
+                  @if($ss->penilaian->count() > 0)    
+                      @foreach($ss->penilaian as $area)
+                      {{$area->nilai}}
+                      @endforeach
+                      @else
+                      Belum Di Nilai
+                  @endif
+              </td>
+          </tr>
+          @endforeach
+      </tbody>
     </table>
 
     <!-- Optional JavaScript -->

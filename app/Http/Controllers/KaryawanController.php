@@ -112,13 +112,6 @@ class KaryawanController extends Controller
         $karyawan = Karyawan::findorFail($id);
         $karyawan->delete();
 
-        $karyawan = SumbangSaran::where('karyawan_id', $id);
-        $karyawan->delete();
-
-        $penilaian = Penilaian::where('karyawan_id',$id);
-        $penilaian->delete();
-
-
-        return back()->with('success','Data Karyawan Berhasil Di Hapus');
+        return response()->json();
     }
 }

@@ -16,28 +16,27 @@
     <h5>Tanggal: {{$date}}</h5>
     <table class="text-center table table-striped table-sm table-bordered mt-3" >
         <thead>
-            <tr>
-                <th>No</th>
-                <th>Nik</th>
-                <th>Nama</th>
-                <th>Judul</th>
-                <th>Bagian</th>
-                <th>Periode</th>
-                <th>Tanggal</th>
-            </tr>
+          <tr>
+            <th style="font-weight:bold " align="center">No</th>
+            <th style="font-weight:bold " align="center">Nik</th>
+            <th style="font-weight:bold " align="center">Nama</th>
+            <th style="font-weight:bold " align="center">Bagian</th>
+            <th style="font-weight:bold " align="center">Judul</th>
+            <th style="font-weight:bold " align="center">Tanggal</th>
+            <th style="font-weight:bold " align="center">Periode</th>
+          </tr>
         </thead>
         <tbody>
-            @foreach ($sumbangsaran as $ss)
+          @foreach ($sumbangsaran as $ss)
             <tr>
-                <td>{{$loop->iteration}}</td>
-                <td>{{$ss->karyawan->nik}}</td>
-                <td>{{$ss->karyawan->nama}}</td>
-                <td>{{$ss->judul}}</td>
-                <td>{{$ss->karyawan->bagian->nama}}</td>
-                <td>{{$ss->periode}}</td>
-                <td>{{$ss->created_at->format('d M Y H:i:s')}}</td>
+              <td align="center">{{$loop->iteration}}</td>
+              <td align="center">{{$ss->karyawan->nik}}</td>
+              <td align="center">{{$ss->karyawan->nama}}</td>
+              <td align="center">{{$ss->karyawan->bagian->nama}}</td>
+              <td align="center">{{$ss->periode}}</td>
+              <td align="center">{{$ss->created_at->format('d M Y H:i:s')}}</td>
             </tr>
-            @endforeach
+          @endforeach
         </tbody>
     </table>
 

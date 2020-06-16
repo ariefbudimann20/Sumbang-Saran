@@ -33,13 +33,14 @@
                             <table id="penilaian" class="text-center table table-bordered table-striped table-sm" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>NO</th>
-                                        <th>NIK</th>
-                                        <th>NAMA</th>
-                                        <th>JUDUL</th>
-                                        <th>BAGIAN</th>
-                                        <th>PERIODE</th>
-                                        <th>NILAI</th>
+                                        <th>No</th>
+                                        <th>Nik</th>
+                                        <th>Nama</th>
+                                        <th>Judul</th>
+                                        <th>Bagian</th>
+                                        <th>Periode</th>
+                                        <th>Tanggal</th>
+                                        <th>Nilai</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -52,7 +53,9 @@
                                         <td>{{Str::limit($ss->judul, 20)}}</td>
                                         <td>{{$ss->karyawan->bagian->nama}}</td>
                                         <td>{{$ss->periode}}</td>
-                                        <td> @if($ss->penilaian->count() > 0)
+                                        <td>{{$ss->created_at->format('d M Y H:i:s')}}</td>
+                                        <td> 
+                                            @if($ss->penilaian->count() > 0)    
                                                 @foreach($ss->penilaian as $area)
                                                 {{$area->nilai}}
                                                 @endforeach
@@ -63,9 +66,11 @@
                                        
                                         <td>
                                             @if($ss->penilaian->count() > 0)
-                                                <a href="#mymodal" data-remote="{{route('penilaian.show', $ss->id)}}" data-toggle="modal" data-target="#mymodal" data-title="Detail Sumbang Saran: {{$ss->judul}}"  class="btn btn-info btn-sm">
-                                                    <i class="fa fa-eye"></i>
-                                                </a>
+                                            @foreach($ss->penilaian as $area)
+                                            <a href="#mymodal" data-remote="{{route('penilaian.edit', $area->id)}}" data-toggle="modal" data-target="#mymodal" data-title="Detail Sumbang Saran: {{$ss->judul}}"  class="btn btn-info btn-sm">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            @endforeach
                                             @else
                                                 <a href="#mymodal" data-remote="{{route('penilaian.show', $ss->id)}}" data-toggle="modal" data-target="#mymodal" data-title="Detail Sumbang Saran: {{$ss->judul}}"  class="btn btn-success btn-sm">
                                                     <i class="fa fa-edit"></i>
@@ -98,10 +103,12 @@
    max-width:1200px;
   }
 }
-
 </style>
 @endpush
 @push('after-script')
+    <!-- Lightbox -->
+    <script src="{{url('assets/lightbox/js/lightbox.min.js')}}"></script>
+
     <!-- Datatables -->
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
@@ -126,8 +133,8 @@
     <div class="modal fade" id="mymodal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-scrollable modal-xl d-block mx-auto" role="document">
         <div class="modal-content">
-            <div class="modal-header" style="background: #c9c8e0">
-            <h5 class="modal-title" style="color: #0f0e20">Modal title</h5>
+            <div class="modal-header bg-info">
+                <h5 class="modal-title">Modal title</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>

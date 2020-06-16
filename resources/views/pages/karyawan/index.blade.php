@@ -54,13 +54,8 @@
                                         <td>{{$ky->sumbangsaran_count}}</td>
                                         <td>{{$ky->status->nama}}</td>
                                         <td>
-                                            <form action="{{url('admin/karyawan',$ky->id)}}" method="POST" class="d-inline">
-                                                @csrf
-                                                @method('delete')
-                                                <button href="" class="btn btn-danger btn-sm" type="submit">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </form>
+                                            <meta name="csrf-token" content="{{ csrf_token() }}">
+                                            <a href="#" role="button" data-id="{{$ky->id}}" data-name="{{$ky->nama}}" class="servdeletebtn btn btn-danger btn-sm "><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -73,7 +68,10 @@
         </div>
     </section>
 @endsection
-
+@push('after-style')
+    <!-- Sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+@endpush
 @push('after-script')
     <!-- Datatables -->
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
@@ -82,5 +80,49 @@
         $(document).ready(function() {
             $('#karyawan').DataTable();
         } );
+    </script>
+
+    <!-- Hapus Item -->
+    <script>
+        $(document).ready(function(){
+            $('.servdeletebtn').click(function(e){
+                e.preventDefault();
+                var postId = $(this).data('id'); 
+                var postName = $(this).data('name');
+                var token = $("meta[name='csrf-token']").attr("content"); 
+                // alert(postId);
+                Swal.fire({
+                    title: 'Apa Kamu Yakin?',
+                    html: '<span class="text-center">Hapus Data Karyawan <strong>'+ postName +'</strong>, Data Yang Berhubungan Dengan Data Ini Akan Terhapus</span>',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya'
+                }).then((result) => {
+                    if (result.value) {
+                        $.ajax({
+                            url : "/admin/karyawan/" + postId,
+                            type: "DELETE",
+                            data: {
+                                '_token' : token,
+                                'id': postId
+                            },
+                            success: function(response){
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Data Karyawan Berhasil Di Hapus',
+                                })
+                                .then((result) => {
+                                    location.reload();
+                                })
+                            },
+
+                        });
+            
+                    }
+                })
+            })
+        });
     </script>
 @endpush

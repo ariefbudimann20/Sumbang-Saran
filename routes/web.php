@@ -37,5 +37,9 @@ Route::resource('admin/status', 'StatusController')->middleware('role:admin');
 
 /* Penilai */
 Route::get('penilai/dashboard', 'HomeController@penilai')->middleware('role:penilai')->name('penilai.page');;
+Route::get('penilai/penilaian/export-pdf','PenilaianController@export_pdf')->middleware('role:penilai');
+Route::get('penilai/penilaian/export-excel','PenilaianController@export_excel')->middleware('role:penilai');
 Route::resource('penilai/penilaian','PenilaianController')->middleware('role:penilai');
+Route::get('penilai/finalis/export-pdf','FinalisController@export_pdf')->middleware('role:penilai');
+Route::get('penilai/finalis/export-excel','FinalisController@export_excel')->middleware('role:penilai');
 Route::resource('penilai/finalis','FinalisController')->middleware('role:penilai');

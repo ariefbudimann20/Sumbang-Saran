@@ -33,13 +33,13 @@
               <li class="nav-item">
             <a href="{{url('admin/jadwal')}}" class="nav-link {{Request::is('admin/jadwal') ? 'active' : ''}}">
               <i class="nav-icon fas fa-calendar-alt"></i>
-              <p>Jadwal Sumbang Saran</p>
+              <p>Jadwal</p>
             </a>
           </li>
           <li class="nav-item">
             <a href="{{url('admin/sumbang-saran')}}" class="nav-link {{Request::is('admin/sumbang-saran') ? 'active' : ''}}">
               <i class="nav-icon fab fa-audible"></i>
-              <p>Kelola Sumbang Saran</p>
+              <p>Sumbang Saran</p>
             </a>
           </li>
           <li class="nav-item">
