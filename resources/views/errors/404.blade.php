@@ -42,7 +42,7 @@
     transform: translate(-50%,-50%);
     width: 400px;
     height: 400px;
-    background-image: url(../assets/img/error404.png);
+    background-image: url(../assets/img/error/error404.png);
     background-position-y: top;
     background-position-x: center;
     background-repeat: no-repeat;
@@ -74,6 +74,16 @@
     transition: .1s;
 }
 
+.d-flex a {
+    background-color: #0f0e20;
+    color: white;
+    border: none;
+}
+
+.d-flex a:hover {
+    color: #b5b5b5
+}
+
     </style>
   </head>
   <body>
@@ -84,7 +94,10 @@
                   <p>Tampaknya halaman yang dicari tidak ada</p>
               </div>
 
-            <button class="btn btn-primary btn-md d-block mx-auto"><i class="fas fa-arrow-left"></i> Kembali</button>
+              <div class="d-flex justify-content-center">
+                  <a href="{{ URL::previous() }}" class="btn btn-md mx-auto text-center"><i class="fas fa-arrow-left"></i> Kembali</a>
+              </div>
+
           </div>
       </div>
     <!-- Optional JavaScript -->

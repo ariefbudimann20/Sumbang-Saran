@@ -14,7 +14,7 @@
     {{-- Google Fonts --}}
     <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
 
-    <title>Sumbang Saran</title>
+    <title>Sumbang Saran KFUPJ</title>
   </head>
   <body id="input">
     @if(!empty($jadwal))
@@ -159,13 +159,13 @@
             <span></span>
             <span></span>
             <span></span>
+            <img class="d-block mx-auto" src="{{url('assets/img/closed.png')}}" alt="">
             <p>Maaf.. <br>
               Sumbang Saran telah berakhir <br>
               Silahkan tunggu periode berikutnya
           </p>
-          {{-- <button class="btn btn-primary btn-md d-block mx-auto"><i class="fas fa-arrow-left"></i> Kembali</button> --}}
           <div class="d-flex justify-content-center">
-              <a role="button" class="btn btn-primary btn-md mx-auto text-center" href="{{ route('logout') }}"
+              <a role="button" class="btn btn-md mx-auto text-center" href="{{ route('logout') }}"
                   onclick="event.preventDefault();
                                   document.getElementById('logout-form').submit();"><i class="fas fa-arrow-left"></i>
                   {{ __('Kembali') }}

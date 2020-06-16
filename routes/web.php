@@ -39,3 +39,8 @@ Route::resource('admin/status', 'StatusController')->middleware('role:admin');
 Route::get('penilai/dashboard', 'HomeController@penilai')->middleware('role:penilai')->name('penilai.page');;
 Route::resource('penilai/penilaian','PenilaianController')->middleware('role:penilai');
 Route::resource('penilai/finalis','FinalisController')->middleware('role:penilai');
+
+// Pemenang
+Route::get('pemenang', function() {
+    return view('pemenang');
+});

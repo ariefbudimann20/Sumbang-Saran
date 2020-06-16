@@ -16,7 +16,7 @@ class BagianController extends Controller
      */
     public function index()
     {
-        $bagian = Bagian::orderBy('created_at','DESC')->get();
+        $bagian = Bagian::orderBy('created_at','ASC')->get();
 
         return view('pages.bagian.index',compact('bagian'));
     }
@@ -44,7 +44,7 @@ class BagianController extends Controller
             'max'       => ':attribute Harus Di Isi maksimal :max Digit',
         ];
         $validator = Validator::make($request->all(),[
-            'nama'           => 'required|max:15',
+            'nama'           => 'required|max:50',
         ],$messages);
   
         if ($validator->fails()) {
@@ -97,7 +97,7 @@ class BagianController extends Controller
             'max' => ':attribute Harus Di Isi maksimal :max Digit',
         ];
         $validator = Validator::make($request->all(),[
-            'nama'           => 'required|max:15',
+            'nama'           => 'required|max:50',
         ],$messages);
   
         if ($validator->fails()) {
