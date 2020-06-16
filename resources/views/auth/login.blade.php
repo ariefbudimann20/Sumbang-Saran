@@ -20,8 +20,8 @@
 </head>
 <body class="hold-transition login-page"><div class="login-box">
   <div class="card">
-    <img src="{{url('assets/img/kimiafarma-login.png')}}" alt="Responsive Image" class="img-fluid mx-auto d-block mt-3 animate">
     <div class="card-body login-card-body">
+      <img src="{{url('assets/img/kimiafarma-login.png')}}" alt="Responsive Image" class="img-fluid mx-auto d-block mt-3 animate">
       <p class="login-box-msg">Login untuk memberikan saran</p>
 
       <form method="POST" action="{{ route('login') }}">

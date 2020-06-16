@@ -43,3 +43,8 @@ Route::resource('penilai/penilaian','PenilaianController')->middleware('role:pen
 Route::get('penilai/finalis/export-pdf','FinalisController@export_pdf')->middleware('role:penilai');
 Route::get('penilai/finalis/export-excel','FinalisController@export_excel')->middleware('role:penilai');
 Route::resource('penilai/finalis','FinalisController')->middleware('role:penilai');
+
+// Pemenang
+Route::get('pemenang', function() {
+    return view('pemenang');
+});

@@ -105,7 +105,8 @@
                 </div>
               </div>
               @endif
-              <a href="{{url('/login')}}" class="btn btn-warning btn-sm mt-4 font-weight-bold login"><i class="fas fa-sign-in-alt"></i> Login Sekarang</a>
+              <a href="{{url('/login')}}" class="btn btn-warning btn-sm my-5 font-weight-bold login"><i class="fas fa-sign-in-alt"></i> Login Sekarang</a>
+              <a href="{{url('/pemenang')}}" class="btn btn-success btn-sm my-5 font-weight-bold login"><i class="fas fa-trophy"></i> Lihat Pemenang</a>
                 
             </div>
 
