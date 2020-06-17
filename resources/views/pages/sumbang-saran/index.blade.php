@@ -25,6 +25,7 @@
                 <!-- Content Card -->
                 <div class="card">
                     <div class="card-body">
+<<<<<<< HEAD
 
                         <div class="text-left mb-2">
                             <a class="btn btn-success mr-1" href="{{url('admin/sumbang-saran/export-excel')}}" role="button"><i class="fas fa-file-excel"></i></a>
@@ -42,6 +43,8 @@
                             @endif
                             </form>
 
+=======
+>>>>>>> 14a5371a758ff4be090c014d7ded75efa1b43219
                         <div class="row mb-5 justify-content-between">
                             <div class="text-left mb-2">
                                 <a class="btn btn-success mr-1" href="{{url('admin/sumbang-saran/export-excel')}}" role="button"><i class="fas fa-file-excel"></i> Export to Excel</a>
@@ -51,7 +54,10 @@
                                 <meta name="csrf-token" content="{{ csrf_token() }}">
                                 <a class="btn btn-danger mr-1 text-right" href="{{url('admin/sumbang-saran/e')}}" role="button"><i class="fas fa-trash"></i> Delete All</a>
                             </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 14a5371a758ff4be090c014d7ded75efa1b43219
                         </div>
                         <div class="table-responsive-sm table-sumbangsaran">
                             <table id="sumbangsaran" class="text-center table table-striped table-sm table-bordered" style="width:100%">
