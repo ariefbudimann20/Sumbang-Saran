@@ -24,7 +24,7 @@
                 <th style="font-weight:bold " align="center" width="20">Nama</th>
                 <th style="font-weight:bold " align="center" width="20">Bagian</th>
                 <th style="font-weight:bold " align="center" width="20">Sub Bagian</th>
-                <th style="font-weight:bold " align="center">Jumlah</th>
+                <th style="font-weight:bold " align="center">Jumlah Ide</th>
                 <th style="font-weight:bold " align="center">Status</th>
             </tr>
         </thead>

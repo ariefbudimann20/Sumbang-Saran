@@ -42,7 +42,7 @@ class SumbangSaranController extends Controller
     {
         $mytime = Carbon::now();
         $date = $mytime->toDateTimeString();
-        $sumbangsaran = SumbangSaran::with('karyawan')->get(); 
+        $sumbangsaran = SumbangSaran::with('karyawan')->orderBY('created_at','DESC')->get(); 
         $pdf = \PDF::loadview('pages.sumbang-saran.export-pdf',compact('sumbangsaran','date'));
         $pdf->setPaper('legal', 'landscape');
         return $pdf->download('Sumbang Saran_'.$date.'.pdf');

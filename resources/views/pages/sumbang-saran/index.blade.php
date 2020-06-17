@@ -25,6 +25,7 @@
                 <!-- Content Card -->
                 <div class="card">
                     <div class="card-body">
+<<<<<<< HEAD
                         <div class="text-left mb-2">
                             <a class="btn btn-success mr-1" href="{{url('admin/sumbang-saran/export-excel')}}" role="button"><i class="fas fa-file-excel"></i></a>
                             <a class="btn btn-danger" href="{{url('admin/sumbang-saran/export-pdf')}}" role="button"><i class="fas fa-file-pdf"></i></a>
@@ -40,6 +41,17 @@
                                 <button class="btn btn-danger btn-sm mr-1 text-right"  type="submit">Delete All</button>              
                             @endif
                             </form>
+=======
+                        <div class="row mb-5 justify-content-between">
+                            <div class="text-left mb-2">
+                                <a class="btn btn-success mr-1" href="{{url('admin/sumbang-saran/export-excel')}}" role="button"><i class="fas fa-file-excel"></i> Export to Excel</a>
+                                <a class="btn btn-danger" href="{{url('admin/sumbang-saran/export-pdf')}}" role="button"><i class="fas fa-file-pdf"></i> Export to PDF</a>
+                            </div>
+                            <div class="text-right mb-2">
+                                <meta name="csrf-token" content="{{ csrf_token() }}">
+                                <a class="btn btn-danger mr-1 text-right" href="{{url('admin/sumbang-saran/e')}}" role="button"><i class="fas fa-trash"></i> Delete All</a>
+                            </div>
+>>>>>>> 14a5371a758ff4be090c014d7ded75efa1b43219
                         </div>
                         <div class="table-responsive-sm table-sumbangsaran">
                             <table id="sumbangsaran" class="text-center table table-striped table-sm table-bordered" style="width:100%">
@@ -48,10 +60,10 @@
                                         <th>No</th>
                                         <th>Nik</th>
                                         <th>Nama</th>
-                                        <th>Judul</th>
                                         <th>Bagian</th>
+                                        <th>Judul</th>
                                         <th>Periode</th>
-                                        <th>Tanggal</th>
+                                        <th>Tanggal Kirim</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -61,8 +73,8 @@
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$ss->karyawan->nik}}</td>
                                         <td>{{$ss->karyawan->nama}}</td>
-                                        <td>{{Str::limit($ss->judul, 20)}}</td>
                                         <td>{{$ss->karyawan->bagian->nama}}</td>
+                                        <td>{{Str::limit($ss->judul, 20)}}</td>
                                         <td>{{$ss->periode}}</td>
                                         <td>{{$ss->created_at->format('d M Y H:i:s')}}</td>
                                         <td>

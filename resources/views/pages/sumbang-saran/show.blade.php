@@ -80,4 +80,9 @@
             <p class="text-justify">{{$ss->manfaat}}</p>
         </div>
     </div>
+<<<<<<< HEAD
 </div>
+=======
+</div>
+
+>>>>>>> 14a5371a758ff4be090c014d7ded75efa1b43219

@@ -34,3 +34,8 @@
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script> --}}
 
+<<<<<<< HEAD
+=======
+<!-- Lightbox -->
+<script src="{{url('assets/lightbox/js/lightbox.min.js')}}"></script>
+>>>>>>> 14a5371a758ff4be090c014d7ded75efa1b43219

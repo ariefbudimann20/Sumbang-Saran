@@ -31,7 +31,7 @@
                 <th style="font-weight:bold " align="center" width="30">Biaya atau Investasi yang dibutuhkan (Estimasi) </th>
                 <th style="font-weight:bold " align="center" width="30">Manfaat yang diperoleh</th>
                 <th style="font-weight:bold " align="center" width="30">Attachment</th>
-                <th style="font-weight:bold " align="center" width="30">Tanggal</th>
+                <th style="font-weight:bold " align="center" width="30">Tanggal Kirim</th>
                 <th style="font-weight:bold " align="center" width="30">Periode</th>
             </tr>
         </thead>

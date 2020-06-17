@@ -41,7 +41,7 @@
     transform: translate(-50%,-50%);
     width: 400px;
     height: 400px;
-    background-image: url(../assets/img/error/error404.png);
+    background-image: url(../assets/img/error/error403.png);
     background-position-y: top;
     background-position-x: center;
     background-repeat: no-repeat;
@@ -94,7 +94,7 @@
               </div>
 
               <div class="d-flex justify-content-center">
-                <a href="{{ URL::previous() }}" class="btn btn-md mx-auto text-center"><i class="fas fa-arrow-left"></i> Kembali</a>
+                <a href="{{ url('/login') }}" class="btn btn-md mx-auto text-center"><i class="fas fa-arrow-left"></i> Kembali</a>
             </div>          </div>
       </div>
     <!-- Optional JavaScript -->
@@ -105,8 +105,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>
-@extends('errors::minimal')
+{{-- @extends('errors::minimal')
 
 @section('title', __('Forbidden'))
 @section('code', '403')
-@section('message', __($exception->getMessage() ?: 'Forbidden'))
+@section('message', __($exception->getMessage() ?: 'Forbidden')) --}}
