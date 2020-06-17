@@ -23,11 +23,8 @@
             <th style="font-weight:bold " align="center">Bagian</th>
             <th style="font-weight:bold " align="center">Judul</th>
             <th style="font-weight:bold " align="center">Periode</th>
-<<<<<<< HEAD
             <th style="font-weight:bold " align="center">Tanggal</th>
-=======
             <th style="font-weight:bold " align="center">Tanggal Kirim</th>
->>>>>>> 14a5371a758ff4be090c014d7ded75efa1b43219
           </tr>
         </thead>
         <tbody>
