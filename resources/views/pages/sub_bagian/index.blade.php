@@ -33,7 +33,7 @@
                                 <thead class="text-center">
                                     <tr>
                                         <th style="width:10%">No</th>
-                                        <th style="width:40%">Nama</th>
+                                        <th style="width:40%">Bagian</th>
                                         <th style="width:30%">Sub Bagian</th>
                                         <th style="width:20%">Aksi</th>
                                     </tr>        

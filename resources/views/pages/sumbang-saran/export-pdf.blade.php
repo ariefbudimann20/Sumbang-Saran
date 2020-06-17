@@ -22,8 +22,8 @@
             <th style="font-weight:bold " align="center">Nama</th>
             <th style="font-weight:bold " align="center">Bagian</th>
             <th style="font-weight:bold " align="center">Judul</th>
-            <th style="font-weight:bold " align="center">Tanggal</th>
             <th style="font-weight:bold " align="center">Periode</th>
+            <th style="font-weight:bold " align="center">Tanggal Kirim</th>
           </tr>
         </thead>
         <tbody>
@@ -33,6 +33,7 @@
               <td align="center">{{$ss->karyawan->nik}}</td>
               <td align="center">{{$ss->karyawan->nama}}</td>
               <td align="center">{{$ss->karyawan->bagian->nama}}</td>
+              <td align="center">{{$ss->judul}}</td>
               <td align="center">{{$ss->periode}}</td>
               <td align="center">{{$ss->created_at->format('d M Y H:i:s')}}</td>
             </tr>

@@ -22,7 +22,7 @@
             <th>Nama</th>
             <th>Bagian</th>
             <th>Sub Bagian</th>
-            <th>Jumlah</th>
+            <th>Jumlah Ide</th>
             <th>Status</th>
         </tr>
     </thead>

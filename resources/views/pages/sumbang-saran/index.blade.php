@@ -41,10 +41,10 @@
                                         <th>No</th>
                                         <th>Nik</th>
                                         <th>Nama</th>
-                                        <th>Judul</th>
                                         <th>Bagian</th>
+                                        <th>Judul</th>
                                         <th>Periode</th>
-                                        <th>Tanggal</th>
+                                        <th>Tanggal Kirim</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -54,8 +54,8 @@
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$ss->karyawan->nik}}</td>
                                         <td>{{$ss->karyawan->nama}}</td>
-                                        <td>{{Str::limit($ss->judul, 20)}}</td>
                                         <td>{{$ss->karyawan->bagian->nama}}</td>
+                                        <td>{{Str::limit($ss->judul, 20)}}</td>
                                         <td>{{$ss->periode}}</td>
                                         <td>{{$ss->created_at->format('d M Y H:i:s')}}</td>
                                         <td>

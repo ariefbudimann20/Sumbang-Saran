@@ -22,12 +22,12 @@
         <div class="row logo">
           <div class="col-6"> 
             <div class="icare">
-              <img src="{{url('assets/img/icare.png')}}" width="130px" alt="">
+              <img src="{{url('assets/img/icare.png')}}" width="120px" alt="">
             </div>
           </div>
           <div class="col-6">
             <div class="kimiafarma">
-              <img src="{{url('assets/img/kimiafarma.png')}}" width="130px" alt="">
+              <img src="{{url('assets/img/kimiafarma.png')}}" width="120px" alt="">
             </div> 
           </div>
         </div>
@@ -105,9 +105,14 @@
                 </div>
               </div>
               @endif
+
               <a href="{{url('/login')}}" class="btn btn-warning btn-sm my-5 font-weight-bold login"><i class="fas fa-sign-in-alt"></i> Login Sekarang</a>
+              
+              @if(!empty($jadwal))
+              <a href="{{url('/pemenang')}}" class="btn btn-success btn-sm my-5 font-weight-bold login disabled"><i class="fas fa-trophy"></i> Lihat Pemenang</a>
+              @else
               <a href="{{url('/pemenang')}}" class="btn btn-success btn-sm my-5 font-weight-bold login"><i class="fas fa-trophy"></i> Lihat Pemenang</a>
-                
+              @endif  
             </div>
 
             <div class="col-lg-6 col-sm-12 konten-kanan">

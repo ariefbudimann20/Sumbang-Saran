@@ -86,5 +86,3 @@
     </div>
 </div>
 
-<!-- Lightbox -->
-<script src="{{url('assets/lightbox/js/lightbox.min.js')}}"></script>

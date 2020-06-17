@@ -191,7 +191,7 @@
 
       </div>
       <div class="row btn-back my-4">
-        <a href="{{ URL::previous() }}" class="btn btn-md mx-auto font-weight-bold text-center animate"><i class="fas fa-arrow-left"></i> Kembali</a>
+        <a href="{{ url('/') }}" class="btn btn-md mx-auto font-weight-bold text-center animate"><i class="fas fa-arrow-left"></i> Kembali</a>
       </div>
       <div class="modal fade" id="modal-pemenang" tabindex="-1" role="dialog" aria-labelledby="modal-pemenangLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-xl">
