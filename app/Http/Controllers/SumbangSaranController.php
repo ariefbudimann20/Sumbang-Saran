@@ -9,6 +9,7 @@ use Validator;
 use App\SumbangSaran;
 use App\Karyawan;
 use App\Penilaian;
+use App\Jadwal;
 use Carbon\Carbon;
 use PDF;
 
@@ -26,8 +27,9 @@ class SumbangSaranController extends Controller
     public function index()
     {
         $sumbangsaran = SumbangSaran::with('karyawan')->orderBY('created_at','DESC')->get();
+        $jadwal         = Jadwal::where('status','=',0)->first();
         //dd($sumbangsaran);
-        return view('pages.sumbang-saran.index',compact('sumbangsaran'));
+        return view('pages.sumbang-saran.index',compact('sumbangsaran','jadwal'));
     }
 
     public function export_excel() 
@@ -116,5 +118,13 @@ class SumbangSaranController extends Controller
 
         return response()->json();
         // return back()->with('success','Data Sumbang Saran Berhasil Di Hapus');
+    }
+
+    public function deleteall()
+    {
+        $ss = SumbangSaran::whereNotNull('id')->delete();
+
+        // return response()->json();
+         return back()->with('success','Data Sumbang Saran Berhasil Di Hapus');
     }
 }

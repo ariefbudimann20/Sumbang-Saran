@@ -22,18 +22,24 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
             with font-awesome or any other icon font library -->
-               @if(Auth::user()->hak_akses <= 1)
-               <li class="nav-item">
-                 <a href="{{url('admin/dashboard')}}" class="nav-link {{Request::is('admin/dashboard') ? 'active' : ''}}">
-                  <i class="nav-icon fas fa-tachometer-alt"></i>
-                  <p>Dashboard</p>
-                </a>
-              </li>
-              <li class="nav-header">JOB ADMIN</li>
+          @if(Auth::user()->hak_akses <= 1)
               <li class="nav-item">
+                <a href="{{url('admin/dashboard')}}" class="nav-link {{Request::is('admin/dashboard') ? 'active' : ''}}">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>Dashboard</p>
+              </a>
+            </li>
+          <li class="nav-header">JOB ADMIN</li>
+          <li class="nav-item">
             <a href="{{url('admin/jadwal')}}" class="nav-link {{Request::is('admin/jadwal') ? 'active' : ''}}">
               <i class="nav-icon fas fa-calendar-alt"></i>
               <p>Jadwal</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{url('admin/juara')}}" class="nav-link {{Request::is('admin/juara') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-trophy"></i>
+              <p>Juara</p>
             </a>
           </li>
           <li class="nav-item">

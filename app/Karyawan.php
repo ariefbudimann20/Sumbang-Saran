@@ -28,14 +28,4 @@ class Karyawan extends Model
     public function sub_bagian(){
         return $this->belongsTo(Sub_Bagian::class,'sub_bagian_id','id');
     }
-
-    public function juara1(){
-        return $this->hasMany(Jadwal::class,'juara1');
-    }
-    public function juara2(){
-        return $this->hasMany(Jadwal::class,'juara2');
-    }
-    public function juara3(){
-        return $this->hasMany(Jadwal::class,'juara3');
-    }
 }

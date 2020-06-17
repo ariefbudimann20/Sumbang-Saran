@@ -30,9 +30,16 @@
                             <a class="btn btn-danger" href="{{url('admin/sumbang-saran/export-pdf')}}" role="button"><i class="fas fa-file-pdf"></i></a>
                         </div>
                         <div class="text-right mb-2">
-                            <meta name="csrf-token" content="{{ csrf_token() }}">
-                            <a href="#" role="button" class="servdeletebtn btn btn-danger btn-sm "><i class="fas fa-trash"></i></a>
-                            <a class="btn btn-danger mr-1 text-right" href="{{url('admin/sumbang-saran/e')}}" role="button">Delete All</a>
+                            {{-- <a href="#" role="button" class="servdeleteallbtn btn btn-danger btn-sm "><i class="fas fa-trash"></i></a> --}}
+                            <form action="{{url('admin/sumbang-saran/delete-all')}}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            @if(!empty($jadwal))
+                                <button class="btn btn-danger btn-sm mr-1 text-right" disabled type="submit">Delete All</button>                                     
+                            @else
+                                <button class="btn btn-danger btn-sm mr-1 text-right"  type="submit">Delete All</button>              
+                            @endif
+                            </form>
                         </div>
                         <div class="table-responsive-sm table-sumbangsaran">
                             <table id="sumbangsaran" class="text-center table table-striped table-sm table-bordered" style="width:100%">
@@ -86,10 +93,17 @@
   }
 }
 </style>
+
+<!-- Lightbox -->
+<link rel="stylesheet" href="{{url('assets/lightbox/css/lightbox.css')}}" />
+
 <!-- Sweetalert -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 @endpush
 @push('after-script')
+    <!-- Lightbox -->
+    <script src="{{url('assets/lightbox/js/lightbox.min.js')}}"></script>
+    
     <!-- Datatables -->
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
@@ -97,6 +111,51 @@
         $(document).ready(function() {
             $('#sumbangsaran').DataTable();
         } );
+    </script>
+
+    <!-- Hapus All Item -->
+    <script>
+        $(document).ready(function(){
+            $('.servdeleteallbtn').click(function(e){
+                e.preventDefault();
+                var postId = $(this).data('id'); 
+                var postName = $(this).data('name');
+                var token = $("meta[name='csrf-token']").attr("content");  
+                // alert(postId);
+
+                Swal.fire({
+                    title: 'Apa Kamu Yakin?',
+                    // text: "Menghapus Data Sumbang Saran " + postName,
+                    html: '<span class="text-center">Hapus Data Sumbang Saran <strong></strong></span>',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya'
+                }).then((result) => {
+                    if (result.value) {
+                        $.ajax({
+                            url : "/admin/sumbang-saran/delete-all",
+                            type: "DELETE",
+                            data: {
+                                '_token' : token,
+                            },
+                            success: function(response){
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Data Sumbang Saran Berhasil Di Hapus',
+                                })
+                                .then((result) => {
+                                    location.reload();
+                                })
+                            },
+
+                        });
+            
+                    }
+                })
+            })
+        });
     </script>
 
     <!-- Hapus Item -->

@@ -19,13 +19,18 @@ Route::get('input', 'InputController@index')->middleware('role:user')->name('use
 Route::get('ajax-sub','InputController@search');
 Route::post('input','InputController@store');
 
+// Pemenang
+Route::get('/juara','IndexController@juara');
+
 Auth::routes();
 
 /* Admin */
 Route::get('admin/dashboard', 'HomeController@admin')->middleware('role:admin')->name('admin.page');
+Route::resource('admin/juara','JuaraController')->middleware('role:admin');
 Route::resource('admin/jadwal','JadwalController')->middleware('role:admin');
 Route::get('admin/sumbang-saran/export-pdf', 'SumbangSaranController@export_pdf')->middleware('role:admin');
 Route::get('admin/sumbang-saran/export-excel', 'SumbangSaranController@export_excel')->middleware('role:admin');
+Route::delete('admin/sumbang-saran/delete-all', 'SumbangSaranController@deleteall')->middleware('role:admin');
 Route::resource('admin/sumbang-saran', 'SumbangSaranController')->middleware('role:admin');
 Route::get('admin/karyawan/export-pdf', 'KaryawanController@export_pdf')->middleware('role:admin');
 Route::get('admin/karyawan/export-excel', 'KaryawanController@export_excel')->middleware('role:admin');
@@ -43,8 +48,3 @@ Route::resource('penilai/penilaian','PenilaianController')->middleware('role:pen
 Route::get('penilai/finalis/export-pdf','FinalisController@export_pdf')->middleware('role:penilai');
 Route::get('penilai/finalis/export-excel','FinalisController@export_excel')->middleware('role:penilai');
 Route::resource('penilai/finalis','FinalisController')->middleware('role:penilai');
-
-// Pemenang
-Route::get('pemenang', function() {
-    return view('pemenang');
-});

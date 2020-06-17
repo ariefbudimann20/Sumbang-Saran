@@ -21,5 +21,16 @@ class Penilaian extends Model
         return $this->belongsTo(User::class,'user_id','id');
     }
 
+    public function juara1(){
+        return $this->hasMany(Juara::class,'juara1');
+    }
+
+    public function juara2(){
+        return $this->hasMany(Juara::class,'juara2');
+    }
+    
+    public function juara3(){
+        return $this->hasMany(Juara::class,'juara3');
+    }
     
 }

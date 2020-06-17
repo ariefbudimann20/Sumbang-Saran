@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Jadwal;
+use App\Juara;
 
 class IndexController extends Controller
 {
@@ -17,6 +18,14 @@ class IndexController extends Controller
         $jadwal = Jadwal::where('status','=',0)->first();
 
         return view('index',compact('jadwal'));
+    }
+
+    public function juara()
+    {
+        $jadwal = Jadwal::where('status','=',0)->first();
+        $juara = Juara::with('karyawan1','karyawan2','karyawan3')->first();
+        // dd($juara);
+        return view('juara',compact('jadwal','juara'));
     }
 
     /**

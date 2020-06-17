@@ -42,13 +42,13 @@
         <div class="col-md-6 col-sm-12">
             <div class="form-group">
                 <label for="foto">Attachment :</label><br>
-                @if (pathinfo(url('assets/attachment',$ss->sumbangsaran->attachment), PATHINFO_EXTENSION) == 'docx' && 'doc' && 'xls' && 'xlsx' && 'ppt' && 'pptx' && 'pdf')
-                    <a href="{{ url('assets/attachment',$ss->sumbangsaran->attachment)}}"><img src="{{url('assets/img/attachment.jpg')}}"></a><br>
-                    <small class="text-muted"><i>{{ $ss->sumbangsaran->attachment }}</i></small>
-                @else
+                @if (pathinfo($ss->sumbangsaran->attachment, PATHINFO_EXTENSION) == 'jpg' || pathinfo($ss->sumbangsaran->attachment, PATHINFO_EXTENSION) == 'png' || pathinfo($ss->sumbangsaran->attachment, PATHINFO_EXTENSION) == 'gif')
                     <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="{{url('assets/attachment',$ss->sumbangsaran->attachment)}}" data-lightbox="image-1">
                         <img style="width:auto; height:150px; margin-bottom:10px;" src="{{url('assets/attachment',$ss->sumbangsaran->attachment)}}" /></a>
                     </div>
+                @else
+                    <a href="{{ url('assets/attachment',$ss->sumbangsaran->attachment)}}" ><img src="{{url('assets/img/attachment.jpg')}}"></a><br>
+                    <small class="text-muted"><i>{{ $ss->sumbangsaran->attachment }}</i></small>
                 @endif
             </div>
         </div>
@@ -57,7 +57,7 @@
         <div class="col-md-6 .col-sm-12">
             <div class="form-group">
                 <label for="kondisi-awal">Latar Belakang Ide :</label>
-                <p class="text-justify">{{$ss->latar_belakang}}</p>
+                <p class="text-justify">{{$ss->sumbangsaran->latar_belakang}}</p>
             </div>   
         </div>
         <div class="col-md-6 col-sm-12">

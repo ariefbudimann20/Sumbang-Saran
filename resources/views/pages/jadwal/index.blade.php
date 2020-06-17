@@ -14,7 +14,7 @@
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{url('admin/dashboard')}}">Home</a></li>
-                <li class="breadcrumb-item active">Sumbang Saran</li>
+                <li class="breadcrumb-item active">Jadwal</li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
@@ -71,9 +71,6 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Periode</th>
-                                        <th>Juara I</th>
-                                        <th>Juara II</th>
-                                        <th>Juara III</th>
                                         <th>Status</th>
                                         <th>Aksi</th>
                                     </tr>        
@@ -83,9 +80,6 @@
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$jwl->mulai}} - {{$jwl->selesai}}</td>
-                                        <td>{{$jwl->juara1}}</td>
-                                        <td>{{$jwl->juara2}}</td>
-                                        <td>{{$jwl->juara3}}</td>
                                         <td>@if($jwl->status == 0)
                                             <span class="badge badge-info p-2">Berjalan</span>
                                             @else

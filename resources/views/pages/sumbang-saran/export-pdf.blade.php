@@ -22,8 +22,8 @@
             <th style="font-weight:bold " align="center">Nama</th>
             <th style="font-weight:bold " align="center">Bagian</th>
             <th style="font-weight:bold " align="center">Judul</th>
-            <th style="font-weight:bold " align="center">Tanggal</th>
             <th style="font-weight:bold " align="center">Periode</th>
+            <th style="font-weight:bold " align="center">Tanggal</th>
           </tr>
         </thead>
         <tbody>

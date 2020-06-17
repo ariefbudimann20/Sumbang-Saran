@@ -20,7 +20,7 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        $jadwal = Jadwal::with('juara1','juara2','juara3')->orderBY('created_at','DESC')->get();
+        $jadwal = Jadwal::orderBY('created_at','DESC')->get();
         // dd($jadwal);
         return view('pages.jadwal.index',compact('jadwal'));
     }
@@ -78,19 +78,8 @@ class JadwalController extends Controller
     public function edit($id)
     {
         $jadwal = Jadwal::findOrFail($id);
-        $sumbangsaran = SumbangSaran::with('karyawan','penilaian')->get();
-        $sumbangsaran -> map(function ($item, $key){
-            return $item['nilai_total'] = $item->penilaian()->sum('nilai');
-        });
-        $sumbangsaran -> map(function ($item, $key){
-            return $item['jml_sdh_nilai'] = $item->penilaian()->count();
-        });
-
-        $sorted = $sumbangsaran->sortByDesc('nilai_total');
-        $finalis = $sorted->values()->all();
-        $pemenang = Penilaian::where('nilai','=',500)->get();
         
-        return view('pages.jadwal.edit',compact('jadwal','pemenang','finalis'));
+        return view('pages.jadwal.edit',compact('jadwal'));
     }
 
     /**
@@ -114,9 +103,6 @@ class JadwalController extends Controller
         }else{
 
             $jadwal = Jadwal::findOrFail($id);
-            $jadwal->juara1 = $request->juara1;
-            $jadwal->juara2 = $request->juara2;
-            $jadwal->juara3 = $request->juara3;
             $jadwal->status = $request->status;
             $jadwal->save();
                 

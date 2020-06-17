@@ -104,6 +104,8 @@
   }
 }
 </style>
+<!-- Lightbox -->
+<link rel="stylesheet" href="{{url('assets/lightbox/css/lightbox.css')}}" />
 @endpush
 @push('after-script')
     <!-- Lightbox -->
