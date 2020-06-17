@@ -26,7 +26,7 @@
                <div class="card">
                    <div class="card-body">
                     <a href="#mymodal" data-remote="{{route('user.create')}}" data-toggle="modal" data-target="#mymodal" data-title="Tambah User"  class="btn btn-primary font-weight-bold mb-3">
-                        <i class="fa fa-plus"></i> User
+                        <i class="fa fa-plus"></i>  User
                     </a>
                        <div class="table-responsive table-jadwal">
                            <table id="user" class="table table-sm table-bordered table-striped" style="width:100%">

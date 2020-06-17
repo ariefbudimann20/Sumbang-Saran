@@ -168,7 +168,7 @@
             <span></span>
             <span></span>
             <img class="d-block mx-auto" src="{{url('assets/img/closed.png')}}" alt="">
-            <p>Maaf.. <br>
+            <p class="px-3">Oops..! <br>
               Sumbang Saran telah berakhir <br>
               Silahkan tunggu periode berikutnya
           </p>

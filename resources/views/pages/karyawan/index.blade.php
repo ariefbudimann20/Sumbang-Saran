@@ -26,8 +26,8 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="text-left mb-2">
-                            <a class="btn btn-success mr-1" href="{{url('admin/karyawan/export-excel')}}" role="button"><i class="fas fa-file-excel"></i></a>
-                            <a class="btn btn-danger" href="{{url('admin/karyawan/export-pdf')}}" role="button"><i class="fas fa-file-pdf"></i></a>
+                            <a class="btn btn-success mr-1" href="{{url('admin/karyawan/export-excel')}}" role="button"><i class="fas fa-file-excel"></i> Export to Excel</a>
+                            <a class="btn btn-danger" href="{{url('admin/karyawan/export-pdf')}}" role="button"><i class="fas fa-file-pdf"></i> Export to PDF</a>
                         </div>
                         <div class="table-responsive-sm table-datakaryawan">
                             <table id="karyawan" class="text-center table table-striped table-sm table-bordered" style="width:100%">

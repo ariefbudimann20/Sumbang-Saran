@@ -78,12 +78,13 @@ body#input {
 .konten-kiri .waktu-tersisa {
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
+    vertical-align: bottom;
 }
 
 .hitungmundur .box {
     float: left;
     width: 70px;
-    height: 90px;
+    height: 70px;
 }
 
 .hitungmundur .box-span {

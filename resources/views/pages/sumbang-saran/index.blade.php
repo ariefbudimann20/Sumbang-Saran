@@ -25,14 +25,15 @@
                 <!-- Content Card -->
                 <div class="card">
                     <div class="card-body">
-                        <div class="text-left mb-2">
-                            <a class="btn btn-success mr-1" href="{{url('admin/sumbang-saran/export-excel')}}" role="button"><i class="fas fa-file-excel"></i></a>
-                            <a class="btn btn-danger" href="{{url('admin/sumbang-saran/export-pdf')}}" role="button"><i class="fas fa-file-pdf"></i></a>
-                        </div>
-                        <div class="text-right mb-2">
-                            <meta name="csrf-token" content="{{ csrf_token() }}">
-                            <a href="#" role="button" class="servdeletebtn btn btn-danger btn-sm "><i class="fas fa-trash"></i></a>
-                            <a class="btn btn-danger mr-1 text-right" href="{{url('admin/sumbang-saran/e')}}" role="button">Delete All</a>
+                        <div class="row mb-5 justify-content-between">
+                            <div class="text-left mb-2">
+                                <a class="btn btn-success mr-1" href="{{url('admin/sumbang-saran/export-excel')}}" role="button"><i class="fas fa-file-excel"></i> Export to Excel</a>
+                                <a class="btn btn-danger" href="{{url('admin/sumbang-saran/export-pdf')}}" role="button"><i class="fas fa-file-pdf"></i> Export to PDF</a>
+                            </div>
+                            <div class="text-right mb-2">
+                                <meta name="csrf-token" content="{{ csrf_token() }}">
+                                <a class="btn btn-danger mr-1 text-right" href="{{url('admin/sumbang-saran/e')}}" role="button"><i class="fas fa-trash"></i> Delete All</a>
+                            </div>
                         </div>
                         <div class="table-responsive-sm table-sumbangsaran">
                             <table id="sumbangsaran" class="text-center table table-striped table-sm table-bordered" style="width:100%">

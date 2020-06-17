@@ -38,9 +38,9 @@
               <br>
               <h4 class="periode">Periode Sumbang Saran : </h4>
               @if(!empty($jadwal))
-              <h3 class="font-italic  tanggal">{{$jadwal->created_at->format('d M Y')}} - {{date('d M Y', strtotime($jadwal->selesai))}}</h3>
+              <h3 class="tanggal">{{$jadwal->created_at->format('d M Y')}} - {{date('d M Y', strtotime($jadwal->selesai))}}</h3>
               @else
-              <h3 class="font-italic  tanggal">Sudah Selesai</h3>
+              <h3 class="tanggal">Sudah Selesai</h3>
               @endif
               @if(!empty($jadwal))
               <input type="hidden" id="end" value="{{$jadwal->selesai}}">
