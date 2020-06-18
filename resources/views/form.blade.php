@@ -226,7 +226,7 @@
     <script>
         $('#status_select').change(function(){
             if($(this).val() == 1){
-                nilai = 0;
+                nilai = "-";
                 $('#status').val(nilai);
                 $('#status').attr('disabled','disabled');
 

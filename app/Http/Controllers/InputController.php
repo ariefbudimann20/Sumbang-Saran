@@ -87,8 +87,8 @@ class InputController extends Controller
                 $namapic = request()->nik."_".request()->attachment->getClientOriginalName();
                 request()->attachment->move(public_path('assets/attachment'),$namapic);
             }
-                if($request->nik == 0) {
-                    $nik = 0;
+                if($request->nik == '-') {
+                    $nik = "-";
                     $flight = Karyawan::firstOrCreate([
                         'nik'          => $nik,
                         'nama'          => $request->nama,

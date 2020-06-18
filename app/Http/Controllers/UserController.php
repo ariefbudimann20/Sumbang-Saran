@@ -43,6 +43,7 @@ class UserController extends Controller
         $messages = [
             'required'  => ':attribute Harus Di Isi',
             'unique'    => ':attribute Harus Berbeda',
+            'same'      => ':attribute dan :other Tidak Sama.',
         ];
 
         $validator = Validator::make($request->all(),[
@@ -119,6 +120,7 @@ class UserController extends Controller
         $messages = [
             'required'  => ':attribute Harus Di Isi',
             'unique'    => ':attribute Harus Berbeda',
+            'same'      => ':attribute dan :other Tidak Sama.',
         ];
 
         $validator = Validator::make($request->all(),[

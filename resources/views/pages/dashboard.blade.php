@@ -25,13 +25,13 @@
         <!-- Small boxes (Stat box) -->
         <div class="row">
           @if(Auth::user()->hak_akses <= 1)
-          <div class="col-lg-6 col-6">
+          <div class="col-lg-3 col-3">
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
                 <h3>{{$sumbangsaran->count()}}</h3>
 
-                <p>Saran yang telah disumbangkan</p>
+                <p>Sumbang Saran</p>
               </div>
               <div class="icon">
                 <i class="fab fa-audible"></i>
@@ -40,7 +40,7 @@
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-6 col-6">
+          <div class="col-lg-3 col-3">
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
@@ -52,6 +52,36 @@
                 <i class="fas fa-database"></i>
               </div>
               <a href="{{url('admin/karyawan')}}" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-3">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>{{$user->count()}}</h3>
+
+                <p>Manajemen User</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-users-cog"></i>
+              </div>
+              <a href="{{url('admin/user')}}" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-3">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>{{$bagian->count()}}</h3>
+
+                <p>Bagian</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-layer-group"></i>
+              </div>
+              <a href="{{url('admin/bagian')}}" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

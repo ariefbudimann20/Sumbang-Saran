@@ -108,10 +108,10 @@
 
               <a href="{{url('/login')}}" class="btn btn-warning btn-sm my-5 font-weight-bold login"><i class="fas fa-sign-in-alt"></i> Login Sekarang</a>
               
-              @if(!empty($jadwal))
-              <a href="{{url('/pemenang')}}" class="btn btn-success btn-sm my-5 font-weight-bold login disabled"><i class="fas fa-trophy"></i> Lihat Pemenang</a>
+              @if(empty($juara))
+              <a href="{{url('/juara')}}" class="btn btn-success btn-sm my-5 font-weight-bold login disabled"><i class="fas fa-trophy"></i> Lihat Pemenang</a>
               @else
-              <a href="{{url('/pemenang')}}" class="btn btn-success btn-sm my-5 font-weight-bold login"><i class="fas fa-trophy"></i> Lihat Pemenang</a>
+              <a href="{{url('/juara')}}" class="btn btn-success btn-sm my-5 font-weight-bold login"><i class="fas fa-trophy"></i> Lihat Pemenang</a>
               @endif  
             </div>
 

@@ -25,11 +25,9 @@
                 <!-- Content Card -->
                 <div class="card">
                     <div class="card-body">
-<<<<<<< HEAD
-
                         <div class="text-left mb-2">
-                            <a class="btn btn-success mr-1" href="{{url('admin/sumbang-saran/export-excel')}}" role="button"><i class="fas fa-file-excel"></i></a>
-                            <a class="btn btn-danger" href="{{url('admin/sumbang-saran/export-pdf')}}" role="button"><i class="fas fa-file-pdf"></i></a>
+                            <a class="btn btn-success mr-1" href="{{url('admin/sumbang-saran/export-excel')}}" role="button"><i class="fas fa-file-excel"></i> Export to Excel</a>
+                                <a class="btn btn-danger" href="{{url('admin/sumbang-saran/export-pdf')}}" role="button"><i class="fas fa-file-pdf"></i> Export to PDF</a>
                         </div>
                         <div class="text-right mb-2">
                             {{-- <a href="#" role="button" class="servdeleteallbtn btn btn-danger btn-sm "><i class="fas fa-trash"></i></a> --}}
@@ -37,15 +35,14 @@
                             @method('DELETE')
                             @csrf
                             @if(!empty($jadwal))
-                                <button class="btn btn-danger btn-sm mr-1 text-right" disabled type="submit">Delete All</button>                                     
+                                <button class="btn btn-danger btn-sm mr-1 text-right" disabled type="submit"><i class="fas fa-trash"></i> Delete All</button>                                     
                             @else
-                                <button class="btn btn-danger btn-sm mr-1 text-right"  type="submit">Delete All</button>              
+                                <button class="btn btn-danger btn-sm mr-1 text-right"  type="submit"><i class="fas fa-trash"></i> Delete All</button>              
                             @endif
                             </form>
+                        </div>
 
-=======
->>>>>>> 14a5371a758ff4be090c014d7ded75efa1b43219
-                        <div class="row mb-5 justify-content-between">
+                        {{-- <div class="row mb-5 justify-content-between">
                             <div class="text-left mb-2">
                                 <a class="btn btn-success mr-1" href="{{url('admin/sumbang-saran/export-excel')}}" role="button"><i class="fas fa-file-excel"></i> Export to Excel</a>
                                 <a class="btn btn-danger" href="{{url('admin/sumbang-saran/export-pdf')}}" role="button"><i class="fas fa-file-pdf"></i> Export to PDF</a>
@@ -54,11 +51,7 @@
                                 <meta name="csrf-token" content="{{ csrf_token() }}">
                                 <a class="btn btn-danger mr-1 text-right" href="{{url('admin/sumbang-saran/e')}}" role="button"><i class="fas fa-trash"></i> Delete All</a>
                             </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> 14a5371a758ff4be090c014d7ded75efa1b43219
-                        </div>
+                        </div> --}}
                         <div class="table-responsive-sm table-sumbangsaran">
                             <table id="sumbangsaran" class="text-center table table-striped table-sm table-bordered" style="width:100%">
                                 <thead>

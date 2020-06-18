@@ -16,8 +16,9 @@ class IndexController extends Controller
     public function index()
     {
         $jadwal = Jadwal::where('status','=',0)->first();
+        $juara = Juara::with('karyawan1','karyawan2','karyawan3')->first();
 
-        return view('index',compact('jadwal'));
+        return view('index',compact('jadwal','juara'));
     }
 
     public function juara()
